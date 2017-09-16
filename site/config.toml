@@ -1,0 +1,7 @@
+baseURL = "http://alessiorapini.me/"
+languageCode = "en-us"
+title = "Personal portfolio"
+
+[Author]
+  name = "Alessio Rapini"
+  github = "rub"
