@@ -1,0 +1,8 @@
+# Hugo
+dot_website/public
+
+# Webpack toolchain
+node_modules/
+
+# MacOS
+*.DS_Store
