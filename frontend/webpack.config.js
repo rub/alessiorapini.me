@@ -6,7 +6,7 @@ const path = require('path');
 
 // Extract CSS into a separate file
 const extractSass = new ExtractTextPlugin({
-  filename: "../css/main.css",
+  filename: "main.css",
 });
 
 // Minify JavaScript
@@ -17,7 +17,7 @@ module.exports = {
   entry: './js/index.js',
   output: {
     filename: 'bundle.js',
-    path: path.resolve(__dirname, 'static/js'),
+    path: path.resolve(__dirname, '../site/static/'),
   },
   module: {
     rules: [

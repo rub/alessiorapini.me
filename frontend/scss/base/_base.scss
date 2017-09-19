@@ -1,0 +1,19 @@
+// Base styles
+// -----------
+
+// Set up default styles on the root element:
+// [1] Set main font rules
+// [2] set box-sizing to border-box
+html {
+  box-sizing: border-box; // [2]
+  height: 100%;
+}
+
+// Make all elements from the DOM inherit from the parent box-sizing
+// Since `*` has a specificity of 0, it does not override the `html` value
+// making all elements inheriting from the root box-sizing value
+// See: https://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/
+// Borrowed from https://github.com/HugoGiraudel/sass-boilerplate/blob/master/stylesheets/base/_base.scss
+*, *::before, *::after {
+  box-sizing: inherit;
+}

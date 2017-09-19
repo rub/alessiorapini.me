@@ -23,5 +23,7 @@
     "url-loader": "^0.5.9",
     "webpack": "^3.6.0"
   },
-  "dependencies": {}
+  "dependencies": {
+    "normalize.css": "^7.0.0"
+  }
 }
