@@ -14,7 +14,7 @@ const UglifyJsPlugin = new webpack.optimize.UglifyJsPlugin();
 
 module.exports = {
   devtool: 'cheap-module-eval-source-map',
-  entry: './client/js/index.js',
+  entry: './js/index.js',
   output: {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'static/js'),
