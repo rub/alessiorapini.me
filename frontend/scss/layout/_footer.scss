@@ -1,0 +1,13 @@
+// Footer styles
+// -------------
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+}
+
+// Add space between social links
+.social-link + .social-link {
+  margin-left: 1rem;
+}

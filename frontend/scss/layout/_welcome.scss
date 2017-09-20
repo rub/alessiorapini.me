@@ -1,0 +1,14 @@
+// Welcome section
+// ---------------
+
+.welcome {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.coming_soon {
+  color: var(--light-blue);
+  text-transform: uppercase;
+}

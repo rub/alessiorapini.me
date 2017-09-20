@@ -6,6 +6,8 @@
 // [2] set box-sizing to border-box
 html {
   box-sizing: border-box; // [2]
+  color: var(--light-grey);
+  font: 18px/1.5 'Nunito';
   height: 100%;
 }
 
@@ -16,4 +18,16 @@ html {
 // Borrowed from https://github.com/HugoGiraudel/sass-boilerplate/blob/master/stylesheets/base/_base.scss
 *, *::before, *::after {
   box-sizing: inherit;
+}
+
+body {
+  height: 100%;
+}
+
+.main {
+  background-color: var(--dark-grey);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
 }
