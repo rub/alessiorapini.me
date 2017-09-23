@@ -3,24 +3,29 @@
 {{ partial "head.html" }}
 <body>
   <main class="main">
-    <header class="header">
-      <p>Alessio Rapini</p>
-      <p>Full Stack Designer</p>
-    </header>
+    {{ partial "header.html" }}
     <section class="welcome">
-      <div class="face">
-        
+      <div class="rub">
+        <canvas class="rub-fixed"></canvas>
+        <div class="rub-parallax left js-parallax">
+          <canvas data-depth="0.3"></canvas>
+        </div>
+        <div class="rub-parallax right js-parallax">
+          <canvas data-depth="0.3"></canvas>
+        </div>
+      </div>
+      <div class="rub mobile">
+        <canvas class="rub-fixed mobile"></canvas>
+        <div class="rub-parallax left mobile js-parallax">
+          <canvas data-depth="0.3"></canvas>
+        </div>
+        <div class="rub-parallax right mobile js-parallax">
+          <canvas data-depth="0.3"></canvas>
+        </div>
       </div>
       <p class="coming_soon">Coming soon</p>
     </section>
-    <footer class="footer">
-      <a href="mailto:alessio.rapini@yahoo.it">alessio.rapini@yahoo.it</a>
-      <div class="social">
-        <a class="social-link" href="https://it.linkedin.com/in/alessiorapini">LinkedIn</a>
-        <a class="social-link" href="https://github.com/rub">GitHub</a>
-        <a class="social-link" href="https://twitter.com/alessiorapini">Twitter</a>
-      </div>
-    </footer>
+    {{ partial "footer.html" }}
   </main>
 </body>
 </html>

@@ -1,6 +1,12 @@
 // Variables
 // ---------
 
+// [1] Fonts
+// [2] Z-indexes
 :root {
-  --nunito: 'Nunito', sans-serif;
+  --nunito: 'Nunito', sans-serif; // [1]
+
+  --z-header: 10; // [2]
+  --z-footer: 10;
+  --z-coming_soon: 10;
 }

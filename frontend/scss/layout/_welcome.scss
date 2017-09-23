@@ -4,11 +4,76 @@
 .welcome {
   display: flex;
   flex: 1;
+  height: 100%;
   justify-content: center;
-  padding: 1rem;
+  overflow: hidden;
+  width: 100%;
+}
+
+.rub {
+  align-items: flex-end;
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  position: relative;
+  width: 100%;
+
+  @media #{$portrait} {
+    display: none;
+  }
+}
+
+.rub.mobile {
+  display: none;
+  top: 17.942vh;
+
+  @media #{$portrait} {
+    display: flex;
+  }
+}
+
+.rub-fixed {
+  height: 90vh;
+}
+
+// [1] !important is needed to override the relative position set by parallax.js
+.rub-parallax {
+  bottom: 0;
+  display: block;
+  height: 90vh;
+  opacity: 0.5;
+  position: absolute !important; // [1]
+
+  &:nth-of-type(1n) {
+    margin-left: 1vw;
+  }
+
+  &:nth-of-type(2n) {
+    margin-left: -1vw;
+  }
+}
+
+.rub-parallax > canvas {
+  height: 100%;
 }
 
 .coming_soon {
+  align-self: flex-end;
+  bottom: 2.618rem;
+  background: linear-gradient(135deg, #00C3FF, #FFFF1C);
+  -webkit-background-clip: text;
   color: var(--light-blue);
+  filter: drop-shadow(0 0 4px rgba(0, 0, 0, 0.2));
+  font-weight: bold;
+  position: absolute;
+  text-align: center;
+  -webkit-text-fill-color: transparent;
   text-transform: uppercase;
+  z-index: var(--z-coming_soon);
+
+  @media #{$small} {
+    background: linear-gradient(135deg, #22C1C3, #FDBB2D);
+    -webkit-background-clip: text;
+    bottom: 4.236rem;
+  }
 }

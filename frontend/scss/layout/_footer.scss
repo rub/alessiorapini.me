@@ -2,12 +2,63 @@
 // -------------
 
 .footer {
+  bottom: 0;
   display: flex;
   justify-content: space-between;
+  left: 0;
   padding: 1rem;
+  position: absolute;
+  width: 100%;
+  z-index: var(--z-footer);
+
+  @media #{$small} {
+    justify-content: center;
+  }
+}
+
+.social {
+  display: flex;
+
+  @media #{$small} {
+    margin-left: 1rem;
+  }
 }
 
 // Add space between social links
 .social-link + .social-link {
   margin-left: 1rem;
+}
+
+// Show mail and social links as text on wide screens
+.mail-text,
+.social-link-text {
+  @media #{$small} {
+    display: none;
+  }
+}
+
+// Show mail and social links as icons on small screens
+.mail-icon,
+.social-link-icon {
+  align-items: center;
+  background: var(--dark-grey);
+  border-radius: 50%;
+  display: none;
+  height: 2.618rem;
+  justify-content: center;
+  width: 2.618rem;
+
+  @media #{$small} {
+    display: flex;
+  }
+}
+
+.mail-icon > svg,
+.social-link-icon > svg {
+  fill: var(--white);
+  height: 1rem;
+}
+
+.mail-icon > svg {
+  width: 1rem;
 }
