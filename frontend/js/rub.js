@@ -4,7 +4,7 @@
 // Import Parallax.js
 const Parallax = require('../node_modules/parallax-js/dist/parallax.js');
 
-const scene = document.querySelectorAll('.js-parallax');
+const scene = document.getElementsByClassName('js-parallax');
 
 /**
  * Draw responsive Rub's pictures onto canvas
@@ -24,31 +24,38 @@ function drawImage(canvasNode, imagePath) {
   };
 }
 
-drawImage('.rub-fixed', 'img/rub.png');
-drawImage('.rub-fixed.mobile', 'img/rub-mobile.png');
-drawImage('.rub-parallax.left > canvas', 'img/rub-sliced-one.png');
-drawImage('.rub-parallax.left.mobile > canvas', 'img/rub-sliced-mobile-one.png');
-drawImage('.rub-parallax.right > canvas', 'img/rub-sliced-two.png');
-drawImage('.rub-parallax.right.mobile > canvas', 'img/rub-sliced-mobile-two.png');
+function renderCanvas() {
+  drawImage('.rub-fixed', 'img/rub.png');
+  drawImage('.rub-fixed.mobile', 'img/rub-mobile.png');
+  drawImage('.rub-parallax.left > canvas', 'img/rub-sliced-one.png');
+  drawImage('.rub-parallax.left.mobile > canvas', 'img/rub-sliced-mobile-one.png');
+  drawImage('.rub-parallax.right > canvas', 'img/rub-sliced-two.png');
+  drawImage('.rub-parallax.right.mobile > canvas', 'img/rub-sliced-mobile-two.png');
+}
 
+window.addEventListener('load', renderCanvas);
 
 /**
  * Apply the parallax to the sliced pictures
  */
-for (let i = 0; i < scene.length; i += 1) {
-  // Get odd elements of the loop
-  if (i % 2 === 0) {
-    new Parallax(scene[i], {
-      relativeInput: true,
-      limitY: 0,
-    });
-  }
-  // Get even elements of the loop
-  if (i % 2 !== 0) {
-    new Parallax(scene[i], {
-      relativeInput: true,
-      invertX: false,
-      limitY: 0,
-    });
+function addParallax() {
+  for (let i = 0; i < scene.length; i += 1) {
+    if (i % 2 === 0) {
+    // Get odd elements of the loop
+      new Parallax(scene[i], {
+        relativeInput: true,
+        limitY: 0,
+      });
+    }
+    // Get even elements of the loop
+    if (i % 2 !== 0) {
+      new Parallax(scene[i], {
+        relativeInput: true,
+        invertX: false,
+        limitY: 0,
+      });
+    }
   }
 }
+
+window.addEventListener('load', addParallax);
