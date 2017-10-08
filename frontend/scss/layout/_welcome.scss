@@ -58,8 +58,8 @@
 
 .coming_soon {
   align-self: flex-end;
-  bottom: 2.618rem;
-  background: linear-gradient(135deg, #00C3FF, #FFFF1C);
+  bottom: 6.854rem;
+  background: linear-gradient(90deg, #00C3FF, #FFFF1C);
   -webkit-background-clip: text;
   color: var(--light-blue);
   filter: drop-shadow(0 0 4px rgba(0, 0, 0, 0.2));
@@ -71,8 +71,6 @@
   z-index: var(--z-coming_soon);
 
   @media #{$small} {
-    background: linear-gradient(135deg, #22C1C3, #FDBB2D);
-    -webkit-background-clip: text;
-    bottom: 4.236rem;
+    top: 11.089vh;
   }
 }
