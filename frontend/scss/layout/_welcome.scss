@@ -36,6 +36,7 @@
 }
 
 // [1] !important is needed to override the relative position set by parallax.js
+// [2] Align pictures to the center on old versions of Safari for iOS.
 .rub-parallax {
   bottom: 0;
   display: block;
@@ -50,12 +51,17 @@
   &:nth-of-type(2n) {
     margin-left: -1vw;
   }
+
+  @media #{$small} {
+    left: 0; // [2]
+  }
 }
 
 .rub-parallax > canvas {
   height: 100%;
 }
 
+// [1] Align element to the center on old versions of Safari for iOS.
 .coming_soon {
   align-self: flex-end;
   bottom: 6.854rem;
@@ -71,6 +77,8 @@
   z-index: var(--z-coming_soon);
 
   @media #{$small} {
+    left: 50%; // [1]
     top: 11.089vh;
+    transform: translateX(-50%); // [1]
   }
 }
