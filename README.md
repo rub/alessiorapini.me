@@ -1,2 +1,5 @@
 # alessiorapini.me
-This is a work in progress.
+
+This is an alpha version of my personal website.
+
+Built with [Hugo](https://gohugo.io/).
