@@ -29,7 +29,7 @@
   }
 }
 
-// [1] Show only a subtle text outline
+// [1] Show only a subtle text outline.
 // [2] Force element to occupy the last position.
 .copyright {
   color: transparent; // [1]
@@ -41,7 +41,7 @@
   -webkit-text-stroke: 1px var(--dark-grey);  // [1]
 
   @media #{$small} {
-    filter: blur(0) drop-shadow(0 0 10px rgba(255,255,255,0.5));  // [1]
+    filter: blur(0) drop-shadow(0 0 10px rgba(255, 255, 255, 0.5));
     margin-top: 0.382rem;
     order: 2; // [2]
     width: 100%;
@@ -61,7 +61,7 @@
   }
 }
 
-// Add space between social links
+// Add space between social links.
 .social-link + .social-link {
   margin-left: 1rem;
 }
