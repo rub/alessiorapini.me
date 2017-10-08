@@ -45,6 +45,7 @@ function addParallax() {
       new Parallax(scene[i], {
         relativeInput: true,
         limitY: 0,
+        originX: 0,
       });
     }
     // Get even elements of the loop
@@ -53,6 +54,7 @@ function addParallax() {
         relativeInput: true,
         invertX: false,
         limitY: 0,
+        originX: 0,
       });
     }
   }
