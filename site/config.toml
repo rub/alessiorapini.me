@@ -1,7 +1,13 @@
 baseURL = "http://alessiorapini.me/"
 languageCode = "en-us"
-title = "Personal portfolio"
+title = "Alessio Rapini - Full Stack Designer"
+copyright = "2017 Alessio Rapini"
 
 [Author]
   name = "Alessio Rapini"
+  role = "Full Stack Designer"
+  mail = "hello@alessiorapini.me"
   github = "rub"
+
+[params]
+  description = "Alessio Rapini - Full Stack Designer"

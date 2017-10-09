@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
-{{ partial "head.html" }}
+{{ partial "head.html" (dict "title" .Title "author" .Site.Author.name "description" .Site.Params.description) }}
 <body>
   <main class="main">
-    {{ partial "header.html" }}
+    {{ partial "header.html" (dict "name" .Site.Author.name "role" .Site.Author.role) }}
     <section class="welcome">
       <div class="rub">
         <canvas class="rub-fixed"></canvas>
@@ -25,7 +25,7 @@
       </div>
       <p class="coming_soon">Coming soon</p>
     </section>
-    {{ partial "footer.html" }}
+    {{ partial "footer.html" (dict "mail" .Site.Author.mail "copyright" .Site.Copyright) }}
   </main>
 </body>
 </html>
