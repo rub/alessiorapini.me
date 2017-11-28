@@ -1,11 +1,11 @@
 baseURL = "http://alessiorapini.me/"
 languageCode = "en-us"
-title = "Alessio Rapini - Full Stack Designer"
+title = "Alessio Rapini - UX Engineer"
 copyright = "2017 Alessio Rapini"
 
 [Author]
   name = "Alessio Rapini"
-  role = "Full Stack Designer"
+  role = "UX Engineer"
   mail = "hello@alessiorapini.me"
   github = "rub"
 
