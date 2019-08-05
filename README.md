@@ -1,5 +1,5 @@
 # alessiorapini.me
 
-This is an alpha version of my personal website.
+This is a beta version of my personal portfolio.
 
-Built with [Hugo](https://gohugo.io/).
+Built with [Gatsby](https://www.gatsbyjs.org/).
