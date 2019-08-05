@@ -1,7 +1,8 @@
-# Hugo
-site/public
+# Gatsby
+/.cache
+/public
 
-# Webpack toolchain
+# Dependency directories
 node_modules/
 
 # MacOS
