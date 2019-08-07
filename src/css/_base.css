@@ -1,0 +1,10 @@
+/** Custom base styles */
+
+html {
+  overflow: auto;
+}
+
+html,
+body {
+  min-height: 100%;
+}
