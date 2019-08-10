@@ -1,6 +1,14 @@
 /** Custom base styles */
 
+/* Font: Nunito - regular */
+@import url("https://fonts.googleapis.com/css?family=Nunito");
+
+:root {
+  --light-grey: #d6d6d6;
+}
+
 html {
+  font: 18px/1.5 Nunito;
   overflow: auto;
 }
 
