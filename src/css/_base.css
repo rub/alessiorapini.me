@@ -5,6 +5,7 @@
 
 :root {
   --light-grey: #d6d6d6;
+  --dark-grey: #303030;
 }
 
 html {
@@ -15,4 +16,26 @@ html {
 html,
 body {
   min-height: 100%;
+}
+
+a {
+  color: inherit;
+  position: relative;
+  text-decoration: none;
+
+  &::after {
+    border: 1px solid var(--light-grey);
+    border-radius: 3px;
+    content: "";
+    height: 1px;
+    left: 0;
+    opacity: 0.7;
+    position: absolute;
+    top: 100%;
+    width: 100%;
+  }
+}
+
+ul {
+  list-style-type: none;
 }

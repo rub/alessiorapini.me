@@ -1,0 +1,25 @@
+.Footer {
+  align-items: center;
+  color: var(--light-grey);
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+}
+
+.copyright {
+  color: transparent;
+  opacity: 0.3;
+  -webkit-text-stroke: 1px var(--dark-grey);
+}
+
+.socialLinks {
+  display: flex;
+}
+
+.socialLinks > * + * {
+  margin-left: 1rem;
+}
+
+.socialIcons path {
+  fill: var(--light-grey);
+}
