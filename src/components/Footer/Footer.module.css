@@ -8,16 +8,22 @@
   padding: 1rem;
   position: absolute;
   width: 100%;
+
+  & > * {
+    flex: 1;
+  }
 }
 
 .copyright {
   color: transparent;
   opacity: 0.3;
+  text-align: center;
   -webkit-text-stroke: 1px var(--dark-grey);
 }
 
 .socialLinks {
   display: flex;
+  justify-content: flex-end;
 }
 
 .socialLinks > * + * {
