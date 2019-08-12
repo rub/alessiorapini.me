@@ -1,0 +1,18 @@
+.RubParallax {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  justify-content: flex-end;
+}
+
+.fixedRub {
+  height: 90vh;
+  width: auto;
+}
+
+.parallaxedRub {
+  height: 90vh;
+  opacity: 0.5;
+  position: absolute !important;
+  width: 100%;
+}

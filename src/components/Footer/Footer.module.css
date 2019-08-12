@@ -1,9 +1,13 @@
 .Footer {
   align-items: center;
+  bottom: 0;
   color: var(--light-grey);
   display: flex;
   justify-content: space-between;
+  left: 0;
   padding: 1rem;
+  position: absolute;
+  width: 100%;
 }
 
 .copyright {
