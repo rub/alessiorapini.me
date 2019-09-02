@@ -27,6 +27,7 @@ const RubParallax = () => {
       <Img
         className={styles.fixedRub}
         alt="Alessio Rapini's picture"
+        draggable="false"
         fluid={images.fixedRub.childImageSharp.fluid}
         imgStyle={{
           left: "50%",
@@ -35,21 +36,25 @@ const RubParallax = () => {
         }}
       />
       <Img
-        className={styles.parallaxedRub}
+        className={styles.parallaxedRubLeft}
         alt="Alessio Rapini's picture with parallax effect"
-        fluid={images.parallaxedRubLeft.childImageSharp.fluid}
+        draggable="false"
+        fluid={images.fixedRub.childImageSharp.fluid}
         imgStyle={{
           left: "50%",
+          marginLeft: "17px",
           transform: "translateX(-50%)",
           width: "auto",
         }}
       />
       <Img
-        className={styles.parallaxedRub}
+        className={styles.parallaxedRubRight}
         alt="Alessio Rapini's picture with parallax effect"
-        fluid={images.parallaxedRubRight.childImageSharp.fluid}
+        draggable="false"
+        fluid={images.fixedRub.childImageSharp.fluid}
         imgStyle={{
           left: "50%",
+          marginLeft: "-17px",
           transform: "translateX(-50%)",
           width: "auto",
         }}
