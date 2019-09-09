@@ -1,36 +1,84 @@
 .Button {
-  background: linear-gradient(45deg, #00c3ff, #ffff1c);
-  border-radius: 4px;
+  align-items: center;
   bottom: 6.854rem;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.24);
-  color: var(--dark-grey);
+  color: var(--white);
   cursor: pointer;
+  display: flex;
   font-size: 0.75rem;
   font-weight: 700;
+  justify-content: center;
+  height: 52px;
   left: 50%;
   letter-spacing: 0.1rem;
-  padding: 0.618rem 4.236rem;
   position: absolute;
+  text-decoration: none;
   text-transform: uppercase;
-  transform: translate(-50%, 0);
-  transition: transform 0.15s ease;
-  z-index: 10;
-
-  &::selection {
-    background: transparent;
-  }
-
-  &:hover {
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.24);
-    transform: translate(-50%, -1px);
-  }
-
-  &:active {
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.24);
-    transform: translate(-50%, 1px);
-  }
+  transform: translateX(-50%);
+  width: 222px;
 
   &::after {
     content: none;
+  }
+
+  & svg,
+  & svg rect {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    fill: transparent;
+  }
+
+  /** Button stroke */
+  & svg rect {
+    stroke: var(--white);
+    stroke-width: 5;
+    stroke-dasharray: 175 96;
+    stroke-dashoffset: 80;
+    transition: 0.326s ease-in-out;
+    will-change: stroke-dashoffset, stroke-dasharray;
+  }
+
+  &:hover svg rect {
+    stroke-dasharray: 124 29;
+    stroke-dashoffset: 80;
+  }
+
+  &:active svg rect {
+    stroke-dasharray: 0 292;
+    stroke-dashoffset: 54;
+  }
+}
+
+.ButtonText {
+  height: 100%;
+  position: relative;
+  width: 100%;
+
+  & span {
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    transition: transform 0.326s;
+
+    &:last-child {
+      opacity: 0;
+    }
+  }
+}
+
+/** Split text on hover event */
+.Button:hover {
+  & span:first-child {
+    clip-path: polygon(0 0, 100% 0, 100% 50%, 0 50%);
+    transform: translate(-49%, -50%);
+  }
+
+  & span:last-child {
+    clip-path: polygon(0 100%, 100% 100%, 100% 50%, 0 50%);
+    transform: translate(-51%, -50%);
+    opacity: 1;
   }
 }

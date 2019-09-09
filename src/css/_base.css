@@ -4,6 +4,7 @@
 @import url("https://fonts.googleapis.com/css?family=Nunito:400,700&display=swap");
 
 :root {
+  --white: #fff;
   --light-grey: #d6d6d6;
   --dark-grey: #303030;
 }

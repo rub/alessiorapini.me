@@ -9,7 +9,11 @@ const IndexPage = () => (
   <Layout>
     <SEO title="Home" />
     <RubParallax />
-    <Button text="Portfolio" />
+    <Button
+      url="https://www.behance.net/AlessioRapini"
+      text="Portfolio"
+      newTab
+    />
   </Layout>
 )
 
