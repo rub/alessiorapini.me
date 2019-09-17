@@ -63,8 +63,12 @@
     transform: translate(-50%, -50%);
     transition: transform 0.326s;
 
+    &:first-child {
+      clip-path: polygon(0 0, 100% 0, 100% 50%, 0 50%);
+    }
+
     &:last-child {
-      opacity: 0;
+      clip-path: polygon(0 100%, 100% 100%, 100% 50%, 0 50%);
     }
   }
 }
@@ -72,13 +76,10 @@
 /** Split text on hover event */
 .Button:hover {
   & span:first-child {
-    clip-path: polygon(0 0, 100% 0, 100% 50%, 0 50%);
     transform: translate(-49%, -50%);
   }
 
   & span:last-child {
-    clip-path: polygon(0 100%, 100% 100%, 100% 50%, 0 50%);
     transform: translate(-51%, -50%);
-    opacity: 1;
   }
 }
