@@ -1,0 +1,30 @@
+.SplitLink {
+  position: relative;
+
+  & span {
+    left: 0;
+    position: absolute;
+    top: 0;
+    transform: translate(0%, 0%);
+    transition: all 0.326s;
+
+    &:first-child {
+      clip-path: polygon(0 0, 100% 0, 100% 50%, 0 50%);
+    }
+
+    &:last-child {
+      clip-path: polygon(0 100%, 100% 100%, 100% 50%, 0 50%);
+    }
+  }
+}
+
+/** Split text on hover event */
+.SplitLink:hover {
+  & span:first-child {
+    transform: translate(1%, 0);
+  }
+
+  & span:last-child {
+    transform: translate(-1%, 0);
+  }
+}

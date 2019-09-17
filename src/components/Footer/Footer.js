@@ -1,14 +1,16 @@
 import React from "react"
 
+import SplitLink from "../SplitLink/SplitLink"
 import Icon from "../Icon/Icon"
 
 import styles from "./Footer.module.css"
 
 const Footer = ({ authorMail, copyright }) => (
   <footer className={styles.Footer}>
-    <p>
-      <a href="mailto:hello@alessiorapini.me">hello@alessiorapini.me</a>
-    </p>
+    <SplitLink
+      url="mailto:hello@alessiorapini.me"
+      text="hello@alessiorapini.me"
+    />
     <p className={styles.copyright}>
       © {new Date().getFullYear()}. Made with{" "}
       <a
