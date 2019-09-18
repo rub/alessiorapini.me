@@ -1,16 +1,19 @@
 import React from "react"
 
 import SplitLink from "../SplitLink/SplitLink"
+import SplitIcon from "../SplitIcon/SplitIcon"
 import Icon from "../Icon/Icon"
 
 import styles from "./Footer.module.css"
 
 const Footer = ({ authorMail, copyright }) => (
   <footer className={styles.Footer}>
-    <SplitLink
-      url="mailto:hello@alessiorapini.me"
-      text="hello@alessiorapini.me"
-    />
+    <div>
+      <SplitLink
+        url="mailto:hello@alessiorapini.me"
+        text="hello@alessiorapini.me"
+      />
+    </div>
     <p className={styles.copyright}>
       © {new Date().getFullYear()}. Made with{" "}
       <a
@@ -32,43 +35,31 @@ const Footer = ({ authorMail, copyright }) => (
     </p>
     <ul className={styles.socialLinks}>
       <li>
-        <a
-          href="https://www.behance.net/AlessioRapini"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Icon
-            icon="behance"
-            title="Behance social link"
-            className={styles.socialIcons}
-          />
-        </a>
+        <SplitIcon
+          url="https://www.behance.net/AlessioRapini"
+          iconName="behance"
+          iconTitle="Behance profile link"
+          iconClassName={styles.socialIcons}
+          newTab
+        />
       </li>
       <li>
-        <a
-          href="https://www.linkedin.com/in/alessiorapini/"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Icon
-            icon="linkedin"
-            title="Linkedin social link"
-            className={styles.socialIcons}
-          />
-        </a>
+        <SplitIcon
+          url="https://www.linkedin.com/in/alessiorapini/"
+          iconName="linkedin"
+          iconTitle="Linkedin profile link"
+          iconClassName={styles.socialIcons}
+          newTab
+        />
       </li>
       <li>
-        <a
-          href="https://github.com/rub"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Icon
-            icon="github"
-            title="Github social link"
-            className={styles.socialIcons}
-          />
-        </a>
+        <SplitIcon
+          url="https://github.com/rub"
+          iconName="github"
+          iconTitle="Github profile link"
+          iconClassName={styles.socialIcons}
+          newTab
+        />
       </li>
     </ul>
   </footer>

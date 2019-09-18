@@ -1,9 +1,8 @@
-.SplitLink {
+.SplitIcon {
   display: inline-block;
   position: relative;
 
-  & span {
-    display: inline-block;
+  & > svg {
     left: 0;
     top: 0;
     transform: translate(0%, 0%);
@@ -21,13 +20,13 @@
   }
 }
 
-/** Split text on hover event */
-.SplitLink:hover {
-  & span:first-child {
-    transform: translate(0, -6%);
+/** Split icon on hover event */
+.SplitIcon:hover {
+  & > svg:first-child {
+    transform: translate(0%, -6%);
   }
 
-  & span:last-child {
-    transform: translate(0, 6%);
+  & > svg:last-child {
+    transform: translate(0%, 6%);
   }
 }
