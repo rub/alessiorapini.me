@@ -8,7 +8,7 @@ import styles from "./Footer.module.css"
 
 const Footer = ({ authorMail, copyright }) => (
   <footer className={styles.Footer}>
-    <div>
+    <div className={styles.emailText}>
       <SplitLink
         url="mailto:hello@alessiorapini.me"
         text="hello@alessiorapini.me"
@@ -34,6 +34,14 @@ const Footer = ({ authorMail, copyright }) => (
       .
     </p>
     <ul className={styles.socialLinks}>
+      <li className={styles.emailIcon}>
+        <SplitIcon
+          url="mailto:hello@alessiorapini.me"
+          iconName="email"
+          iconTitle="Email link"
+          iconClassName={styles.socialIcons}
+        />
+      </li>
       <li>
         <SplitIcon
           url="https://www.behance.net/AlessioRapini"

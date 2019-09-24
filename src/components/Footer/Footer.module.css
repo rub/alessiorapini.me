@@ -1,3 +1,5 @@
+@custom-media --small (width < 767px);
+
 .Footer {
   align-items: center;
   bottom: 0;
@@ -9,8 +11,24 @@
   position: absolute;
   width: 100%;
 
+  @media (--small) {
+    flex-direction: column;
+  }
+
   & > * {
     flex: 1;
+  }
+
+  & > * + * {
+    @media (--small) {
+      margin-top: 0.236rem;
+    }
+  }
+}
+
+.emailText {
+  @media (--small) {
+    display: none;
   }
 }
 
@@ -19,6 +37,10 @@
   opacity: 0.3;
   text-align: center;
   -webkit-text-stroke: 1px var(--dark-grey);
+
+  @media (--small) {
+    order: 1;
+  }
 }
 
 .socialLinks {
@@ -32,4 +54,11 @@
 
 .socialIcons path {
   fill: var(--light-grey);
+}
+
+.emailIcon {
+  display: none;
+  @media (--small) {
+    display: block;
+  }
 }
