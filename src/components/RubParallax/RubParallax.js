@@ -29,6 +29,35 @@ const useAnimationFrame = callback => {
  * Mouse parallax scene on Rub's pictures
  */
 const RubParallax = () => {
+  // Query Rub images
+  const data = useStaticQuery(graphql`
+    query {
+      mobileImage: file(relativePath: { eq: "rub-mobile.png" }) {
+        childImageSharp {
+          fluid(maxWidth: 1000, quality: 100) {
+            ...GatsbyImageSharpFluid_withWebp
+          }
+        }
+      }
+      desktopImage: file(relativePath: { eq: "rub-desktop.png" }) {
+        childImageSharp {
+          fluid(maxWidth: 1920, quality: 100) {
+            ...GatsbyImageSharpFluid_withWebp
+          }
+        }
+      }
+    }
+  `)
+
+  // Define which image to provide based on viewport width
+  const sources = [
+    data.mobileImage.childImageSharp.fluid,
+    {
+      ...data.desktopImage.childImageSharp.fluid,
+      media: `(min-width: 600px)`,
+    },
+  ]
+
   // Remember normalized component X position (needed for smoothness)
   const xRef = useRef(0)
 
@@ -59,72 +88,54 @@ const RubParallax = () => {
     rightRef.current.forceUpdate()
   })
 
-  const images = useStaticQuery(graphql`
-    query {
-      fixedRub: file(relativePath: { eq: "rub-fixed.png" }) {
-        ...imageFragment
-      }
-      parallaxedRubLeft: file(relativePath: { eq: "rub-sliced-one.png" }) {
-        ...imageFragment
-      }
-      parallaxedRubRight: file(relativePath: { eq: "rub-sliced-two.png" }) {
-        ...imageFragment
-      }
-    }
-  `)
-
   return (
     <div className={styles.RubParallax}>
-      <Img
-        className={styles.fixedRub}
-        alt="Alessio Rapini's picture"
-        draggable="false"
-        fluid={images.fixedRub.childImageSharp.fluid}
-        imgStyle={{
-          left: "50%",
-          transform: "translateX(-50%)",
-          width: "auto",
-        }}
-      />
-      <Img
-        className={styles.parallaxedRubLeft}
-        alt="Alessio Rapini's picture with parallax effect"
-        draggable="false"
-        fluid={images.fixedRub.childImageSharp.fluid}
-        imgStyle={{
-          left: "50%",
-          transform: "translate3d(-50%, 0, 0)",
-          width: "auto",
-        }}
-        ref={leftRef}
-      />
-      <Img
-        className={styles.parallaxedRubRight}
-        alt="Alessio Rapini's picture with parallax effect"
-        draggable="false"
-        fluid={images.fixedRub.childImageSharp.fluid}
-        imgStyle={{
-          left: "50%",
-          transform: "translate3d(-50%, 0, 0)",
-          width: "auto",
-        }}
-        ref={rightRef}
-      />
+      <div className={styles.fixedRubContainer}>
+        <Img
+          className={styles.fixedRub}
+          alt="Alessio Rapini's picture"
+          draggable={false}
+          fluid={sources}
+          imgStyle={{
+            left: "50%",
+            transform: "translateX(-50%)",
+            width: "auto",
+          }}
+          fadeIn={false}
+        />
+      </div>
+      <div className={styles.parallaxedRubContainer}>
+        <Img
+          className={styles.parallaxedRubLeft}
+          alt="Alessio Rapini's picture with parallax effect"
+          draggable={false}
+          fluid={sources}
+          imgStyle={{
+            left: "50%",
+            transform: "translate3d(-50%, 0, 0)",
+            width: "auto",
+          }}
+          ref={leftRef}
+          fadeIn={false}
+        />
+      </div>
+      <div className={styles.parallaxedRubContainer}>
+        <Img
+          className={styles.parallaxedRubRight}
+          alt="Alessio Rapini's picture with parallax effect"
+          draggable={false}
+          fluid={sources}
+          imgStyle={{
+            left: "50%",
+            transform: "translate3d(-50%, 0, 0)",
+            width: "auto",
+          }}
+          ref={rightRef}
+          fadeIn={false}
+        />
+      </div>
     </div>
   )
 }
-
-/**
- * Custom fragment used for querying multiple images respecting the DRY principle
- */
-export const imageFragment = graphql`
-  fragment imageFragment on File {
-    childImageSharp {
-      fluid(maxWidth: 1920) {
-        ...GatsbyImageSharpFluid_withWebp
-      }
-    }
-  }
-`
 
 export default RubParallax

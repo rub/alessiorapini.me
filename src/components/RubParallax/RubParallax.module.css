@@ -1,3 +1,5 @@
+@custom-media --small (width < 767px);
+
 .RubParallax {
   display: flex;
   flex-direction: column;
@@ -5,17 +7,39 @@
   justify-content: flex-end;
 }
 
+/* [1] Center the picture bypassing the cropping effect due to object-fit: cover */
+.fixedRubContainer {
+  height: 90%;
+  overflow: hidden;
+  position: relative;
+
+  @media (--small) {
+    height: 80%;
+  }
+}
+
+/* [1] Center the picture bypassing the cropping effect due to object-fit: cover */
+.parallaxedRubContainer {
+  height: 90%;
+  overflow: hidden;
+  position: absolute;
+  width: 100%;
+
+  @media (--small) {
+    height: 80%;
+  }
+}
+
 .fixedRub {
-  height: 90vh;
+  height: 100%;
   width: auto;
   user-select: none;
 }
 
 .parallaxedRubLeft,
 .parallaxedRubRight {
-  height: 90vh;
+  height: 100%;
   opacity: 0.5;
-  position: absolute !important;
   user-select: none;
   width: 100%;
 }
