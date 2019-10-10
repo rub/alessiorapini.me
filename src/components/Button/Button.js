@@ -9,7 +9,13 @@ import styles from "./Button.module.css"
 const Button = ({ url, newTab, text }) => (
   <Link url={url} newTab={newTab}>
     <svg>
-      <rect />
+      <defs>
+        <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stopColor="#E0EAFC" />
+          <stop offset="100%" stopColor="#CFDEF3" />
+        </linearGradient>
+      </defs>
+      <rect stroke="url(#gradient)" />
     </svg>
     <div className={styles.ButtonText}>
       <span>{text}</span>

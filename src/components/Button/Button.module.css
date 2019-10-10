@@ -32,7 +32,6 @@
 
   /** Button stroke */
   & svg rect {
-    stroke: var(--white);
     stroke-width: 5;
     stroke-dasharray: 175 96;
     stroke-dashoffset: 80;

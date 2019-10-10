@@ -29,7 +29,7 @@ const Icon = ({ icon, title, className, secondPath }) => (
   <svg
     className={className}
     viewBox="0 0 24 24"
-    labelledBy="iconTitle"
+    labelledby="iconTitle"
     role="img"
     height="24"
     width="24"

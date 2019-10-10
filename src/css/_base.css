@@ -1,7 +1,10 @@
 /** Custom base styles */
 
-/* Font: Nunito - regular */
+/* Font: Nunito - regular, bold */
 @import url("https://fonts.googleapis.com/css?family=Nunito:400,700&display=swap");
+
+/* Font: Marck Script - regular */
+@import url("https://fonts.googleapis.com/css?family=Marck+Script&display=swap");
 
 :root {
   --white: #fff;
