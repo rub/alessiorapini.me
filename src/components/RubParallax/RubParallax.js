@@ -64,6 +64,7 @@ const RubParallax = () => {
   // Remember normalized mouse X position
   const targetXRef = useRef(0.5)
 
+  const fixedRef = useRef()
   const leftRef = useRef()
   const rightRef = useRef()
 
@@ -79,11 +80,14 @@ const RubParallax = () => {
     const deltaX = targetXRef.current - xRef.current
     xRef.current = xRef.current + deltaX / 16
 
-    leftRef.current.props.imgStyle.transform = `translate3d(calc(-50% + ${xRef.current *
-      40}px), 0, 0)`
-    rightRef.current.props.imgStyle.transform = `translate3d(calc(-50% - ${xRef.current *
-      40}px), 0, 0)`
+    fixedRef.current.props.imgStyle.transform = `perspective(20000px) translateX(-50%) rotate3d(0, 1, 0, calc(0deg + ${xRef.current *
+      25}deg))`
+    leftRef.current.props.imgStyle.transform = `perspective(20000px) translate3d(calc(-50% + ${xRef.current *
+      34}px), 0, 0) rotate3d(0, 1, 0, calc(0deg + ${xRef.current * 25}deg))`
+    rightRef.current.props.imgStyle.transform = `perspective(20000px) translate3d(calc(-50% - ${xRef.current *
+      34}px), 0, 0) rotate3d(0, 1, 0, calc(0deg + ${xRef.current * 25}deg))`
 
+    fixedRef.current.forceUpdate()
     leftRef.current.forceUpdate()
     rightRef.current.forceUpdate()
   })
@@ -101,6 +105,7 @@ const RubParallax = () => {
             transform: "translateX(-50%)",
             width: "auto",
           }}
+          ref={fixedRef}
           fadeIn={false}
         />
       </div>
