@@ -15,7 +15,7 @@ const Footer = ({ authorMail, copyright }) => (
       />
     </div>
     <p className={styles.copyright}>
-      © {new Date().getFullYear()}. Made with{" "}
+      © Alessio Rapini {new Date().getFullYear()}. Made with{" "}
       <a
         href="https://www.gatsbyjs.org"
         target="_blank"

@@ -13,6 +13,7 @@
 
   @media (--small) {
     flex-direction: column;
+    padding-bottom: 0.618rem;
   }
 
   & > * {
@@ -21,7 +22,7 @@
 
   & > * + * {
     @media (--small) {
-      margin-top: 0.236rem;
+      margin-top: 0.382rem;
     }
   }
 }
@@ -34,6 +35,7 @@
 
 .copyright {
   color: transparent;
+  font-size: 0.75rem;
   opacity: 0.3;
   text-align: center;
   -webkit-text-stroke: 1px var(--dark-grey);
