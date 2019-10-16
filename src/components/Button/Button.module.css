@@ -1,6 +1,8 @@
+@custom-media --small (width < 768px);
+
 .Button {
   align-items: center;
-  bottom: 6.854rem;
+  bottom: 15vh;
   color: var(--white);
   cursor: pointer;
   display: flex;
@@ -15,6 +17,14 @@
   text-transform: uppercase;
   transform: translateX(-50%);
   width: 222px;
+
+  @media (--small) {
+    bottom: 20vh;
+  }
+
+  @media (--small) and (orientation: landscape) {
+    bottom: 25vh;
+  }
 
   &::after {
     content: none;

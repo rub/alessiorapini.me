@@ -54,7 +54,7 @@ const RubParallax = () => {
     data.mobileImage.childImageSharp.fluid,
     {
       ...data.desktopImage.childImageSharp.fluid,
-      media: `(min-width: 600px)`,
+      media: `(min-width: 800px)`,
     },
   ]
 

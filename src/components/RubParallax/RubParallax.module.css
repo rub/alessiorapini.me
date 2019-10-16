@@ -1,4 +1,4 @@
-@custom-media --small (width < 767px);
+@custom-media --small (width <= 800px);
 
 .RubParallax {
   display: flex;

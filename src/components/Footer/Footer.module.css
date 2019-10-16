@@ -1,4 +1,4 @@
-@custom-media --small (width < 767px);
+@custom-media --small (width <= 800px);
 
 .Footer {
   align-items: center;
@@ -7,7 +7,7 @@
   display: flex;
   justify-content: space-between;
   left: 0;
-  padding: 1rem;
+  padding: 1.618rem;
   position: absolute;
   width: 100%;
 

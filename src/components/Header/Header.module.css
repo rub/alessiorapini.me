@@ -1,23 +1,32 @@
-@custom-media --small (width < 767px);
+@custom-media --medium (width <= 800px);
+@custom-media --small (width <= 600px);
 
 .Header {
   color: var(--light-grey);
   display: flex;
   justify-content: space-between;
   left: 0;
-  padding: 1rem;
+  padding: 1.618rem;
   position: absolute;
   top: 0;
   width: 100%;
 
-  @media (--small) {
+  @media (--medium) and (orientation: portrait) {
     align-items: center;
     flex-direction: column;
-    padding-top: 1.777rem;
+    padding-top: 2.369rem;
+  }
+
+  @media (--medium) and (orientation: landscape) {
+    padding-top: 1rem;
+  }
+
+  @media (--small) {
+    padding-top: 1rem;
   }
 
   & > * + * {
-    @media (--small) {
+    @media (--medium) {
       margin-top: 0.236rem;
     }
   }
@@ -27,4 +36,8 @@
   font-family: "Marck Script", cursive;
   font-size: 1.333rem;
   line-height: 1.1;
+
+  @media (--medium) and (orientation: landscape) {
+    line-height: inherit;
+  }
 }
