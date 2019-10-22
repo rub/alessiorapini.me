@@ -1,8 +1,11 @@
 module.exports = {
   siteMetadata: {
-    title: `Alessio Rapini portfolio`,
-    description: `A showcase of my personal and professional design work`,
+    title: `Alessio Rapini ☞ UX Designer / UI Developer`,
+    description: `A showcase of my personal and professional design works`,
     author: `Alessio Rapini`,
+    url: "http://alessiorapini.me",
+    image: "./src/images/favicon.png",
+    twitterUsername: "@alessiorapini",
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -24,7 +27,7 @@ module.exports = {
         background_color: `#663399`,
         theme_color: `#663399`,
         display: `minimal-ui`,
-        icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
+        icon: `src/images/favicon.png`, // This path is relative to the root of the site.
       },
     },
     {
