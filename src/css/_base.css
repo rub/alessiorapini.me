@@ -11,10 +11,11 @@
   --grey: #404040;
   --light-grey: #d6d6d6;
   --dark-grey: #303030;
+  --grey: #595959;
 }
 
 html {
-  font: 18px/1.5 Nunito;
+  font: 20px/1.5 Nunito;
   overflow: auto;
 }
 

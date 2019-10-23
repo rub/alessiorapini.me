@@ -1,0 +1,24 @@
+.About {
+  color: var(--dark-grey);
+  margin: auto;
+  max-width: 1080px;
+}
+
+.role {
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: 0.27rem;
+}
+
+.name {
+  font-family: "Marck Script", cursive;
+  font-size: 4.236rem;
+  font-weight: 400;
+  letter-spacing: 0.16rem;
+  margin-top: 1.618rem;
+}
+
+.description {
+  color: var(--grey);
+  margin-top: 1.618rem;
+}
