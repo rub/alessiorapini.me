@@ -12,6 +12,8 @@
   --light-grey: #d6d6d6;
   --dark-grey: #303030;
   --grey: #595959;
+  --light-grey: #8c8c8c;
+  --lightest-grey: #bfbfbf;
 }
 
 html {
@@ -32,4 +34,8 @@ a {
 
 ul {
   list-style-type: none;
+}
+
+img {
+  display: block;
 }

@@ -1,0 +1,45 @@
+.Work {
+  color: var(--dark-grey);
+}
+
+.title {
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+.image {
+  margin-top: 0.317rem;
+}
+
+.titleSeparator {
+  margin: 0 0.75rem;
+}
+
+.info {
+  margin-top: 0.382rem;
+}
+
+.infoRow {
+  align-items: flex-end;
+  color: var(--light-grey);
+  display: flex;
+  font-size: 0.618rem;
+  font-weight: 700;
+
+  &:first-of-type .infoLine {
+    width: 1rem;
+  }
+
+  &:last-of-type .infoLine {
+    margin-top: 0.146em;
+    width: 1.618rem;
+  }
+}
+
+.infoLine {
+  background-color: var(--lightest-grey);
+  bottom: 5px;
+  height: 2px;
+  margin-right: 0.317rem;
+  position: relative;
+}
