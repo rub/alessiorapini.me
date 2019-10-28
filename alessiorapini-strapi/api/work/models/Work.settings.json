@@ -1,0 +1,32 @@
+{
+  "connection": "default",
+  "collectionName": "works",
+  "info": {
+    "name": "work",
+    "description": "Portfolio work"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "comment": ""
+  },
+  "attributes": {
+    "Number": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    },
+    "image": {
+      "model": "file",
+      "via": "related",
+      "plugin": "upload"
+    },
+    "role": {
+      "type": "string"
+    },
+    "type": {
+      "type": "string"
+    }
+  }
+}
