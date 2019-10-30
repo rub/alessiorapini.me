@@ -7,7 +7,10 @@
   },
   "options": {
     "increments": true,
-    "timestamps": true,
+    "timestamps": [
+      "created_at",
+      "updated_at"
+    ],
     "comment": ""
   },
   "attributes": {
@@ -26,6 +29,9 @@
       "type": "string"
     },
     "type": {
+      "type": "string"
+    },
+    "link": {
       "type": "string"
     }
   }
