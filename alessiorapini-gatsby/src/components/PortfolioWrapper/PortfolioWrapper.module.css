@@ -1,0 +1,7 @@
+.PortfolioWrapper {
+  padding: 7.478rem 0;
+
+  & > * + * {
+    margin-top: 7.478rem;
+  }
+}

@@ -16,6 +16,7 @@ cursor button movement is available.
   justify-content: space-between;
   user-select: none;
   width: 100%;
+  z-index: 100;
 
   @media (hover: none) and (--medium) and (orientation: landscape) {
     padding-top: 1rem;

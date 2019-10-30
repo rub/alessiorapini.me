@@ -13,6 +13,7 @@ cursor button movement is available.
   justify-content: space-between;
   margin-top: 3.157rem;
   width: 100%;
+  z-index: 100;
 
   & > * {
     flex: 1;
