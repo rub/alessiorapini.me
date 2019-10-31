@@ -14,6 +14,7 @@ const Works = () => (
             node {
               Number
               id
+              link
               role
               title
               type
@@ -37,6 +38,7 @@ const Works = () => (
             number={document.node.Number}
             title={document.node.title}
             imageUrl={document.node.image.childImageSharp.fluid}
+            url={document.node.link}
             // imageAlt={document.node.image.absolutePath}
             role={document.node.role}
             type={document.node.type}

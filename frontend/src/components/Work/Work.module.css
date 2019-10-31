@@ -7,6 +7,10 @@
   font-weight: 400;
 }
 
+.link {
+  display: block;
+}
+
 .image {
   margin-top: 0.317rem;
 }

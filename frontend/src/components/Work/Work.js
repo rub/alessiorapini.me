@@ -4,14 +4,16 @@ import Img from "gatsby-image"
 
 import styles from "./Work.module.css"
 
-const Work = ({ number, title, imageUrl, imageAlt, role, type }) => (
+const Work = ({ number, title, url, imageUrl, imageAlt, role, type }) => (
   <div className={styles.Work}>
     <h3 className={styles.title}>
       {number}
       <span className={styles.titleSeparator}>/</span>
       {title}
     </h3>
-    <Img className={styles.image} fluid={imageUrl} />
+    <a className={styles.link} href={url} target="_blank" rel="noopener">
+      <Img className={styles.image} fluid={imageUrl} />
+    </a>
     <div className={styles.info}>
       <div className={styles.infoRow}>
         <span className={styles.infoLine} />
