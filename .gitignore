@@ -1,6 +1,9 @@
 # Gatsby
 /.cache
 /public
+frontend/.cache
+frontend/public
+backend
 
 # Dependency directories
 node_modules/

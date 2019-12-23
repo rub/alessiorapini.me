@@ -1,0 +1,41 @@
+.ButtonCursorWrapper {
+  cursor: none;
+  height: 100vh;
+  left: 0;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  width: 100vw;
+
+  &:hover .ButtonCursor,
+  &:hover .ButtonCursorInner {
+    opacity: 1;
+  }
+}
+
+.ButtonCursor {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  transform-origin: center;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.ButtonCursorInner {
+  --easeOutExpo: cubic-bezier(0.19, 1, 0.22, 1);
+  --mouseWidth: 70px;
+  --mouseHeight: var(--mouseWidth);
+
+  pointer-events: none;
+  height: var(--mouseHeight);
+  width: var(--mouseWidth);
+  background-color: transparent;
+  border-radius: 50%;
+  border: 3px solid rebeccapurple;
+
+  opacity: 0;
+  transition: opacity 0.75s var(--easeOutExpo),
+    transform 0.65s var(--easeOutExpo);
+  transition-delay: 0.2s;
+}
