@@ -13,6 +13,7 @@ function clamp(value, min, max) {
 const ButtonCursor = () => {
   const wrapper = React.useRef(null)
   const circle = React.useRef(null)
+  const text = React.useRef(null)
   let circleBounds
 
   const vars = React.useRef({
@@ -66,6 +67,10 @@ const ButtonCursor = () => {
     )}px, ${vars.current.circleY.toFixed(
       2
     )}px) rotate(${rotation}deg) scale(${scaleX}, ${scaleY})`
+
+    text.current.style.transform = `translate(${vars.current.circleX.toFixed(
+      2
+    )}px, ${vars.current.circleY.toFixed(2)}px)`
   }
 
   React.useEffect(() => {
@@ -93,7 +98,10 @@ const ButtonCursor = () => {
   return (
     <div className={styles.ButtonCursorWrapper} ref={wrapper}>
       <div className={styles.ButtonCursor} ref={circle}>
-        <div className={styles.ButtonCursorInner}></div>
+        <div className={styles.ButtonCursorInner} />
+      </div>
+      <div className={styles.ButtonCursorText} ref={text}>
+        <p>Portfolio</p>
       </div>
     </div>
   )

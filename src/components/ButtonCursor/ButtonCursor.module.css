@@ -1,4 +1,8 @@
 .ButtonCursorWrapper {
+  --easeOutExpo: cubic-bezier(0.19, 1, 0.22, 1);
+  --circleWidth: 100px;
+  --circleHeight: var(--circleWidth);
+
   cursor: none;
   height: 100vh;
   left: 0;
@@ -20,22 +24,36 @@
   transform-origin: center;
   pointer-events: none;
   z-index: 0;
+
+  /* display: flex;
+  justify-content: center;
+  align-items: center; */
 }
 
 .ButtonCursorInner {
-  --easeOutExpo: cubic-bezier(0.19, 1, 0.22, 1);
-  --mouseWidth: 70px;
-  --mouseHeight: var(--mouseWidth);
-
   pointer-events: none;
-  height: var(--mouseHeight);
-  width: var(--mouseWidth);
+  height: var(--circleHeight);
+  width: var(--circleWidth);
   background-color: transparent;
   border-radius: 50%;
-  border: 3px solid rebeccapurple;
+  border: 3px solid white;
 
   opacity: 0;
   transition: opacity 0.75s var(--easeOutExpo),
     transform 0.65s var(--easeOutExpo);
   transition-delay: 0.2s;
+}
+
+.ButtonCursorText {
+  color: white;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  position: absolute;
+  top: calc(var(--circleHeight) / 2);
+  left: calc(var(--circleWidth) / 2);
+
+  & > p {
+    transform: translate(-50%, -50%);
+  }
 }
