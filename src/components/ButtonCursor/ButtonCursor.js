@@ -62,15 +62,15 @@ const ButtonCursor = () => {
     let scaleX = vars.current.curScaleX + Math.min(mappedX + mappedY, 0.7)
     let scaleY = vars.current.curScaleX > 1.05 ? scaleX : scaleX + (1 - scaleX)
 
-    circle.current.style.transform = `translate(${vars.current.circleX.toFixed(
+    circle.current.style.transform = `translate3d(${vars.current.circleX.toFixed(
       2
     )}px, ${vars.current.circleY.toFixed(
       2
-    )}px) rotate(${rotation}deg) scale(${scaleX}, ${scaleY})`
+    )}px, 0) rotate3d(0, 0, 1, ${rotation}deg) scale3d(${scaleX}, ${scaleY}, 1)`
 
-    text.current.style.transform = `translate(${vars.current.circleX.toFixed(
+    text.current.style.transform = `translate3d(${vars.current.circleX.toFixed(
       2
-    )}px, ${vars.current.circleY.toFixed(2)}px)`
+    )}px, ${vars.current.circleY.toFixed(2)}px, 0)`
   }
 
   React.useEffect(() => {

@@ -1,7 +1,6 @@
 .ButtonCursorWrapper {
+  --circleDiameter: 100px;
   --easeOutExpo: cubic-bezier(0.19, 1, 0.22, 1);
-  --circleWidth: 100px;
-  --circleHeight: var(--circleWidth);
 
   cursor: none;
   height: 100vh;
@@ -12,48 +11,48 @@
   width: 100vw;
 
   &:hover .ButtonCursor,
-  &:hover .ButtonCursorInner {
+  &:hover .ButtonCursorInner,
+  &:hover .ButtonCursorText {
     opacity: 1;
   }
 }
 
 .ButtonCursor {
+  left: 0px;
+  pointer-events: none;
   position: absolute;
   top: 0px;
-  left: 0px;
   transform-origin: center;
-  pointer-events: none;
   z-index: 0;
-
-  /* display: flex;
-  justify-content: center;
-  align-items: center; */
 }
 
 .ButtonCursorInner {
-  pointer-events: none;
-  height: var(--circleHeight);
-  width: var(--circleWidth);
   background-color: transparent;
+  border: 2px solid #cfdef3;
   border-radius: 50%;
-  border: 3px solid white;
-
+  height: var(--circleDiameter);
   opacity: 0;
+  pointer-events: none;
   transition: opacity 0.75s var(--easeOutExpo),
     transform 0.65s var(--easeOutExpo);
   transition-delay: 0.2s;
+  width: var(--circleDiameter);
 }
 
 .ButtonCursorText {
-  color: white;
-  font-size: 0.75rem;
+  color: #cfdef3;
+  font-size: 0.618rem;
   font-weight: 600;
-  text-transform: uppercase;
+  left: calc(var(--circleDiameter) / 2);
+  letter-spacing: 0.1rem;
+  opacity: 0;
   position: absolute;
-  top: calc(var(--circleHeight) / 2);
-  left: calc(var(--circleWidth) / 2);
+  text-transform: uppercase;
+  transition: opacity 0.75s var(--easeOutExpo);
+  transition-delay: 0.2s;
+  top: calc(var(--circleDiameter) / 2);
 
   & > p {
-    transform: translate(-50%, -50%);
+    transform: translate3d(-50%, -50%, 0);
   }
 }
