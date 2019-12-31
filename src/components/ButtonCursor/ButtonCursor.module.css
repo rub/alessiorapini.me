@@ -2,7 +2,8 @@
   --circleDiameter: 100px;
   --easeOutExpo: cubic-bezier(0.19, 1, 0.22, 1);
 
-  cursor: none;
+  color: #cfdef3;
+  cursor: pointer;
   height: 100vh;
   left: 0;
   overflow: hidden;
@@ -12,7 +13,7 @@
 
   &:hover .ButtonCursor,
   &:hover .ButtonCursorInner,
-  &:hover .ButtonCursorText {
+  &:hover .ButtonCursorLabel {
     opacity: 1;
   }
 }
@@ -39,7 +40,7 @@
   width: var(--circleDiameter);
 }
 
-.ButtonCursorText {
+.ButtonCursorLabel {
   color: #cfdef3;
   font-size: 0.618rem;
   font-weight: 600;
@@ -51,6 +52,7 @@
   transition: opacity 0.75s var(--easeOutExpo);
   transition-delay: 0.2s;
   top: calc(var(--circleDiameter) / 2);
+  user-select: none;
 
   & > p {
     transform: translate3d(-50%, -50%, 0);

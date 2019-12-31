@@ -9,7 +9,7 @@ import styles from "./Header.module.css"
 const Header = ({ authorName, authorRole }) => (
   <header className={styles.Header}>
     <p className={styles.author}>{authorName}</p>
-    <p>{authorRole}</p>
+    <p className={styles.role}>{authorRole}</p>
   </header>
 )
 

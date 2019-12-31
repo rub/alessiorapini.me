@@ -7,7 +7,6 @@
   display: flex;
   justify-content: space-between;
   left: 0;
-  padding: 1.618rem;
   position: absolute;
   width: 100%;
 
@@ -28,26 +27,22 @@
 }
 
 .emailText {
+  bottom: 1.618rem;
+  left: 1.618rem;
+  position: absolute;
+
   @media (--small) {
     display: none;
-  }
-}
-
-.copyright {
-  color: transparent;
-  font-size: 0.75rem;
-  opacity: 0.3;
-  text-align: center;
-  -webkit-text-stroke: 1px var(--dark-grey);
-
-  @media (--small) {
-    order: 1;
   }
 }
 
 .socialLinks {
   display: flex;
   justify-content: flex-end;
+
+  bottom: 1.618rem;
+  position: absolute;
+  right: 1.618rem;
 }
 
 .socialLinks > * + * {

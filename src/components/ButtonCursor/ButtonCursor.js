@@ -1,5 +1,8 @@
 import React from "react"
 
+import Header from "../Header/Header.js"
+import Footer from "../Footer/Footer.js"
+
 import styles from "./ButtonCursor.module.css"
 
 function map(from, to, value) {
@@ -13,7 +16,9 @@ function clamp(value, min, max) {
 const ButtonCursor = () => {
   const wrapper = React.useRef(null)
   const circle = React.useRef(null)
+  const cursorLabel = React.useRef(null)
   const text = React.useRef(null)
+  const link = React.useRef(null)
   let circleBounds
 
   const vars = React.useRef({
@@ -27,6 +32,13 @@ const ButtonCursor = () => {
     dY: 0,
     inWrapper: false,
     preventCursorMovement: false,
+    insideLink: false,
+    hoveringLink: false,
+    curActiveLink: {},
+    linkOffsetX: 0,
+    linkOffsetY: 0,
+    btnOffsetX: 0,
+    btnOffsetY: 0,
     curScaleX: 1,
     newScaleX: 1,
   })
@@ -60,7 +72,10 @@ const ButtonCursor = () => {
       (vars.current.newScaleX - vars.current.curScaleX) * 0.15
 
     let scaleX = vars.current.curScaleX + Math.min(mappedX + mappedY, 0.7)
-    let scaleY = vars.current.curScaleX > 1.05 ? scaleX : scaleX + (1 - scaleX)
+    let scaleY =
+      vars.current.insideLink || vars.current.curScaleX > 1.05
+        ? scaleX
+        : scaleX + (1 - scaleX)
 
     circle.current.style.transform = `translate3d(${vars.current.circleX.toFixed(
       2
@@ -68,9 +83,85 @@ const ButtonCursor = () => {
       2
     )}px, 0) rotate3d(0, 0, 1, ${rotation}deg) scale3d(${scaleX}, ${scaleY}, 1)`
 
-    text.current.style.transform = `translate3d(${vars.current.circleX.toFixed(
+    cursorLabel.current.style.transform = `translate3d(${vars.current.circleX.toFixed(
       2
     )}px, ${vars.current.circleY.toFixed(2)}px, 0)`
+
+    //CURRENT
+    let offsetX = vars.current.hoveringLink
+      ? (vars.current.mouseX -
+          (vars.current.curActiveLink.linkBounds.left +
+            vars.current.curActiveLink.linkBounds.width / 2)) *
+        0.3
+      : 0
+    let offsetY = vars.current.hoveringLink
+      ? (vars.current.mouseY -
+          (vars.current.curActiveLink.linkBounds.top +
+            vars.current.curActiveLink.linkBounds.height / 2)) *
+        0.3
+      : 0
+
+    vars.current.linkOffsetX += (offsetX - vars.current.linkOffsetX) * 0.1
+    vars.current.linkOffsetY += (offsetY - vars.current.linkOffsetY) * 0.1
+
+    let newBtnOffsetX = vars.current.hoveringLink
+      ? (vars.current.mouseX -
+          (vars.current.curActiveLink.linkBounds.left +
+            vars.current.curActiveLink.linkBounds.width / 2)) *
+        0.35
+      : 0
+    let newBtnOffsetY = vars.current.hoveringLink
+      ? (vars.current.mouseY -
+          (vars.current.curActiveLink.linkBounds.top +
+            vars.current.curActiveLink.linkBounds.height / 2)) *
+        0.35
+      : 0
+
+    vars.current.btnOffsetX += (newBtnOffsetX - vars.current.btnOffsetX) * 0.1
+    vars.current.btnOffsetY += (newBtnOffsetY - vars.current.btnOffsetY) * 0.1
+  }
+
+  function snapCursor(e) {
+    clearTimeout()
+    vars.current.insideLink = true
+    vars.current.hoveringLink = true
+
+    vars.current.curActiveLink = {
+      linkBounds: e.currentTarget.getBoundingClientRect(),
+    }
+
+    vars.current.newScaleX = 0.5 // itemBounds.width / circleBounds.width
+    cursorLabel.current.style.color = "transparent"
+
+    // add new event listener for mouse out
+    link.current.addEventListener(
+      "mouseleave",
+      () => {
+        vars.current.newScaleX = 1
+        vars.current.hoveringLink = false
+        cursorLabel.current.style.color = "inherit"
+
+        setTimeout(() => {
+          vars.current.insideLink = false
+        }, 200)
+      },
+      { once: true }
+    )
+
+    // add new event listener for mouse out
+    text.current.addEventListener(
+      "mouseleave",
+      () => {
+        vars.current.newScaleX = 1
+        vars.current.hoveringLink = false
+        cursorLabel.current.style.color = "inherit"
+
+        setTimeout(() => {
+          vars.current.insideLink = false
+        }, 200)
+      },
+      { once: true }
+    )
   }
 
   React.useEffect(() => {
@@ -93,6 +184,14 @@ const ButtonCursor = () => {
     wrapper.current.addEventListener("mouseleave", e => {
       vars.current.inWrapper = false
     })
+
+    link.current.addEventListener("mouseenter", e => {
+      snapCursor(e)
+    })
+
+    text.current.addEventListener("mouseenter", e => {
+      snapCursor(e)
+    })
   }, [])
 
   return (
@@ -100,8 +199,17 @@ const ButtonCursor = () => {
       <div className={styles.ButtonCursor} ref={circle}>
         <div className={styles.ButtonCursorInner} />
       </div>
-      <div className={styles.ButtonCursorText} ref={text}>
+      <div className={styles.ButtonCursorLabel} ref={cursorLabel}>
         <p>Portfolio</p>
+      </div>
+      <div ref={text}>
+        <Header
+          authorName="Alessio Rapini"
+          authorRole="UX Designer / UI Developer"
+        />
+      </div>
+      <div ref={link}>
+        <Footer />
       </div>
     </div>
   )
