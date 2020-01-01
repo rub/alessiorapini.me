@@ -2,8 +2,7 @@
   --circleDiameter: 100px;
   --easeOutExpo: cubic-bezier(0.19, 1, 0.22, 1);
 
-  color: #cfdef3;
-  cursor: pointer;
+  color: var(--dark-grey);
   height: 100vh;
   left: 0;
   overflow: hidden;
@@ -11,37 +10,38 @@
   top: 0;
   width: 100vw;
 
-  &:hover .ButtonCursor,
-  &:hover .ButtonCursorInner,
+  &:hover .ButtonCursor {
+    opacity: 0.9;
+  }
+
   &:hover .ButtonCursorLabel {
     opacity: 1;
   }
 }
 
 .ButtonCursor {
+  cursor: pointer;
   left: 0px;
-  pointer-events: none;
+  opacity: 0;
   position: absolute;
   top: 0px;
   transform-origin: center;
+  transition: opacity 0.65s var(--easeOutExpo);
+  transition-delay: 0.2s;
   z-index: 0;
 }
 
 .ButtonCursorInner {
-  background-color: transparent;
-  border: 2px solid #cfdef3;
+  background-color: rgba(207, 222, 243, 1);
   border-radius: 50%;
+  cursor: pointer;
   height: var(--circleDiameter);
-  opacity: 0;
   pointer-events: none;
-  transition: opacity 0.75s var(--easeOutExpo),
-    transform 0.65s var(--easeOutExpo);
-  transition-delay: 0.2s;
   width: var(--circleDiameter);
 }
 
 .ButtonCursorLabel {
-  color: #cfdef3;
+  cursor: pointer;
   font-size: 0.618rem;
   font-weight: 600;
   left: calc(var(--circleDiameter) / 2);

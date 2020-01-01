@@ -16,6 +16,7 @@ function clamp(value, min, max) {
 const ButtonCursor = () => {
   const wrapper = React.useRef(null)
   const circle = React.useRef(null)
+  const circleInner = React.useRef(null)
   const cursorLabel = React.useRef(null)
   const text = React.useRef(null)
   const link = React.useRef(null)
@@ -131,6 +132,7 @@ const ButtonCursor = () => {
     }
 
     vars.current.newScaleX = 0.5 // itemBounds.width / circleBounds.width
+    circleInner.current.style.backgroundColor = "rgba(207, 222, 243, 0.5)"
     cursorLabel.current.style.color = "transparent"
 
     // add new event listener for mouse out
@@ -139,6 +141,7 @@ const ButtonCursor = () => {
       () => {
         vars.current.newScaleX = 1
         vars.current.hoveringLink = false
+        circleInner.current.style.backgroundColor = "rgba(207, 222, 243, 1)"
         cursorLabel.current.style.color = "inherit"
 
         setTimeout(() => {
@@ -154,6 +157,7 @@ const ButtonCursor = () => {
       () => {
         vars.current.newScaleX = 1
         vars.current.hoveringLink = false
+        circleInner.current.style.backgroundColor = "rgba(207, 222, 243, 1)"
         cursorLabel.current.style.color = "inherit"
 
         setTimeout(() => {
@@ -196,12 +200,18 @@ const ButtonCursor = () => {
 
   return (
     <div className={styles.ButtonCursorWrapper} ref={wrapper}>
-      <div className={styles.ButtonCursor} ref={circle}>
-        <div className={styles.ButtonCursorInner} />
-      </div>
-      <div className={styles.ButtonCursorLabel} ref={cursorLabel}>
-        <p>Portfolio</p>
-      </div>
+      <a
+        href="https://www.behance.net/AlessioRapini"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <div className={styles.ButtonCursor} ref={circle}>
+          <div className={styles.ButtonCursorInner} ref={circleInner} />
+        </div>
+        <div className={styles.ButtonCursorLabel} ref={cursorLabel}>
+          <p>Portfolio</p>
+        </div>
+      </a>
       <div ref={text}>
         <Header
           authorName="Alessio Rapini"
