@@ -15,20 +15,20 @@
   @media (--medium) and (orientation: portrait) {
     align-items: center;
     flex-direction: column;
-    padding-top: 2.369rem;
-  }
-
-  @media (--medium) and (orientation: landscape) {
-    padding-top: 1rem;
+    padding-top: 3.157rem;
   }
 
   @media (--small) {
-    padding-top: 1rem;
+    padding-top: 1.618rem;
   }
 
   & > * + * {
-    @media (--medium) {
-      margin-top: 0.236rem;
+    @media (--medium) and (orientation: portrait) {
+      margin-top: 0.618rem;
+    }
+
+    @media (--small) and (orientation: portrait) {
+      margin-top: 0.369rem;
     }
   }
 }
@@ -36,14 +36,18 @@
 .author {
   font-family: "Marck Script", cursive;
   font-size: 1.333rem;
-  line-height: 1.1;
-
   left: 1.618rem;
+  line-height: 1.1; /* Fix alignment between author and role */
   position: absolute;
   top: 1.618rem;
 
+  @media (--medium) and (orientation: portrait) {
+    position: static;
+  }
+
   @media (--medium) and (orientation: landscape) {
     line-height: inherit;
+    top: 1rem;
   }
 }
 
@@ -51,4 +55,12 @@
   position: absolute;
   right: 1.618rem;
   top: 1.618rem;
+
+  @media (--medium) and (orientation: portrait) {
+    position: static;
+  }
+
+  @media (--medium) and (orientation: landscape) {
+    top: 1rem;
+  }
 }

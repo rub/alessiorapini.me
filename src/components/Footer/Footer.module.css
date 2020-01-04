@@ -1,4 +1,6 @@
+@custom-media --medium (width <= 1180px);
 @custom-media --small (width <= 800px);
+@custom-media --xsmall (width <= 600px);
 
 .Footer {
   align-items: center;
@@ -10,19 +12,8 @@
   position: absolute;
   width: 100%;
 
-  @media (--small) {
-    flex-direction: column;
-    padding-bottom: 0.618rem;
-  }
-
   & > * {
     flex: 1;
-  }
-
-  & > * + * {
-    @media (--small) {
-      margin-top: 0.382rem;
-    }
   }
 }
 
@@ -31,31 +22,65 @@
   left: 1.618rem;
   position: absolute;
 
-  @media (--small) {
+  @media (--medium) {
     display: none;
   }
 }
 
 .socialLinks {
+  bottom: 1.618rem;
   display: flex;
   justify-content: flex-end;
-
-  bottom: 1.618rem;
   position: absolute;
   right: 1.618rem;
+
+  @media (--medium) {
+    justify-content: center;
+    padding-bottom: 0.618rem;
+    position: static;
+    width: auto;
+  }
+
+  @media (--small) and (orientation: portrait) {
+    justify-content: space-around;
+    padding-bottom: 0.618rem;
+    position: static;
+    width: 100%;
+  }
+
+  @media (--small) and (orientation: landscape) {
+    padding-bottom: 0.236rem;
+  }
+
+  @media (--xsmall) {
+    padding-bottom: 0.326rem;
+  }
 }
 
 .socialLinks > * + * {
   margin-left: 1rem;
+
+  @media (--medium) {
+    margin-left: 2.618rem;
+  }
+
+  @media (--small) and (orientation: landscape) {
+    margin-left: 1.618rem;
+  }
 }
 
 .socialIcons path {
   fill: var(--light-grey);
+
+  @media (--medium) {
+    fill: var(--grey);
+  }
 }
 
 .emailIcon {
   display: none;
-  @media (--small) {
+
+  @media (--medium) {
     display: block;
   }
 }

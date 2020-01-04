@@ -212,6 +212,14 @@ const ButtonCursor = () => {
           <p>Portfolio</p>
         </div>
       </a>
+      <a
+        href="https://www.behance.net/AlessioRapini"
+        target="_blank"
+        rel="noopener noreferrer"
+        className={styles.ButtonCursorMobile}
+      >
+        Portfolio
+      </a>
       <div ref={text}>
         <Header
           authorName="Alessio Rapini"
