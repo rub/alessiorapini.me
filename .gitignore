@@ -1,12 +1,12 @@
-# Gatsby
+# Generql
 /.cache
-/public
+
+# Gatsby
 frontend/.cache
 frontend/public
-backend
 
 # Dependency directories
-node_modules/
+frontend/node_modules/
 
 # MacOS
 *.DS_Store
