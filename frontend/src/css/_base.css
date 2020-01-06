@@ -9,15 +9,13 @@
 :root {
   --white: #fff;
   --grey: #404040;
-  --light-grey: #d6d6d6;
   --dark-grey: #303030;
-  --grey: #595959;
-  --light-grey: #8c8c8c;
+  --light-grey: #d6d6d6;
   --lightest-grey: #bfbfbf;
 }
 
 html {
-  font: 20px/1.5 Nunito;
+  font: 18px/1.5 Nunito;
   overflow: auto;
 }
 
@@ -28,7 +26,6 @@ body {
 
 a {
   color: inherit;
-  position: relative;
   text-decoration: none;
 }
 

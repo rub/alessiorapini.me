@@ -1,4 +1,5 @@
 import React from "react"
+import { Link } from "gatsby"
 
 import Header from "../Header/Header.js"
 import Footer from "../Footer/Footer.js"
@@ -48,6 +49,9 @@ const ButtonCursor = () => {
   })
 
   function updateMousePos() {
+    if (!wrapper.current) {
+      return
+    }
     if (vars.current.inWrapper) {
       window.requestAnimationFrame(() => {
         updateMousePos()
@@ -183,26 +187,17 @@ const ButtonCursor = () => {
 
   return (
     <div className={styles.ButtonCursorWrapper} ref={wrapper}>
-      <a
-        href="https://www.behance.net/AlessioRapini"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
+      <Link to="/portfolio/" className={styles.portfolioButton}>
         <div className={styles.ButtonCursor} ref={circle}>
           <div className={styles.ButtonCursorInner} ref={circleInner} />
         </div>
         <div className={styles.ButtonCursorLabel} ref={cursorLabel}>
           <p>Portfolio</p>
         </div>
-      </a>
-      <a
-        href="https://www.behance.net/AlessioRapini"
-        target="_blank"
-        rel="noopener noreferrer"
-        className={styles.ButtonCursorMobile}
-      >
-        Portfolio
-      </a>
+      </Link>
+      <Link to="/portfolio/" className={styles.portfolioButton}>
+        <div className={styles.ButtonCursorMobile}>Portfolio</div>
+      </Link>
       <div className={styles.info} ref={info}>
         <Header />
         <Footer />

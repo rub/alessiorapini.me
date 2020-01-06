@@ -2,8 +2,6 @@ import React, { useEffect, useRef, useState } from "react"
 import { useStaticQuery, graphql, Link } from "gatsby"
 import Img from "gatsby-image"
 
-import Button from "../Button/Button"
-
 import styles from "./RubParallax.module.css"
 
 const useAnimationFrame = callback => {
@@ -141,9 +139,6 @@ const RubParallax = () => {
           fadeIn={false}
         />
       </div>
-      <Link to="/portfolio/" className={styles.portfolioButton}>
-        <Button text="Portfolio" />
-      </Link>
     </div>
   )
 }
