@@ -1,66 +1,62 @@
-@custom-media --medium (width <= 800px);
-@custom-media --small (width <= 600px);
+@custom-media --medium (width <= 1180px);
+@custom-media --small (width <= 800px);
+@custom-media --xsmall (width <= 600px);
+
+/*
+Use `hover: none` to detect mobile devices. Header layout does not change when
+cursor button movement is available.
+*/
 
 .Header {
-  color: var(--light-grey);
+  align-items: center;
+  color: var(--grey);
   cursor: none;
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
-  left: 0;
-  position: relative;
-  top: 0;
   user-select: none;
   width: 100%;
 
-  @media (--medium) and (orientation: portrait) {
-    align-items: center;
-    flex-direction: column;
+  @media (hover: none) and (--medium) and (orientation: landscape) {
+    padding-top: 1rem;
+  }
+
+  @media (hover: none) and (--small) and (orientation: portrait) {
     padding-top: 3.157rem;
   }
 
-  @media (--small) {
-    padding-top: 1.618rem;
+  @media (hover: none) and (--small) and (orientation: landscape) {
+    padding-top: 0.618rem;
   }
 
-  & > * + * {
-    @media (--medium) and (orientation: portrait) {
-      margin-top: 0.618rem;
-    }
-
-    @media (--small) and (orientation: portrait) {
-      margin-top: 0.369rem;
-    }
+  @media (hover: none) and (--xsmall) {
+    padding-top: 1.618rem;
   }
 }
 
 .author {
   font-family: "Marck Script", cursive;
-  font-size: 1.333rem;
-  left: 1.618rem;
-  line-height: 1.1; /* Fix alignment between author and role */
-  position: absolute;
-  top: 1.618rem;
+  font-size: 2.618rem;
+  line-height: 1.1;
 
-  @media (--medium) and (orientation: portrait) {
-    position: static;
-  }
-
-  @media (--medium) and (orientation: landscape) {
+  @media (hover: none) and (--small) and (orientation: landscape) {
     line-height: inherit;
     top: 1rem;
   }
 }
 
 .role {
-  position: absolute;
-  right: 1.618rem;
-  top: 1.618rem;
+  margin-top: 0.369rem;
 
-  @media (--medium) and (orientation: portrait) {
-    position: static;
+  @media (hover: none) and (--small) and (orientation: landscape) {
+    margin-top: 0;
   }
 
-  @media (--medium) and (orientation: landscape) {
-    top: 1rem;
+  @media (hover: none) and (--small) and (orientation: portrait) {
+    margin-top: 0.618rem;
+  }
+
+  @media (hover: none) and (--xsmall) and (orientation: portrait) {
+    margin-top: 0.369rem;
   }
 }

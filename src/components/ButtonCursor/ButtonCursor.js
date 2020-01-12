@@ -13,13 +13,16 @@ function clamp(value, min, max) {
   return Math.min(max, Math.max(min, value))
 }
 
+/**
+ * Button cursor displays a button link to author's portfolio which follows
+ * the cursor movement.
+ */
 const ButtonCursor = () => {
   const wrapper = React.useRef(null)
   const circle = React.useRef(null)
   const circleInner = React.useRef(null)
   const cursorLabel = React.useRef(null)
-  const text = React.useRef(null)
-  const link = React.useRef(null)
+  const info = React.useRef(null)
   let circleBounds
 
   const vars = React.useRef({
@@ -136,23 +139,7 @@ const ButtonCursor = () => {
     cursorLabel.current.style.color = "transparent"
 
     // add new event listener for mouse out
-    link.current.addEventListener(
-      "mouseleave",
-      () => {
-        vars.current.newScaleX = 1
-        vars.current.hoveringLink = false
-        circleInner.current.style.backgroundColor = "rgba(207, 222, 243, 1)"
-        cursorLabel.current.style.color = "inherit"
-
-        setTimeout(() => {
-          vars.current.insideLink = false
-        }, 200)
-      },
-      { once: true }
-    )
-
-    // add new event listener for mouse out
-    text.current.addEventListener(
+    info.current.addEventListener(
       "mouseleave",
       () => {
         vars.current.newScaleX = 1
@@ -189,11 +176,7 @@ const ButtonCursor = () => {
       vars.current.inWrapper = false
     })
 
-    link.current.addEventListener("mouseenter", e => {
-      snapCursor(e)
-    })
-
-    text.current.addEventListener("mouseenter", e => {
+    info.current.addEventListener("mouseenter", e => {
       snapCursor(e)
     })
   }, [])
@@ -220,13 +203,8 @@ const ButtonCursor = () => {
       >
         Portfolio
       </a>
-      <div ref={text}>
-        <Header
-          authorName="Alessio Rapini"
-          authorRole="UX Designer / UI Developer"
-        />
-      </div>
-      <div ref={link}>
+      <div className={styles.info} ref={info}>
+        <Header />
         <Footer />
       </div>
     </div>

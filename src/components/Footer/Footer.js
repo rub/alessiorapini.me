@@ -1,19 +1,14 @@
 import React from "react"
 
-import SplitLink from "../SplitLink/SplitLink"
 import SplitIcon from "../SplitIcon/SplitIcon"
-import Icon from "../Icon/Icon"
 
 import styles from "./Footer.module.css"
 
+/**
+ * Footer displays email and social links
+ */
 const Footer = () => (
   <footer className={styles.Footer}>
-    <div className={styles.emailText}>
-      <SplitLink
-        url="mailto:hello@alessiorapini.me"
-        text="hello@alessiorapini.me"
-      />
-    </div>
     <ul className={styles.socialLinks}>
       <li className={styles.emailIcon}>
         <SplitIcon

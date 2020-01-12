@@ -2,14 +2,17 @@
 @custom-media --small (width <= 800px);
 @custom-media --xsmall (width <= 600px);
 
+/*
+Use `hover: none` to detect mobile devices. Footer layout does not change when
+cursor button movement is available.
+*/
+
 .Footer {
   align-items: center;
-  bottom: 0;
   color: var(--light-grey);
   display: flex;
   justify-content: space-between;
-  left: 0;
-  position: absolute;
+  margin-top: 3.157rem;
   width: 100%;
 
   & > * {
@@ -17,70 +20,29 @@
   }
 }
 
-.emailText {
-  bottom: 1.618rem;
-  left: 1.618rem;
-  position: absolute;
-
-  @media (--medium) {
-    display: none;
-  }
-}
-
 .socialLinks {
-  bottom: 1.618rem;
   display: flex;
-  justify-content: flex-end;
-  position: absolute;
-  right: 1.618rem;
+  justify-content: center;
+  padding-bottom: 1.333rem;
 
-  @media (--medium) {
-    justify-content: center;
+  @media (hover: none) and (--medium) and (orientation: landscape), (--small) {
     padding-bottom: 0.618rem;
-    position: static;
-    width: auto;
   }
 
-  @media (--small) and (orientation: portrait) {
-    justify-content: space-around;
-    padding-bottom: 0.618rem;
-    position: static;
-    width: 100%;
-  }
-
-  @media (--small) and (orientation: landscape) {
-    padding-bottom: 0.236rem;
-  }
-
-  @media (--xsmall) {
+  @media (hover: none) and (--small) and (orientation: landscape),
+    (hover: none) and (--xsmall) {
     padding-bottom: 0.326rem;
+  }
+
+  @media (hover: none) and (--xsmall) {
+    justify-content: space-around;
   }
 }
 
 .socialLinks > * + * {
-  margin-left: 1rem;
-
-  @media (--medium) {
-    margin-left: 2.618rem;
-  }
-
-  @media (--small) and (orientation: landscape) {
-    margin-left: 1.618rem;
-  }
+  margin-left: 1.618rem;
 }
 
 .socialIcons path {
-  fill: var(--light-grey);
-
-  @media (--medium) {
-    fill: var(--grey);
-  }
-}
-
-.emailIcon {
-  display: none;
-
-  @media (--medium) {
-    display: block;
-  }
+  fill: var(--grey);
 }

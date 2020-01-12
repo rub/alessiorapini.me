@@ -3,8 +3,8 @@
 @custom-media --xsmall (width <= 600px);
 
 /*
-Use `hover: none` to detect mobile devices.
-https://medium.com/@ferie/detect-a-touch-device-with-only-css-9f8e30fa1134
+Use `hover: none` to detect mobile devices in order to disable
+the button cursor.
 */
 
 .ButtonCursorWrapper {
@@ -12,6 +12,7 @@ https://medium.com/@ferie/detect-a-touch-device-with-only-css-9f8e30fa1134
   --easeOutExpo: cubic-bezier(0.19, 1, 0.22, 1);
 
   color: var(--dark-grey);
+  display: flex;
   height: 100vh;
   left: 0;
   overflow: hidden;
@@ -76,6 +77,7 @@ https://medium.com/@ferie/detect-a-touch-device-with-only-css-9f8e30fa1134
   }
 }
 
+/* Show a fixed button on mobile */
 .ButtonCursorMobile {
   display: none;
 
@@ -116,5 +118,19 @@ https://medium.com/@ferie/detect-a-touch-device-with-only-css-9f8e30fa1134
 
   @media (hover: none) and (--xsmall) {
     bottom: 4.236rem;
+  }
+}
+
+.info {
+  align-self: flex-end;
+  left: 50%;
+  position: relative;
+  transform: translateX(-50%);
+
+  @media (hover: none) and (--medium) {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
   }
 }
