@@ -9,7 +9,7 @@ cursor button movement is available.
 
 .Header {
   align-items: center;
-  color: var(--grey);
+  color: var(--white);
   cursor: none;
   display: flex;
   flex-direction: column;
@@ -47,6 +47,7 @@ cursor button movement is available.
 
 .role {
   margin-top: 0.369rem;
+  opacity: 0.72;
 
   @media (hover: none) and (--small) and (orientation: landscape) {
     margin-top: 0;

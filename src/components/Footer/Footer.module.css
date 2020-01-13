@@ -9,7 +9,6 @@ cursor button movement is available.
 
 .Footer {
   align-items: center;
-  color: var(--light-grey);
   display: flex;
   justify-content: space-between;
   margin-top: 3.157rem;
@@ -23,6 +22,7 @@ cursor button movement is available.
 .socialLinks {
   display: flex;
   justify-content: center;
+  opacity: 0.72;
   padding-bottom: 1.333rem;
 
   @media (hover: none) and (--medium) and (orientation: landscape), (--small) {
@@ -44,5 +44,5 @@ cursor button movement is available.
 }
 
 .socialIcons path {
-  fill: var(--grey);
+  fill: var(--white);
 }

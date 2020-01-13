@@ -27,6 +27,21 @@ the button cursor.
   &:hover .ButtonCursorLabel {
     opacity: 1;
   }
+
+  &::before {
+    background-image: radial-gradient(
+      ellipse 90vw 59vh at 50% 42%,
+      rgba(25, 35, 37, 0),
+      #191616
+    );
+    content: "";
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+  }
 }
 
 .ButtonCursor {
@@ -38,7 +53,7 @@ the button cursor.
   transform-origin: center;
   transition: opacity 0.65s var(--easeOutExpo);
   transition-delay: 0.2s;
-  z-index: 0;
+  z-index: 2;
 
   @media (hover: none) {
     display: none;
@@ -67,6 +82,7 @@ the button cursor.
   transition-delay: 0.2s;
   top: calc(var(--circleDiameter) / 2);
   user-select: none;
+  z-index: 2;
 
   @media (hover: none) {
     display: none;
@@ -126,6 +142,7 @@ the button cursor.
   left: 50%;
   position: relative;
   transform: translateX(-50%);
+  z-index: 2;
 
   @media (hover: none) and (--medium) {
     height: 100%;
