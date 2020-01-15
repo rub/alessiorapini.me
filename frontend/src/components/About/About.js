@@ -19,8 +19,10 @@ const About = () => (
     `}
     render={data => (
       <div className={styles.About}>
-        <h2 className={styles.role}>UX DESIGNER, UI DELEVOPER</h2>
         <h1 className={styles.name}>Alessio Rapini</h1>
+        <h2 className={styles.role}>
+          UX/UI DESIGN, ART DIRECTION, UI DELEVOPMENT
+        </h2>
         {data.allStrapiAbout.edges.map(document => (
           <div className={styles.description}>
             <ReactMarkdown source={document.node.description} />

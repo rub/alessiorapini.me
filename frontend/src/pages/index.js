@@ -8,8 +8,8 @@ import SEO from "../components/seo"
 const IndexPage = () => (
   <Layout>
     <SEO title="Alessio Rapini ☞ UX Designer / UI Developer" />
-    <RubParallax />
     <ButtonCursor />
+    <RubParallax />
   </Layout>
 )
 
