@@ -1,49 +1,23 @@
-@custom-media --medium (width <= 1180px);
-@custom-media --small (width <= 800px);
-@custom-media --xsmall (width <= 600px);
-
-/*
-Use `hover: none` to detect mobile devices. Footer layout does not change when
-cursor button movement is available.
-*/
-
 .Footer {
-  align-items: center;
   display: flex;
-  justify-content: space-between;
-  margin-top: 3.157rem;
   width: 100%;
   z-index: 100;
-
-  & > * {
-    flex: 1;
-  }
 }
 
 .socialLinks {
   display: flex;
   justify-content: center;
   opacity: 0.72;
-  padding-bottom: 1.333rem;
-
-  @media (hover: none) and (--medium) and (orientation: landscape), (--small) {
-    padding-bottom: 0.618rem;
-  }
-
-  @media (hover: none) and (--small) and (orientation: landscape),
-    (hover: none) and (--xsmall) {
-    padding-bottom: 0.326rem;
-  }
-
-  @media (hover: none) and (--xsmall) {
-    justify-content: space-around;
-  }
 }
 
 .socialLinks > * + * {
   margin-left: 1.618rem;
 }
 
-.socialIcons path {
+.Footer.isLight .socialIcons path {
   fill: var(--white);
+}
+
+.Footer.isDark .socialIcons path {
+  fill: var(--dark-grey);
 }

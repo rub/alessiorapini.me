@@ -18,20 +18,15 @@ cursor button movement is available.
   width: 100%;
   z-index: 100;
 
-  @media (hover: none) and (--medium) and (orientation: landscape) {
-    padding-top: 1rem;
-  }
-
-  @media (hover: none) and (--small) and (orientation: portrait) {
-    padding-top: 3.157rem;
-  }
-
-  @media (hover: none) and (--small) and (orientation: landscape) {
-    padding-top: 0.618rem;
-  }
-
-  @media (hover: none) and (--xsmall) {
-    padding-top: 1.618rem;
+  &.portfolio {
+    color: var(--dark-grey);
+    cursor: default;
+    flex-direction: row;
+    left: 0;
+    padding: 1.618rem;
+    position: fixed;
+    top: 0;
+    user-select: all;
   }
 }
 
@@ -44,6 +39,11 @@ cursor button movement is available.
     line-height: inherit;
     top: 1rem;
   }
+}
+
+.Header.portfolio .author {
+  cursor: text;
+  font-size: 1.333rem;
 }
 
 .role {

@@ -1,7 +1,13 @@
 .PortfolioWrapper {
-  padding: 7.478rem 0;
+  padding: 7.478rem 1rem;
+  margin: auto;
+  max-width: 1080px;
+}
 
-  & > * + * {
-    margin-top: 7.478rem;
-  }
+.PortfolioAbout {
+  margin-top: 7.478rem;
+}
+
+.PortfolioFooter {
+  margin-top: 2.618rem;
 }

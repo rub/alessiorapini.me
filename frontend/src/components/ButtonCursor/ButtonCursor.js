@@ -199,8 +199,8 @@ const ButtonCursor = () => {
         <div className={styles.ButtonCursorMobile}>Portfolio</div>
       </Link>
       <div className={styles.info} ref={info}>
-        <Header />
-        <Footer />
+        <Header className={styles.homeHeader} />
+        <Footer className={styles.homeFooter} />
       </div>
     </div>
   )

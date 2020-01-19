@@ -3,8 +3,8 @@
 @custom-media --xsmall (width <= 600px);
 
 /*
-Use `hover: none` to detect mobile devices in order to disable
-the button cursor.
+Use `hover: none` to detect mobile devices in order to disable the
+button cursor and apply responsive changes to the Footer layout.
 */
 
 .ButtonCursorWrapper {
@@ -163,5 +163,43 @@ the button cursor.
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+  }
+}
+
+.homeHeader {
+  @media (hover: none) and (--medium) and (orientation: landscape) {
+    padding-top: 1rem;
+  }
+
+  @media (hover: none) and (--small) and (orientation: portrait) {
+    padding-top: 3.157rem;
+  }
+
+  @media (hover: none) and (--small) and (orientation: landscape) {
+    padding-top: 0.618rem;
+  }
+
+  @media (hover: none) and (--xsmall) {
+    padding-top: 1.618rem;
+  }
+}
+
+.homeFooter {
+  margin-top: 3.157rem;
+  justify-content: center;
+  padding-bottom: 1.333rem;
+
+  @media (hover: none) and (--medium) and (orientation: landscape) {
+    padding-bottom: 0.618rem;
+  }
+
+  @media (hover: none) and (--small) and (orientation: landscape),
+    (hover: none) and (--xsmall) {
+    padding-bottom: 0.326rem;
+  }
+
+  @media (hover: none) and (--xsmall) {
+    justify-content: space-around;
+    width: 100%;
   }
 }

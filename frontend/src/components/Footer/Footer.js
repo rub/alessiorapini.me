@@ -1,4 +1,5 @@
 import React from "react"
+import PropTypes from "prop-types"
 
 import SplitIcon from "../SplitIcon/SplitIcon"
 
@@ -7,8 +8,14 @@ import styles from "./Footer.module.css"
 /**
  * Footer displays email and social links
  */
-const Footer = () => (
-  <footer className={styles.Footer}>
+const Footer = ({ dark, className }) => (
+  <footer
+    className={`
+    ${styles.Footer}
+    ${dark ? styles.isDark : styles.isLight}
+    ${className}
+    `}
+  >
     <ul className={styles.socialLinks}>
       <li className={styles.emailIcon}>
         <SplitIcon
@@ -48,5 +55,17 @@ const Footer = () => (
     </ul>
   </footer>
 )
+
+Footer.propTypes = {
+  /** Whether Footer style is dark */
+  dark: PropTypes.bool,
+  /** Footer optional classname */
+  className: PropTypes.string,
+}
+
+Footer.defaultProps = {
+  dark: false,
+  className: "",
+}
 
 export default Footer
