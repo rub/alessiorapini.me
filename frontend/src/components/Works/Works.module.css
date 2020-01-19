@@ -1,5 +1,6 @@
 .Works {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fill, 315px);
   grid-gap: 2.618rem;
+  justify-content: center;
 }
