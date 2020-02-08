@@ -12,7 +12,15 @@ const Work = ({ number, title, url, imageUrl, imageAlt, role, type }) => (
       {title}
     </h3>
     <a className={styles.link} href={url} target="_blank" rel="noopener">
-      <Img className={styles.image} fluid={imageUrl} />
+      <div className={styles.fixedImage}>
+        <Img fluid={imageUrl} />
+      </div>
+      <div className={styles.parallaxedImageLeft}>
+        <Img fluid={imageUrl} />
+      </div>
+      <div className={styles.parallaxedImageRight}>
+        <Img fluid={imageUrl} />
+      </div>
     </a>
     <div className={styles.info}>
       <div className={styles.infoRow}>
