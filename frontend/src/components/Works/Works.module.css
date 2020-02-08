@@ -5,7 +5,7 @@
   justify-content: center;
 }
 
-// TODO: Find a better way to handle the following margins
+/* TODO: Find a better way to handle the following margins */
 .Works > div:nth-child(3n + 2) {
   margin-top: 1.618rem;
 

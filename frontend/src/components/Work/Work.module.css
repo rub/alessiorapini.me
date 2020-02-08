@@ -1,5 +1,10 @@
 .Work {
   color: var(--dark-grey);
+  cursor: pointer;
+
+  &:hover .image {
+    transform: scale3d(1.162, 1.162, 1);
+  }
 }
 
 .title {
@@ -13,6 +18,7 @@
 
 .image {
   margin-top: 0.317rem;
+  transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
 .titleSeparator {
