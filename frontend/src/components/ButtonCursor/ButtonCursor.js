@@ -35,10 +35,10 @@ const ButtonCursor = () => {
     circleY: 0,
     dX: 0,
     dY: 0,
-    inWrapper: false,
-    preventCursorMovement: false,
-    insideLink: false,
-    hoveringLink: false,
+    isFollowing: true,
+    isInWrapper: true,
+    isInsideLink: false,
+    isHoveringLink: false,
     curActiveLink: {},
     linkOffsetX: 0,
     linkOffsetY: 0,
@@ -48,118 +48,125 @@ const ButtonCursor = () => {
     newScaleX: 1,
   })
 
-  function updateMousePos() {
-    if (!wrapper.current) {
-      return
-    }
-    if (vars.current.inWrapper) {
-      window.requestAnimationFrame(() => {
-        updateMousePos()
-      })
-    }
-
-    vars.current.circleX =
-      vars.current.circleX +
-      (vars.current.newMouseX - vars.current.circleX) * 0.15
-    vars.current.circleY =
-      vars.current.circleY +
-      (vars.current.newMouseY - vars.current.circleY) * 0.15
-
-    let newDX = vars.current.circleX - vars.current.newMouseX
-    let newDY = vars.current.circleY - vars.current.newMouseY
-
-    let rotation = (Math.atan2(newDY, newDX) * 180) / Math.PI
-
-    let clampedDX = clamp(Math.abs(newDX), 0, 125)
-    let clampedDY = clamp(Math.abs(newDY), 0, 125)
-
-    let mappedX = map([0, 125], [0, 0.3], clampedDX)
-    let mappedY = map([0, 125], [0, 0.3], clampedDY)
-
-    vars.current.curScaleX +=
-      (vars.current.newScaleX - vars.current.curScaleX) * 0.15
-
-    let scaleX = vars.current.curScaleX + Math.min(mappedX + mappedY, 0.7)
-    let scaleY =
-      vars.current.insideLink || vars.current.curScaleX > 1.05
-        ? scaleX
-        : scaleX + (1 - scaleX)
-
-    circle.current.style.transform = `translate3d(${vars.current.circleX.toFixed(
-      2
-    )}px, ${vars.current.circleY.toFixed(
-      2
-    )}px, 0) rotate3d(0, 0, 1, ${rotation}deg) scale3d(${scaleX}, ${scaleY}, 1)`
-
-    cursorLabel.current.style.transform = `translate3d(${vars.current.circleX.toFixed(
-      2
-    )}px, ${vars.current.circleY.toFixed(2)}px, 0)`
-
-    //CURRENT
-    let offsetX = vars.current.hoveringLink
-      ? (vars.current.mouseX -
-          (vars.current.curActiveLink.linkBounds.left +
-            vars.current.curActiveLink.linkBounds.width / 2)) *
-        0.3
-      : 0
-    let offsetY = vars.current.hoveringLink
-      ? (vars.current.mouseY -
-          (vars.current.curActiveLink.linkBounds.top +
-            vars.current.curActiveLink.linkBounds.height / 2)) *
-        0.3
-      : 0
-
-    vars.current.linkOffsetX += (offsetX - vars.current.linkOffsetX) * 0.1
-    vars.current.linkOffsetY += (offsetY - vars.current.linkOffsetY) * 0.1
-
-    let newBtnOffsetX = vars.current.hoveringLink
-      ? (vars.current.mouseX -
-          (vars.current.curActiveLink.linkBounds.left +
-            vars.current.curActiveLink.linkBounds.width / 2)) *
-        0.35
-      : 0
-    let newBtnOffsetY = vars.current.hoveringLink
-      ? (vars.current.mouseY -
-          (vars.current.curActiveLink.linkBounds.top +
-            vars.current.curActiveLink.linkBounds.height / 2)) *
-        0.35
-      : 0
-
-    vars.current.btnOffsetX += (newBtnOffsetX - vars.current.btnOffsetX) * 0.1
-    vars.current.btnOffsetY += (newBtnOffsetY - vars.current.btnOffsetY) * 0.1
-  }
-
-  function snapCursor(e) {
-    clearTimeout()
-    vars.current.insideLink = true
-    vars.current.hoveringLink = true
-
-    vars.current.curActiveLink = {
-      linkBounds: e.currentTarget.getBoundingClientRect(),
-    }
-
-    vars.current.newScaleX = 0.5 // itemBounds.width / circleBounds.width
-    circleInner.current.style.backgroundColor = "rgba(207, 222, 243, 0.5)"
-    cursorLabel.current.style.color = "transparent"
-
-    // add new event listener for mouse out
-    info.current.addEventListener(
-      "mouseleave",
-      () => {
-        vars.current.newScaleX = 1
-        vars.current.hoveringLink = false
-        circleInner.current.style.backgroundColor = "rgba(207, 222, 243, 1)"
-        cursorLabel.current.style.color = "inherit"
-
-        setTimeout(() => {
-          vars.current.insideLink = false
-        }, 200)
-      },
-      { once: true }
-    )
-  }
-
   React.useEffect(() => {
+    function updateMousePos() {
+      if (!wrapper.current) {
+        return
+      }
+
+      if (vars.current.isInWrapper) {
+        window.requestAnimationFrame(() => {
+          // Recurse over this same function,
+          // as soon as the browser renders the next frame.
+          updateMousePos()
+        })
+        // TODO: Set button cursor opacity to 0.9 here
+      } else {
+        vars.current.isFollowing = false
+        // TODO: Here remove the opacity
+      }
+
+      vars.current.circleX =
+        vars.current.circleX +
+        (vars.current.newMouseX - vars.current.circleX) * 0.15
+      vars.current.circleY =
+        vars.current.circleY +
+        (vars.current.newMouseY - vars.current.circleY) * 0.15
+
+      let newDX = vars.current.circleX - vars.current.newMouseX
+      let newDY = vars.current.circleY - vars.current.newMouseY
+
+      let rotation = (Math.atan2(newDY, newDX) * 180) / Math.PI
+
+      let clampedDX = clamp(Math.abs(newDX), 0, 125)
+      let clampedDY = clamp(Math.abs(newDY), 0, 125)
+
+      let mappedX = map([0, 125], [0, 0.3], clampedDX)
+      let mappedY = map([0, 125], [0, 0.3], clampedDY)
+
+      vars.current.curScaleX +=
+        (vars.current.newScaleX - vars.current.curScaleX) * 0.15
+
+      let scaleX = vars.current.curScaleX + Math.min(mappedX + mappedY, 0.7)
+      let scaleY =
+        vars.current.isInsideLink || vars.current.curScaleX > 1.05
+          ? scaleX
+          : scaleX + (1 - scaleX)
+
+      circle.current.style.transform = `translate3d(${vars.current.circleX.toFixed(
+        2
+      )}px, ${vars.current.circleY.toFixed(
+        2
+      )}px, 0) rotate3d(0, 0, 1, ${rotation}deg) scale3d(${scaleX}, ${scaleY}, 1)`
+
+      cursorLabel.current.style.transform = `translate3d(${vars.current.circleX.toFixed(
+        2
+      )}px, ${vars.current.circleY.toFixed(2)}px, 0)`
+
+      //CURRENT
+      let offsetX = vars.current.isHoveringLink
+        ? (vars.current.mouseX -
+            (vars.current.curActiveLink.linkBounds.left +
+              vars.current.curActiveLink.linkBounds.width / 2)) *
+          0.3
+        : 0
+      let offsetY = vars.current.isHoveringLink
+        ? (vars.current.mouseY -
+            (vars.current.curActiveLink.linkBounds.top +
+              vars.current.curActiveLink.linkBounds.height / 2)) *
+          0.3
+        : 0
+
+      vars.current.linkOffsetX += (offsetX - vars.current.linkOffsetX) * 0.1
+      vars.current.linkOffsetY += (offsetY - vars.current.linkOffsetY) * 0.1
+
+      let newBtnOffsetX = vars.current.isHoveringLink
+        ? (vars.current.mouseX -
+            (vars.current.curActiveLink.linkBounds.left +
+              vars.current.curActiveLink.linkBounds.width / 2)) *
+          0.35
+        : 0
+      let newBtnOffsetY = vars.current.isHoveringLink
+        ? (vars.current.mouseY -
+            (vars.current.curActiveLink.linkBounds.top +
+              vars.current.curActiveLink.linkBounds.height / 2)) *
+          0.35
+        : 0
+
+      vars.current.btnOffsetX += (newBtnOffsetX - vars.current.btnOffsetX) * 0.1
+      vars.current.btnOffsetY += (newBtnOffsetY - vars.current.btnOffsetY) * 0.1
+    }
+
+    function snapCursor(e) {
+      clearTimeout()
+      vars.current.isInsideLink = true
+      vars.current.isHoveringLink = true
+
+      vars.current.curActiveLink = {
+        linkBounds: e.currentTarget.getBoundingClientRect(),
+      }
+
+      vars.current.newScaleX = 0.5 // itemBounds.width / circleBounds.width
+      circleInner.current.style.backgroundColor = "rgba(207, 222, 243, 0.5)"
+      cursorLabel.current.style.color = "transparent"
+
+      // add new event listener for mouse out
+      info.current.addEventListener(
+        "mouseleave",
+        () => {
+          vars.current.newScaleX = 1
+          vars.current.isHoveringLink = false
+          circleInner.current.style.backgroundColor = "rgba(207, 222, 243, 1)"
+          cursorLabel.current.style.color = "inherit"
+
+          setTimeout(() => {
+            vars.current.isInsideLink = false
+          }, 200)
+        },
+        { once: true }
+      )
+    }
+
     circleBounds = circle.current.getBoundingClientRect()
 
     wrapper.current.addEventListener("mousemove", e => {
@@ -171,18 +178,24 @@ const ButtonCursor = () => {
     })
 
     wrapper.current.addEventListener("mouseenter", e => {
-      vars.current.inWrapper = true
-
+      if (vars.current.isFollowing) {
+        return
+      }
+      vars.current.isInWrapper = true
       updateMousePos()
+      vars.current.isFollowing = true
     })
 
     wrapper.current.addEventListener("mouseleave", e => {
-      vars.current.inWrapper = false
+      vars.current.isInWrapper = false
     })
 
     info.current.addEventListener("mouseenter", e => {
       snapCursor(e)
     })
+
+    updateMousePos()
+    vars.current.isFollowing = true
   }, [])
 
   return (
