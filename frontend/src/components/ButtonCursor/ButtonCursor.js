@@ -28,9 +28,9 @@ const ButtonCursor = () => {
 
   const vars = React.useRef({
     mouseX: 0,
-    newMouseX: 0,
+    newMouseX: document.documentElement.clientWidth / 2 - 50,
     mouseY: 0,
-    newMouseY: 0,
+    newMouseY: document.documentElement.clientHeight - 326,
     circleX: 0,
     circleY: 0,
     dX: 0,
