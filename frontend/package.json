@@ -6,7 +6,7 @@
   "author": "Alessio Rapini <hello@alessiorapini.me>",
   "dependencies": {
     "gatsby": "^2.18.22",
-    "gatsby-cli": "^2.8.27",
+    "gatsby-cli": "^2.11.0",
     "gatsby-image": "^2.2.8",
     "gatsby-plugin-manifest": "^2.2.4",
     "gatsby-plugin-offline": "^3.0.32",
