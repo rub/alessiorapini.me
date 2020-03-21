@@ -27,9 +27,19 @@ const ButtonCursor = () => {
 
   const vars = React.useRef({
     mouseX: 0,
-    newMouseX: document.documentElement.clientWidth / 2 - 50,
+    // Ensures that this code does not run unless it's in the browser
+    // https://www.gatsbyjs.org/docs/debugging-html-builds/
+    newMouseX:
+      typeof document !== `undefined`
+        ? document.documentElement.clientWidth / 2 - 50
+        : 0,
     mouseY: 0,
-    newMouseY: document.documentElement.clientHeight - 326,
+    // Ensures that this code does not run unless it's in the browser
+    // https://www.gatsbyjs.org/docs/debugging-html-builds/
+    newMouseY:
+      typeof document !== `undefined`
+        ? document.documentElement.clientHeight - 326
+        : 0,
     circleX: 0,
     circleY: 0,
     dX: 0,
