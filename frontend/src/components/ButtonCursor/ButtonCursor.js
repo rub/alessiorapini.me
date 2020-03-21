@@ -1,5 +1,4 @@
 import React from "react"
-import { Link } from "gatsby"
 
 import Header from "../Header/Header.js"
 import Footer from "../Footer/Footer.js"
@@ -200,17 +199,26 @@ const ButtonCursor = () => {
 
   return (
     <div className={styles.ButtonCursorWrapper} ref={wrapper}>
-      <Link to="/portfolio/" className={styles.portfolioButton}>
+      <a
+        href="https://www.behance.net/AlessioRapini"
+        target="_blank"
+        rel="noopener"
+      >
         <div className={styles.ButtonCursor} ref={circle}>
           <div className={styles.ButtonCursorInner} ref={circleInner} />
         </div>
         <div className={styles.ButtonCursorLabel} ref={cursorLabel}>
           <p>Portfolio</p>
         </div>
-      </Link>
-      <Link to="/portfolio/" className={styles.portfolioButton}>
-        <div className={styles.ButtonCursorMobile}>Portfolio</div>
-      </Link>
+      </a>
+      <a
+        href="https://www.behance.net/AlessioRapini"
+        target="_blank"
+        rel="noopener"
+        className={styles.ButtonCursorMobile}
+      >
+        Portfolio
+      </a>
       <div className={styles.info} ref={info}>
         <Header className={styles.homeHeader} />
         <Footer className={styles.homeFooter} />
