@@ -15,9 +15,7 @@ const Header = ({ className, portfolio }) => (
   `}
   >
     <p className={styles.author}>Alessio Rapini</p>
-    {!portfolio && (
-      <p className={styles.role}>UX/UI design, Art direction, UI development</p>
-    )}
+    {!portfolio && <p className={styles.role}>UX Designer, UI developer</p>}
     {portfolio && <div />}
   </header>
 )
