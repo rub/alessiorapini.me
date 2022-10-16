@@ -1,7 +1,25 @@
 /** Custom base styles */
 
-/* Fonts: Marck Script - regular; Nunito - regular, bold */
-@import url("https://fonts.googleapis.com/css2?family=Marck+Script&family=Nunito:wght@400;700&display=swap");
+/* Font: Nunito - regular, bold */
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap");
+
+/* Font: Druk Cyr - bold & fallbacks */
+@font-face {
+  font-family: "Druk Cyr", Fallback Druk, sans-serif;
+  src: url("/fonts/DrukCyr-Bold.woff2") format("woff2");
+  font-display: swap;
+  unicode-range: U+0025-00FF;
+}
+
+/* Fallback font for Druk Cyr: Impact */
+@font-face {
+  font-family: "Fallback Druk";
+  ascent-override: 130%;
+  descent-override: 50%;
+  line-gap-override: normal;
+  size-adjust: 73%;
+  src: local(Impact);
+}
 
 :root {
   --white: #fff;
@@ -12,7 +30,7 @@
 }
 
 html {
-  font: 18px/1.5 "Nunito", sans-serif;
+  font: 18px/1.5 "Druk Cyr", Fallback Druk, sans-serif;
   overflow: auto;
 }
 
