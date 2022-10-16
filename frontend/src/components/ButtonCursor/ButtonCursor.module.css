@@ -26,7 +26,6 @@ button cursor and apply responsive changes to the Footer layout.
     ),
     linear-gradient(135deg, #191616 0%, #1b2d4a 100%);
   color: var(--dark-grey);
-  display: flex;
   height: 100vh;
   left: 0;
   overflow: hidden;

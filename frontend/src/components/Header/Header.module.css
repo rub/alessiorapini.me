@@ -1,64 +1,17 @@
-@custom-media --medium (width <= 1180px);
-@custom-media --small (width <= 800px);
-@custom-media --xsmall (width <= 600px);
-
-/*
-Use `hover: none` to detect mobile devices. Header layout does not change when
-cursor button movement is available.
-*/
-
 .Header {
   align-items: center;
   color: var(--white);
   cursor: none;
   display: flex;
-  flex-direction: column;
   justify-content: space-between;
-  user-select: none;
+  margin: auto;
+  max-width: 1168px;
+  padding-top: 3rem;
   width: 100%;
   z-index: 100;
-
-  &.portfolio {
-    color: var(--dark-grey);
-    cursor: default;
-    flex-direction: row;
-    left: 0;
-    padding: 1.618rem;
-    position: fixed;
-    top: 0;
-    user-select: all;
-  }
 }
 
-.author {
-  font-family: "Marck Script", cursive;
-  font-size: 2.618rem;
-  line-height: 1.1;
-
-  @media (hover: none) and (--small) and (orientation: landscape) {
-    line-height: inherit;
-    top: 1rem;
-  }
-}
-
-.Header.portfolio .author {
-  cursor: text;
-  font-size: 1.333rem;
-}
-
-.role {
-  margin-top: 0.369rem;
-  opacity: 0.72;
-
-  @media (hover: none) and (--small) and (orientation: landscape) {
-    margin-top: 0;
-  }
-
-  @media (hover: none) and (--small) and (orientation: portrait) {
-    margin-top: 0.618rem;
-  }
-
-  @media (hover: none) and (--xsmall) and (orientation: portrait) {
-    margin-top: 0.369rem;
-  }
+.NavLink {
+  letter-spacing: 5px;
+  text-transform: uppercase;
 }
