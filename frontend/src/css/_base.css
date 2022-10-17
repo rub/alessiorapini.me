@@ -39,6 +39,15 @@ body {
   min-height: 100%;
 }
 
+body {
+  overflow: hidden;
+}
+
+h1 {
+  font-family: "Druk Cyr", Fallback Druk, sans-serif;
+  text-transform: uppercase;
+}
+
 a {
   color: inherit;
   text-decoration: none;

@@ -1,0 +1,55 @@
+.Hero {
+  display: flex;
+  /* flex: 1; */
+  flex-direction: column;
+  justify-content: flex-end;
+  max-width: 1168px;
+  width: 100%;
+}
+
+/* .title {
+  backdrop-filter: blur(33px);
+  color: rgba(255, 255, 255, 0.21);
+  font-size: 15vw;
+  letter-spacing: 8px;
+  line-height: 1;
+  text-shadow: 0 10px 15px rgb(0 0 0 / 20%);
+} */
+
+/* TEST */
+.blurryContainer {
+  width: 100%;
+  height: 100%;
+}
+
+.blurryEfx {
+  background-color: rgba(255, 255, 255, 0.21);
+  backdrop-filter: blur(13px) saturate(250%);
+  width: 100%;
+  height: 100%;
+  transform: translateZ(0);
+  mask-image: url("../../images/alessio-rapini.svg");
+  -webkit-mask-size: contain;
+  mask-position: center;
+  mask-repeat: no-repeat;
+}
+
+.blurryText {
+  width: 100%;
+  height: 100%;
+  overflow: visible !important;
+  transform: translate3d(0, -100%, 0);
+}
+/* END TEST */
+
+.description {
+  color: #878792;
+  font-size: 2rem;
+  letter-spacing: 15px;
+  margin-top: 1.5rem;
+  text-transform: uppercase;
+}
+
+.role {
+  color: #ccff28;
+}

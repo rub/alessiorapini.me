@@ -1,6 +1,7 @@
 import React from "react"
 
 import Header from "../Header/Header.js"
+import Hero from "../Hero/Hero"
 import Footer from "../Footer/Footer.js"
 
 import styles from "./ButtonCursor.module.css"
@@ -156,7 +157,7 @@ const ButtonCursor = () => {
       }
 
       vars.current.newScaleX = 0.5 // itemBounds.width / circleBounds.width
-      circleInner.current.style.backgroundColor = "rgba(207, 222, 243, 0.5)"
+      circleInner.current.style.backgroundColor = "rgba(204, 255, 40, 0.5)"
       cursorLabel.current.style.color = "transparent"
 
       // add new event listener for mouse out
@@ -231,6 +232,7 @@ const ButtonCursor = () => {
       </a>
       <div className={styles.info} ref={info}>
         <Header className={styles.homeHeader} />
+        <Hero />
         <Footer className={styles.homeFooter} />
       </div>
     </div>
