@@ -1,27 +1,16 @@
 @custom-media --small (width <= 800px);
 
 .RubParallax {
-  background: -webkit-radial-gradient(
-      0% 100%,
-      ellipse cover,
-      rgb(34, 35, 29) 10%,
-      rgba(202, 139, 41, 0.11) 40%
-    ),
-    linear-gradient(
-      to bottom,
-      rgba(0, 0, 0, 0.2) 0%,
-      rgba(42, 60, 87, 0.2) 100%
-    ),
-    linear-gradient(135deg, #191616 0%, #283448 100%);
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  height: 140vh;
   justify-content: flex-end;
+  transform: translate(45vw, -10%);
 }
 
 /* [1] Center the picture bypassing the cropping effect due to object-fit: cover */
 .fixedRubContainer {
-  height: 90%;
+  height: 100%;
   overflow: hidden;
   position: relative;
 
@@ -32,7 +21,7 @@
 
 /* [1] Center the picture bypassing the cropping effect due to object-fit: cover */
 .parallaxedRubContainer {
-  height: 90%;
+  height: 100%;
   overflow: hidden;
   position: absolute;
   width: 100%;

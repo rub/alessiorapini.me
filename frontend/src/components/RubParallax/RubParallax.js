@@ -19,7 +19,7 @@ const useAnimationFrame = callback => {
     requestRef.current = requestAnimationFrame(animate)
   }
 
-  React.useEffect(() => {
+  useEffect(() => {
     requestRef.current = requestAnimationFrame(animate)
     return () => cancelAnimationFrame(requestRef.current)
   }, []) // Make sure the effect runs only once
@@ -71,6 +71,7 @@ const RubParallax = () => {
   // Add event listener for mouse movement on ComponentDidMount
   useEffect(() => {
     const eventListener = window.addEventListener("mousemove", e => {
+      // Range from -0.5 to 0.5. Multiply by -1 to reverse the animation
       targetXRef.current = e.clientX / document.body.clientWidth - 0.5
     })
     return () => window.removeEventListener("mousemove", eventListener)
