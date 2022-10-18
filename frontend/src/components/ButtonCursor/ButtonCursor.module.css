@@ -168,23 +168,3 @@ button cursor and apply responsive changes to the Footer layout.
     padding-top: 1.618rem;
   }
 }
-
-.homeFooter {
-  margin-top: 3.157rem;
-  justify-content: center;
-  padding-bottom: 1.333rem;
-
-  @media (hover: none) and (--medium) and (orientation: landscape) {
-    padding-bottom: 0.618rem;
-  }
-
-  @media (hover: none) and (--small) and (orientation: landscape),
-    (hover: none) and (--xsmall) {
-    padding-bottom: 0.326rem;
-  }
-
-  @media (hover: none) and (--xsmall) {
-    justify-content: space-around;
-    width: 100%;
-  }
-}

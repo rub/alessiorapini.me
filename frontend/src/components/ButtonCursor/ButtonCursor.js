@@ -233,7 +233,7 @@ const ButtonCursor = () => {
       <div className={styles.info} ref={info}>
         <Header className={styles.homeHeader} />
         <Hero />
-        <Footer className={styles.homeFooter} />
+        <Footer />
       </div>
     </div>
   )

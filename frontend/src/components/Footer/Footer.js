@@ -1,71 +1,50 @@
 import React from "react"
-import PropTypes from "prop-types"
 
 import SplitIcon from "../SplitIcon/SplitIcon"
 
 import styles from "./Footer.module.css"
 
-/**
- * Footer displays email and social links
- */
-const Footer = ({ dark, className }) => (
-  <footer
-    className={`
-    ${styles.Footer}
-    ${dark ? styles.isDark : styles.isLight}
-    ${className}
-    `}
-  >
+const Footer = ({ className }) => (
+  <footer className={`${styles.Footer} ${className}`}>
     <ul className={styles.socialLinks}>
-      <li className={styles.emailIcon}>
+      <li className={styles.socialLink}>
         <SplitIcon
+          iconClassName={styles.socialIcons}
           url="mailto:hello@alessiorapini.me"
           iconName="email"
           iconTitle="Email link"
-          iconClassName={styles.socialIcons}
         />
       </li>
-      <li>
+      <li className={styles.socialLink}>
         <SplitIcon
+          iconClassName={styles.socialIcons}
           url="https://www.behance.net/AlessioRapini"
           iconName="behance"
           iconTitle="Behance profile link"
-          iconClassName={styles.socialIcons}
           newTab
         />
       </li>
-      <li>
+      <li className={styles.socialLink}>
         <SplitIcon
+          iconClassName={styles.socialIcons}
           url="https://www.linkedin.com/in/alessiorapini/"
           iconName="linkedin"
           iconTitle="Linkedin profile link"
-          iconClassName={styles.socialIcons}
           newTab
         />
       </li>
-      <li>
+      <li className={styles.socialLink}>
         <SplitIcon
+          iconClassName={styles.socialIcons}
           url="https://github.com/rub"
           iconName="github"
           iconTitle="Github profile link"
-          iconClassName={styles.socialIcons}
           newTab
         />
       </li>
     </ul>
+    <p className={styles.copyright}>Designed and built by Alessio Rapini</p>
   </footer>
 )
-
-Footer.propTypes = {
-  /** Whether Footer style is dark */
-  dark: PropTypes.bool,
-  /** Footer optional classname */
-  className: PropTypes.string,
-}
-
-Footer.defaultProps = {
-  dark: false,
-  className: "",
-}
 
 export default Footer
