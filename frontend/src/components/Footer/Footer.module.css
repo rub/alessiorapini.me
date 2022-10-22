@@ -1,22 +1,18 @@
 .Footer {
-  max-width: 1168px;
-  padding: 2rem 0 1rem;
+  max-width: 1264px;
+  padding: 2rem 3rem;
   width: 100%;
   z-index: 100;
 }
 
 .socialLinks {
   display: flex;
+  gap: 2rem;
   justify-content: flex-start;
-  opacity: 0.72;
-}
-
-.socialLink + .socialLink {
-  margin-left: 1.618rem;
 }
 
 .socialIcons path {
-  fill: var(--white);
+  fill: rgba(255, 255, 255, 0.31);
 }
 
 .copyright {

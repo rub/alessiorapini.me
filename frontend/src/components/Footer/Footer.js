@@ -9,36 +9,36 @@ const Footer = ({ className }) => (
     <ul className={styles.socialLinks}>
       <li className={styles.socialLink}>
         <SplitIcon
-          iconClassName={styles.socialIcons}
+          className={styles.socialIcons}
           url="mailto:hello@alessiorapini.me"
-          iconName="email"
-          iconTitle="Email link"
+          name="email"
+          description="Send me an email"
         />
       </li>
       <li className={styles.socialLink}>
         <SplitIcon
-          iconClassName={styles.socialIcons}
+          className={styles.socialIcons}
           url="https://www.behance.net/AlessioRapini"
-          iconName="behance"
-          iconTitle="Behance profile link"
+          name="behance"
+          description="View my Behance profile"
           newTab
         />
       </li>
       <li className={styles.socialLink}>
         <SplitIcon
-          iconClassName={styles.socialIcons}
+          className={styles.socialIcons}
           url="https://www.linkedin.com/in/alessiorapini/"
-          iconName="linkedin"
-          iconTitle="Linkedin profile link"
+          name="linkedin"
+          description="View my Linkedin profile"
           newTab
         />
       </li>
       <li className={styles.socialLink}>
         <SplitIcon
-          iconClassName={styles.socialIcons}
+          className={styles.socialIcons}
           url="https://github.com/rub"
-          iconName="github"
-          iconTitle="Github profile link"
+          name="github"
+          description="View my Github profile"
           newTab
         />
       </li>

@@ -25,7 +25,7 @@ const icons = {
 /**
  * A list of SVG icons
  */
-const Icon = ({ icon, title, className, secondPath }) => (
+const Icon = ({ icon, description, className, secondPath }) => (
   <svg
     className={className}
     viewBox="0 0 24 24"
@@ -34,7 +34,7 @@ const Icon = ({ icon, title, className, secondPath }) => (
     height="24"
     width="24"
   >
-    <title id="iconTitle">{title}</title>
+    <title id="iconTitle">{description}</title>
     <path d={icons[icon].path} />
     {icons[icon].secondPath && <path d={icons[icon].secondPath} />}
   </svg>
@@ -42,7 +42,7 @@ const Icon = ({ icon, title, className, secondPath }) => (
 
 Icon.propTypes = {
   icon: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
   className: PropTypes.string,
   secondPath: PropTypes.string,
 }

@@ -4,21 +4,21 @@ import Icon from "../Icon/Icon"
 
 import styles from "./SplitIcon.module.css"
 
-const SplitIcon = ({ url, newTab, iconName, iconTitle, iconClassName }) =>
-  newTab ? (
+const SplitIcon = ({ url, openInNewTab, name, description, className }) =>
+  openInNewTab ? (
     <a
       href={url}
       className={styles.SplitIcon}
       target="_blank"
       rel="noopener noreferrer"
     >
-      <Icon icon={iconName} title={iconTitle} className={iconClassName} />
-      <Icon icon={iconName} title={iconTitle} className={iconClassName} />
+      <Icon icon={name} description={description} className={className} />
+      <Icon icon={name} description={description} className={className} />
     </a>
   ) : (
     <a href={url} className={styles.SplitIcon}>
-      <Icon icon={iconName} title={iconTitle} className={iconClassName} />
-      <Icon icon={iconName} title={iconTitle} className={iconClassName} />
+      <Icon icon={name} description={description} className={className} />
+      <Icon icon={name} description={description} className={className} />
     </a>
   )
 

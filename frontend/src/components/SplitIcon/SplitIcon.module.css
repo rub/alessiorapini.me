@@ -3,10 +3,14 @@
   position: relative;
 
   & > svg {
+    backdrop-filter: blur(13px);
+    box-shadow: 0 10px 15px rgb(0 0 0 / 20%);
+    height: 1.5rem;
     left: 0;
     top: 0;
     transform: translate(0%, 0%);
     transition: all 0.146s;
+    width: auto;
 
     &:first-child {
       clip-path: polygon(0 0, 100% 0, 100% 50%, 0 50%);
