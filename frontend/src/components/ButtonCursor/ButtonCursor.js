@@ -22,7 +22,6 @@ const ButtonCursor = () => {
   const wrapper = React.useRef(null)
   const circle = React.useRef(null)
   const circleInner = React.useRef(null)
-  const cursorLabel = React.useRef(null)
   const info = React.useRef(null)
   let circleBounds
 
@@ -109,11 +108,7 @@ const ButtonCursor = () => {
         2
       )}px, 0) rotate3d(0, 0, 1, ${rotation}deg) scale3d(${scaleX}, ${scaleY}, 1)`
 
-      cursorLabel.current.style.transform = `translate3d(${vars.current.circleX.toFixed(
-        2
-      )}px, ${vars.current.circleY.toFixed(2)}px, 0)`
-
-      //CURRENT
+      // Current
       let offsetX = vars.current.isHoveringLink
         ? (vars.current.mouseX -
             (vars.current.curActiveLink.linkBounds.left +
@@ -158,7 +153,6 @@ const ButtonCursor = () => {
 
       vars.current.newScaleX = 0.5 // itemBounds.width / circleBounds.width
       circleInner.current.style.backgroundColor = "rgba(204, 255, 40, 0.5)"
-      cursorLabel.current.style.color = "transparent"
 
       // add new event listener for mouse out
       info.current.addEventListener(
@@ -166,8 +160,7 @@ const ButtonCursor = () => {
         () => {
           vars.current.newScaleX = 1
           vars.current.isHoveringLink = false
-          circleInner.current.style.backgroundColor = "rgba(207, 222, 243, 1)"
-          cursorLabel.current.style.color = "inherit"
+          circleInner.current.style.backgroundColor = "rgba(204, 255, 40, 0.5)"
 
           setTimeout(() => {
             vars.current.isInsideLink = false
@@ -200,37 +193,16 @@ const ButtonCursor = () => {
       vars.current.isInWrapper = false
     })
 
-    info.current.addEventListener("mouseenter", e => {
-      snapCursor(e)
-    })
-
     updateMousePos()
     vars.current.isFollowing = true
   }, [])
 
   return (
     <div className={styles.ButtonCursorWrapper} ref={wrapper}>
-      <a
-        href="https://www.behance.net/AlessioRapini"
-        target="_blank"
-        rel="noopener"
-      >
-        <div className={styles.ButtonCursor} ref={circle}>
-          <div className={styles.ButtonCursorInner} ref={circleInner} />
-        </div>
-        <div className={styles.ButtonCursorLabel} ref={cursorLabel}>
-          <p>Portfolio</p>
-        </div>
-      </a>
-      <a
-        href="https://www.behance.net/AlessioRapini"
-        target="_blank"
-        rel="noopener"
-        className={styles.ButtonCursorMobile}
-      >
-        Portfolio
-      </a>
-      <div className={styles.info} ref={info}>
+      <div className={styles.ButtonCursor} ref={circle}>
+        <div className={styles.ButtonCursorInner} ref={circleInner} />
+      </div>
+      <div className={styles.info}>
         <Header className={styles.homeHeader} />
         <Hero />
         <Footer />
