@@ -32,31 +32,17 @@ const RubParallax = () => {
   // Query Rub images
   const data = useStaticQuery(graphql`
     query {
-      mobileImage: file(relativePath: { eq: "rub-mobile.png" }) {
+      file(relativePath: { eq: "rub-picture.png" }) {
         childImageSharp {
-          fluid(maxWidth: 1000, quality: 100) {
-            ...GatsbyImageSharpFluid_withWebp
-          }
-        }
-      }
-      desktopImage: file(relativePath: { eq: "rub-desktop.png" }) {
-        childImageSharp {
-          fluid(maxWidth: 1920, quality: 100) {
-            ...GatsbyImageSharpFluid_withWebp
+          # Specify a fluid image and fragment
+          # The default maxWidth is 800 pixels
+          fluid {
+            ...GatsbyImageSharpFluid
           }
         }
       }
     }
   `)
-
-  // Define which image to provide based on viewport width
-  const sources = [
-    data.mobileImage.childImageSharp.fluid,
-    {
-      ...data.desktopImage.childImageSharp.fluid,
-      media: `(min-width: 800px)`,
-    },
-  ]
 
   // Remember normalized component X position (needed for smoothness)
   const xRef = useRef(0)
@@ -71,8 +57,7 @@ const RubParallax = () => {
   // Add event listener for mouse movement on ComponentDidMount
   useEffect(() => {
     const eventListener = window.addEventListener("mousemove", e => {
-      // Range from -0.5 to 0.5. Multiply by -1 to reverse the animation
-      targetXRef.current = e.clientX / document.body.clientWidth - 0.5
+      targetXRef.current = e.clientX / document.body.clientWidth
     })
     return () => window.removeEventListener("mousemove", eventListener)
   }, [])
@@ -81,12 +66,12 @@ const RubParallax = () => {
     const deltaX = targetXRef.current - xRef.current
     xRef.current = xRef.current + deltaX / 16
 
-    fixedRef.current.props.imgStyle.transform = `perspective(20000px) translateX(-50%) rotate3d(0, 1, 0, calc(0deg + ${xRef.current *
-      25}deg))`
-    leftRef.current.props.imgStyle.transform = `perspective(20000px) translate3d(calc(-50% + ${xRef.current *
-      34}px), 0, 0) rotate3d(0, 1, 0, calc(0deg + ${xRef.current * 25}deg))`
-    rightRef.current.props.imgStyle.transform = `perspective(20000px) translate3d(calc(-50% - ${xRef.current *
-      34}px), 0, 0) rotate3d(0, 1, 0, calc(0deg + ${xRef.current * 25}deg))`
+    // The higher the X(px) value the higher the translation
+    fixedRef.current.props.imgStyle.transform = `translateX(0%)`
+    leftRef.current.props.imgStyle.transform = `translate3d(calc(-3% - ${xRef.current *
+      16}px), 0, 0)`
+    rightRef.current.props.imgStyle.transform = `translate3d(calc(3% + ${xRef.current *
+      16}px), 0, 0)`
 
     fixedRef.current.forceUpdate()
     leftRef.current.forceUpdate()
@@ -100,10 +85,11 @@ const RubParallax = () => {
           className={styles.fixedRub}
           alt="Alessio Rapini's picture"
           draggable={false}
-          fluid={sources}
+          fluid={data.file.childImageSharp.fluid}
           imgStyle={{
-            left: "50%",
-            transform: "translateX(-50%)",
+            height: "100vh",
+            left: "auto",
+            right: "0",
             width: "auto",
           }}
           ref={fixedRef}
@@ -115,10 +101,11 @@ const RubParallax = () => {
           className={styles.parallaxedRubLeft}
           alt="Alessio Rapini's picture with parallax effect"
           draggable={false}
-          fluid={sources}
+          fluid={data.file.childImageSharp.fluid}
           imgStyle={{
-            left: "50%",
-            transform: "translate3d(-50%, 0, 0)",
+            height: "100vh",
+            left: "auto",
+            right: "0",
             width: "auto",
           }}
           ref={leftRef}
@@ -130,10 +117,11 @@ const RubParallax = () => {
           className={styles.parallaxedRubRight}
           alt="Alessio Rapini's picture with parallax effect"
           draggable={false}
-          fluid={sources}
+          fluid={data.file.childImageSharp.fluid}
           imgStyle={{
-            left: "50%",
-            transform: "translate3d(-50%, 0, 0)",
+            height: "100vh",
+            left: "auto",
+            right: "0",
             width: "auto",
           }}
           ref={rightRef}
