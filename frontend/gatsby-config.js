@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    title: `Alessio Rapini ☞ UX Designer / UI Developer`,
+    title: `Alessio Rapini | UX Designer`,
     description: `A showcase of my personal and professional design works`,
     author: `Alessio Rapini`,
     url: "http://alessiorapini.me",

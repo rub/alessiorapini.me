@@ -7,7 +7,7 @@ import SEO from "../components/seo"
 
 const IndexPage = () => (
   <Layout>
-    <SEO title="Alessio Rapini ☞ UX Designer / UI Developer" />
+    <SEO title="Alessio Rapini | UX Designer" />
     <ButtonCursor />
     <RubParallax />
   </Layout>
