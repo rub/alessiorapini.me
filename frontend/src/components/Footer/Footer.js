@@ -21,7 +21,7 @@ const Footer = ({ className }) => (
           url="https://www.behance.net/AlessioRapini"
           name="behance"
           description="View my Behance profile"
-          newTab
+          openInNewTab
         />
       </li>
       <li className={styles.socialLink}>
@@ -30,7 +30,7 @@ const Footer = ({ className }) => (
           url="https://www.linkedin.com/in/alessiorapini/"
           name="linkedin"
           description="View my Linkedin profile"
-          newTab
+          openInNewTab
         />
       </li>
       <li className={styles.socialLink}>
@@ -39,7 +39,7 @@ const Footer = ({ className }) => (
           url="https://github.com/rub"
           name="github"
           description="View my Github profile"
-          newTab
+          openInNewTab
         />
       </li>
     </ul>

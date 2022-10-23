@@ -23,14 +23,10 @@
 
 :root {
   --white: #fff;
-  --grey: #404040;
-  --dark-grey: #303030;
-  --light-grey: #d6d6d6;
-  --lightest-grey: #bfbfbf;
   --accent: hsla(74, 100%, 58%, 100%);
   --grey-100: hsla(81, 26%, 89%, 100%);
-  --grey-300: hsla(167, 171%, 161%, 100%);
-  --grey-500: hsla(105, 107%, 101%, 100%);
+  --grey-300: hsla(84, 6%, 55%, 100%);
+  --grey-500: hsla(80, 3%, 41%, 100%);
   --grey-700: hsla(80, 3%, 36%, 100%);
   --grey-900: hsla(90, 3%, 26%, 100%);
 }

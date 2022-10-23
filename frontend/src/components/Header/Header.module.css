@@ -7,6 +7,14 @@
   padding: 3rem;
   width: 100%;
   z-index: 100;
+
+  @media (max-width: 1168px) {
+    padding: 2rem;
+  }
+
+  @media (max-width: 960px) {
+    padding: 1rem;
+  }
 }
 
 .Logo {

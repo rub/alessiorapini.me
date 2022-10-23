@@ -5,6 +5,14 @@
   max-width: 1264px;
   padding: 0 3rem;
   width: 100%;
+
+  @media (max-width: 1168px) {
+    padding: 0 2rem;
+  }
+
+  @media (max-width: 960px) {
+    padding: 0 1rem;
+  }
 }
 
 .blurryContainer {
@@ -38,6 +46,21 @@
   margin-top: 2rem;
   text-transform: uppercase;
   user-select: none;
+
+  @media (max-width: 1168px) {
+    color: var(--grey-500);
+  }
+
+  @media (max-width: 740px) {
+    color: var(--grey-300);
+    font-size: 1.5rem;
+    margin-top: 1rem;
+  }
+
+  @media (max-width: 600px) {
+    font-size: 1.25rem;
+    letter-spacing: 6px;
+  }
 }
 
 .role {

@@ -2,7 +2,18 @@
   max-width: 1264px;
   padding: 2rem 3rem;
   width: 100%;
-  z-index: 100;
+
+  @media (max-width: 1168px) {
+    padding: 2rem;
+  }
+
+  @media (max-width: 960px) {
+    padding: 2rem 1rem;
+  }
+
+  @media (max-width: 740px) {
+    padding-top: 1rem;
+  }
 }
 
 .socialLinks {
@@ -13,10 +24,24 @@
 
 .socialIcons path {
   fill: rgba(255, 255, 255, 0.31);
+
+  @media (max-width: 740px) {
+    fill: rgba(255, 255, 255, 0.51);
+  }
 }
 
 .copyright {
-  color: #55555d;
+  color: var(--grey-700);
   font-family: "Nunito", sans-serif;
   margin-top: 2rem;
+
+  @media (max-width: 740px) {
+    color: var(--grey-500);
+    margin-top: 1rem;
+  }
+
+  @media (max-width: 600px) {
+    color: var(--grey-300);
+    font-size: 0.875rem;
+  }
 }

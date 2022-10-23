@@ -32,10 +32,15 @@ const RubParallax = () => {
   // Query Rub images
   const data = useStaticQuery(graphql`
     query {
-      file(relativePath: { eq: "rub-picture.png" }) {
+      mobileImage: file(relativePath: { eq: "rub-small.png" }) {
         childImageSharp {
-          # Specify a fluid image and fragment
-          # The default maxWidth is 800 pixels
+          fluid {
+            ...GatsbyImageSharpFluid_withWebp
+          }
+        }
+      }
+      desktopImage: file(relativePath: { eq: "rub-big.png" }) {
+        childImageSharp {
           fluid {
             ...GatsbyImageSharpFluid
           }
@@ -43,6 +48,15 @@ const RubParallax = () => {
       }
     }
   `)
+
+  // Define which image to provide based on viewport width
+  const sources = [
+    data.mobileImage.childImageSharp.fluid,
+    {
+      ...data.desktopImage.childImageSharp.fluid,
+      media: `(min-width: 600px)`,
+    },
+  ]
 
   // Remember normalized component X position (needed for smoothness)
   const xRef = useRef(0)
@@ -85,7 +99,7 @@ const RubParallax = () => {
           className={styles.fixedRub}
           alt="Alessio Rapini's picture"
           draggable={false}
-          fluid={data.file.childImageSharp.fluid}
+          fluid={sources}
           imgStyle={{
             height: "100vh",
             left: "auto",
@@ -101,7 +115,7 @@ const RubParallax = () => {
           className={styles.parallaxedRubLeft}
           alt="Alessio Rapini's picture with parallax effect"
           draggable={false}
-          fluid={data.file.childImageSharp.fluid}
+          fluid={sources}
           imgStyle={{
             height: "100vh",
             left: "auto",
@@ -117,7 +131,7 @@ const RubParallax = () => {
           className={styles.parallaxedRubRight}
           alt="Alessio Rapini's picture with parallax effect"
           draggable={false}
-          fluid={data.file.childImageSharp.fluid}
+          fluid={sources}
           imgStyle={{
             height: "100vh",
             left: "auto",
