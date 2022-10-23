@@ -3,9 +3,9 @@
 /* Font: Nunito - regular, bold */
 @import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap");
 
-/* Font: Druk Cyr - bold & fallbacks */
+/* Font: Druk Cyr */
 @font-face {
-  font-family: "Druk Cyr", Fallback Druk, sans-serif;
+  font-family: "Druk Cyr";
   src: url("/fonts/DrukCyr-Bold.woff2") format("woff2");
   font-display: swap;
   unicode-range: U+0025-00FF;
@@ -22,6 +22,7 @@
 }
 
 :root {
+  /* Colors */
   --white: #fff;
   --accent: hsla(74, 100%, 58%, 100%);
   --grey-100: hsla(81, 26%, 89%, 100%);
@@ -29,11 +30,14 @@
   --grey-500: hsla(80, 3%, 41%, 100%);
   --grey-700: hsla(80, 3%, 36%, 100%);
   --grey-900: hsla(90, 3%, 26%, 100%);
+  /* Fonts */
+  --druk-cyr: "Druk Cyr", "Fallback Druk", sans-serif;
 }
 
 html {
-  font: 18px/1.5 "Druk Cyr", Fallback Druk, sans-serif;
+  font: 18px/1.5 var(--druk-cyr);
   overflow: auto;
+  -webkit-font-smoothing: antialiased;
 }
 
 html,
@@ -46,7 +50,7 @@ body {
 }
 
 h1 {
-  font-family: "Druk Cyr", Fallback Druk, sans-serif;
+  font-family: var(--druk-cyr);
   text-transform: uppercase;
 }
 
