@@ -46,7 +46,7 @@
     box-shadow: 0 10px 15px rgb(0 0 0 / 10%);
     content: "";
     height: 100%;
-    left: 0;
+    left: 0.05rem;
     opacity: 1;
     pointer-events: none;
     position: absolute;
@@ -54,7 +54,7 @@
     transform: scale3d(1, 0.1, 1) translate3d(-3px, 1px, 0px);
     transform-origin: bottom;
     transition: all 0.292s cubic-bezier(1, 0, 0, 1);
-    top: -0.25rem;
+    top: -0.3rem;
     width: 100%;
     z-index: -1;
   }

@@ -42,7 +42,7 @@ const RubParallax = () => {
       desktopImage: file(relativePath: { eq: "rub-big.png" }) {
         childImageSharp {
           fluid {
-            ...GatsbyImageSharpFluid
+            ...GatsbyImageSharpFluid_withWebp
           }
         }
       }
@@ -106,6 +106,7 @@ const RubParallax = () => {
             right: "0",
             width: "auto",
           }}
+          critical
           ref={fixedRef}
           fadeIn={false}
         />
@@ -122,6 +123,7 @@ const RubParallax = () => {
             right: "0",
             width: "auto",
           }}
+          critical
           ref={leftRef}
           fadeIn={false}
         />
@@ -138,6 +140,7 @@ const RubParallax = () => {
             right: "0",
             width: "auto",
           }}
+          critical
           ref={rightRef}
           fadeIn={false}
         />

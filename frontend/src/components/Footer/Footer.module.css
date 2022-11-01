@@ -22,8 +22,15 @@
   justify-content: flex-start;
 }
 
-.socialIcons path {
+.socialLink {
+  &:hover .socialIcon {
+    fill: var(--grey-300);
+  }
+}
+
+.socialIcon {
   fill: var(--grey-500);
+  transition: all 1.146s;
 
   @media (max-width: 740px) {
     fill: var(--grey-300);
@@ -32,7 +39,7 @@
 
 .copyright {
   color: var(--grey-700);
-  font-family: "Nunito", sans-serif;
+  font-family: "Zilla Slab", serif;
   margin-top: 2rem;
 
   @media (max-width: 740px) {

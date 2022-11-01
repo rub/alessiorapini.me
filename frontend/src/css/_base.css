@@ -1,7 +1,7 @@
 /** Custom base styles */
 
-/* Font: Nunito - regular, bold */
-@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap");
+/* Font: Zilla Slab - regular */
+@import url("https://fonts.googleapis.com/css2?family=Zilla+Slab&display=swap");
 
 /* Font: Druk Cyr */
 @font-face {
@@ -35,7 +35,7 @@
 }
 
 html {
-  font: 18px/1.5 var(--druk-cyr);
+  font: 18px / normal var(--druk-cyr);
   overflow: auto;
   -webkit-font-smoothing: antialiased;
 }

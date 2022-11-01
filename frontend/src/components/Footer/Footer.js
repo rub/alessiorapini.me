@@ -9,7 +9,7 @@ const Footer = ({ className }) => (
     <ul className={styles.socialLinks}>
       <li className={styles.socialLink}>
         <SplitIcon
-          className={styles.socialIcons}
+          className={styles.socialIcon}
           url="mailto:hello@alessiorapini.me"
           name="email"
           description="Send me an email"
@@ -17,7 +17,7 @@ const Footer = ({ className }) => (
       </li>
       <li className={styles.socialLink}>
         <SplitIcon
-          className={styles.socialIcons}
+          className={styles.socialIcon}
           url="https://www.behance.net/AlessioRapini"
           name="behance"
           description="View my Behance profile"
@@ -26,7 +26,7 @@ const Footer = ({ className }) => (
       </li>
       <li className={styles.socialLink}>
         <SplitIcon
-          className={styles.socialIcons}
+          className={styles.socialIcon}
           url="https://www.linkedin.com/in/alessiorapini/"
           name="linkedin"
           description="View my Linkedin profile"
@@ -35,7 +35,7 @@ const Footer = ({ className }) => (
       </li>
       <li className={styles.socialLink}>
         <SplitIcon
-          className={styles.socialIcons}
+          className={styles.socialIcon}
           url="https://github.com/rub"
           name="github"
           description="View my Github profile"
