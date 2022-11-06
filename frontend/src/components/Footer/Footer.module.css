@@ -1,18 +1,17 @@
 .Footer {
+  animation: footer-reveal 500ms ease-out 3500ms forwards;
   max-width: 1264px;
+  opacity: 0;
   padding: 2rem 3rem;
   width: 100%;
 
-  @media (max-width: 1168px) {
-    padding: 2rem;
-  }
-
-  @media (max-width: 960px) {
-    padding: 2rem 1rem;
+  @media (max-width: 1260px) {
+    padding: 2rem 0;
+    width: 90vw;
   }
 
   @media (max-width: 740px) {
-    padding: 1rem;
+    padding: 1rem 0;
   }
 }
 
@@ -50,5 +49,14 @@
   @media (max-width: 600px) {
     color: var(--grey-300);
     font-size: 0.875rem;
+  }
+}
+
+@keyframes footer-reveal {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }
