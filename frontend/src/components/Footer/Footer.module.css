@@ -11,7 +11,7 @@
   }
 
   @media (max-width: 740px) {
-    padding: 1rem 0;
+    padding: 1.5rem 0 1rem;
   }
 }
 
@@ -19,6 +19,10 @@
   display: flex;
   gap: 2rem;
   justify-content: flex-start;
+
+  @media (max-width: 740px) {
+    gap: 1.5rem;
+  }
 }
 
 .socialLink {
@@ -28,11 +32,11 @@
 }
 
 .socialIcon {
-  fill: var(--grey-500);
+  fill: var(--grey-700);
   transition: all 1.146s;
 
   @media (max-width: 740px) {
-    fill: var(--grey-300);
+    fill: var(--grey-500);
   }
 }
 
@@ -47,7 +51,6 @@
   }
 
   @media (max-width: 600px) {
-    color: var(--grey-300);
     font-size: 0.875rem;
   }
 }

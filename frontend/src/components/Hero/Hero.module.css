@@ -98,14 +98,9 @@
   }
 
   @media (max-width: 740px) {
-    color: var(--grey-300);
-    font-size: 1.5rem;
-    margin-top: 1rem;
-  }
-
-  @media (max-width: 600px) {
-    font-size: 1.25rem;
+    font-size: 6.5vw;
     letter-spacing: 6px;
+    margin-top: 1rem;
   }
 }
 
