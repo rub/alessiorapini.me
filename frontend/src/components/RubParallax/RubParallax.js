@@ -106,7 +106,6 @@ const RubParallax = () => {
             right: "0",
             width: "auto",
           }}
-          critical
           ref={fixedRef}
           fadeIn={false}
         />
@@ -123,7 +122,6 @@ const RubParallax = () => {
             right: "0",
             width: "auto",
           }}
-          critical
           ref={leftRef}
           fadeIn={false}
         />
@@ -140,7 +138,6 @@ const RubParallax = () => {
             right: "0",
             width: "auto",
           }}
-          critical
           ref={rightRef}
           fadeIn={false}
         />
