@@ -3,7 +3,7 @@
 .RubParallax {
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  height: 100%;
 }
 
 /* [1] Center the picture bypassing the cropping effect due to object-fit: cover */

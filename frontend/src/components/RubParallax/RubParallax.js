@@ -101,7 +101,7 @@ const RubParallax = () => {
           draggable={false}
           fluid={sources}
           imgStyle={{
-            height: "100vh",
+            height: "100%",
             left: "auto",
             right: "0",
             width: "auto",
@@ -117,7 +117,7 @@ const RubParallax = () => {
           draggable={false}
           fluid={sources}
           imgStyle={{
-            height: "100vh",
+            height: "100%",
             left: "auto",
             right: "0",
             width: "auto",
@@ -133,7 +133,7 @@ const RubParallax = () => {
           draggable={false}
           fluid={sources}
           imgStyle={{
-            height: "100vh",
+            height: "100%",
             left: "auto",
             right: "0",
             width: "auto",
