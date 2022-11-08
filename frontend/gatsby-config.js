@@ -3,7 +3,7 @@ module.exports = {
     title: `Alessio Rapini | UX Designer`,
     description: `UX Designer (who loves to code too)`,
     author: `Alessio Rapini`,
-    url: "http://alessiorapini.me",
+    siteUrl: "https://alessiorapini.me",
     image: "./src/images/favicon.png",
     twitterUsername: "@alessiorapini",
   },
