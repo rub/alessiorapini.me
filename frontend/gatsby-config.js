@@ -1,14 +1,13 @@
 module.exports = {
   siteMetadata: {
     title: `Alessio Rapini | UX Designer`,
-    description: `A showcase of my personal and professional design works`,
+    description: `UX Designer (who loves to code too)`,
     author: `Alessio Rapini`,
     url: "http://alessiorapini.me",
     image: "./src/images/favicon.png",
     twitterUsername: "@alessiorapini",
   },
   plugins: [
-    `gatsby-plugin-react-helmet`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
