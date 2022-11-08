@@ -1,4 +1,4 @@
-.Header {
+.header {
   align-items: center;
   color: #f2f2f3;
   display: flex;
@@ -17,7 +17,7 @@
   }
 }
 
-.Logo {
+.logo {
   align-items: center;
   animation: header-reveal 1000ms ease-out 4500ms forwards;
   backdrop-filter: blur(13px) saturate(250%);
@@ -31,7 +31,7 @@
   width: 2rem;
 }
 
-.NavLink {
+.navLink {
   align-items: center;
   animation: header-reveal 1000ms ease-out 4500ms forwards;
   color: var(--grey-100);

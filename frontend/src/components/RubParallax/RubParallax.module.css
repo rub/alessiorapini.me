@@ -1,6 +1,6 @@
 @custom-media --small (width <= 800px);
 
-.RubParallax {
+.rubParallax {
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -92,19 +92,4 @@
     100% 100%,
     0% 100%
   );
-}
-
-.portfolioButton {
-  bottom: 15vh;
-  left: 50%;
-  position: absolute;
-  transform: translateX(-50%);
-
-  @media (--small) {
-    bottom: 20vh;
-  }
-
-  @media (--small) and (orientation: landscape) {
-    bottom: 25vh;
-  }
 }

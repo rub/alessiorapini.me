@@ -1,16 +1,23 @@
-import React, { useEffect, useRef, useState } from "react"
-import { useStaticQuery, graphql, Link } from "gatsby"
+import React, { useEffect, useRef } from "react"
+import { useStaticQuery, graphql } from "gatsby"
 import Img from "gatsby-image"
 
-import styles from "./RubParallax.module.css"
+import {
+  rubParallax,
+  fixedRubContainer,
+  parallaxedRubContainer,
+  fixedRub,
+  parallaxedRubLeft,
+  parallaxedRubRight,
+} from "./RubParallax.module.css"
 
-const useAnimationFrame = callback => {
+const useAnimationFrame = (callback) => {
   // Use useRef for mutable variables that we want to persist
   // without triggering a re-render on their change
   const requestRef = React.useRef()
   const previousTimeRef = React.useRef()
 
-  const animate = time => {
+  const animate = (time) => {
     if (previousTimeRef.current != undefined) {
       const deltaTime = time - previousTimeRef.current
       callback(deltaTime)
@@ -70,22 +77,24 @@ const RubParallax = () => {
 
   // Add event listener for mouse movement on ComponentDidMount
   useEffect(() => {
-    const eventListener = window.addEventListener("mousemove", e => {
+    const eventListener = window.addEventListener("mousemove", (e) => {
       targetXRef.current = e.clientX / document.body.clientWidth
     })
     return () => window.removeEventListener("mousemove", eventListener)
   }, [])
 
-  useAnimationFrame(deltaTime => {
+  useAnimationFrame((deltaTime) => {
     const deltaX = targetXRef.current - xRef.current
     xRef.current = xRef.current + deltaX / 16
 
     // The higher the X(px) value the higher the translation
     fixedRef.current.props.imgStyle.transform = `translateX(0%)`
-    leftRef.current.props.imgStyle.transform = `translate3d(calc(-3% - ${xRef.current *
-      16}px), 0, 0)`
-    rightRef.current.props.imgStyle.transform = `translate3d(calc(3% + ${xRef.current *
-      16}px), 0, 0)`
+    leftRef.current.props.imgStyle.transform = `translate3d(calc(-3% - ${
+      xRef.current * 16
+    }px), 0, 0)`
+    rightRef.current.props.imgStyle.transform = `translate3d(calc(3% + ${
+      xRef.current * 16
+    }px), 0, 0)`
 
     fixedRef.current.forceUpdate()
     leftRef.current.forceUpdate()
@@ -93,10 +102,10 @@ const RubParallax = () => {
   })
 
   return (
-    <div className={styles.RubParallax}>
-      <div className={styles.fixedRubContainer}>
+    <div className={rubParallax}>
+      <div className={fixedRubContainer}>
         <Img
-          className={styles.fixedRub}
+          className={fixedRub}
           alt="Alessio Rapini's picture"
           draggable={false}
           fluid={sources}
@@ -110,9 +119,9 @@ const RubParallax = () => {
           fadeIn={false}
         />
       </div>
-      <div className={styles.parallaxedRubContainer}>
+      <div className={parallaxedRubContainer}>
         <Img
-          className={styles.parallaxedRubLeft}
+          className={parallaxedRubLeft}
           alt="Alessio Rapini's picture with parallax effect"
           draggable={false}
           fluid={sources}
@@ -126,9 +135,9 @@ const RubParallax = () => {
           fadeIn={false}
         />
       </div>
-      <div className={styles.parallaxedRubContainer}>
+      <div className={parallaxedRubContainer}>
         <Img
-          className={styles.parallaxedRubRight}
+          className={parallaxedRubRight}
           alt="Alessio Rapini's picture with parallax effect"
           draggable={false}
           fluid={sources}

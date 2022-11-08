@@ -2,7 +2,7 @@ import React from "react"
 import PropTypes from "prop-types"
 
 import "../css/main.css"
-import styles from "./Layout.module.css"
+import { layout } from "./layout.module.css"
 
 /**
  * Layout component that queries for data
@@ -11,7 +11,7 @@ import styles from "./Layout.module.css"
  * See: https://www.gatsbyjs.org/docs/use-static-query/
  */
 const Layout = ({ children }) => (
-  <div className={styles.Layout}>
+  <div className={layout}>
     <main>{children}</main>
   </div>
 )

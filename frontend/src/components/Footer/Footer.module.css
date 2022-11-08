@@ -1,4 +1,4 @@
-.Footer {
+.footer {
   animation: footer-reveal 500ms ease-out 3500ms forwards;
   max-width: 1264px;
   opacity: 0;

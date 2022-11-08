@@ -1,13 +1,11 @@
 @custom-media --medium (width <= 1024px);
-@custom-media --small (width <= 800px);
-@custom-media --xsmall (width <= 600px);
 
 /*
 Use `hover: none` to detect mobile devices in order to disable the
 button cursor and apply responsive changes to the Footer layout.
 */
 
-.ButtonCursorWrapper {
+.buttonCursorWrapper {
   --circleDiameter: 3rem;
   --easeOutExpo: cubic-bezier(0.19, 1, 0.22, 1);
 
@@ -19,7 +17,7 @@ button cursor and apply responsive changes to the Footer layout.
   top: 0;
   width: 100vw;
 
-  &:hover .ButtonCursor {
+  &:hover .buttonCursor {
     opacity: 0.9;
   }
 
@@ -36,7 +34,7 @@ button cursor and apply responsive changes to the Footer layout.
   }
 }
 
-.ButtonCursor {
+.buttonCursor {
   cursor: pointer;
   left: 0;
   opacity: 0;
@@ -52,7 +50,7 @@ button cursor and apply responsive changes to the Footer layout.
   }
 }
 
-.ButtonCursorInner {
+.buttonCursorInner {
   background-color: rgba(204, 255, 40, 0.5);
   border-radius: 50%;
   cursor: pointer;
@@ -61,7 +59,7 @@ button cursor and apply responsive changes to the Footer layout.
   width: var(--circleDiameter);
 }
 
-.info {
+.mainWrapper {
   align-items: center;
   display: flex;
   flex-direction: column;

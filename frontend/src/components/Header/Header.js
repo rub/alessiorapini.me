@@ -1,13 +1,13 @@
 import React from "react"
 
-import styles from "./Header.module.css"
+import { header, logo, navLink } from "./Header.module.css"
 
 const Header = () => (
-  <header className={styles.Header}>
-    <div className={styles.Logo}>AR</div>
+  <header className={header}>
+    <div className={logo}>AR</div>
     <nav>
       <a
-        className={styles.NavLink}
+        className={navLink}
         href="https://www.behance.net/AlessioRapini"
         target="_blank"
         rel="noopener"

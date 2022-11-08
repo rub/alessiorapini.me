@@ -1,4 +1,4 @@
-.SplitIcon {
+.splitIcon {
   display: inline-block;
   position: relative;
 
@@ -23,7 +23,7 @@
 }
 
 /** Split icon on hover event */
-.SplitIcon:hover {
+.splitIcon:hover {
   & > svg:first-child {
     transform: translate(0%, -6%);
   }

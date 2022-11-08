@@ -1,10 +1,15 @@
-import React from "react"
+import React, { useEffect } from "react"
 
 import Header from "../Header/Header.js"
 import Hero from "../Hero/Hero"
 import Footer from "../Footer/Footer.js"
 
-import styles from "./ButtonCursor.module.css"
+import {
+  buttonCursorWrapper,
+  buttonCursor,
+  buttonCursorInner,
+  mainWrapper,
+} from "./ButtonCursor.module.css"
 
 function map(from, to, value) {
   return to[0] + ((value - from[0]) * (to[1] - to[0])) / (from[1] - from[0])
@@ -57,7 +62,7 @@ const ButtonCursor = () => {
     newScaleX: 1,
   })
 
-  React.useEffect(() => {
+  useEffect(() => {
     function updateMousePos() {
       if (!wrapper.current) {
         return
@@ -172,7 +177,7 @@ const ButtonCursor = () => {
 
     circleBounds = circle.current.getBoundingClientRect()
 
-    wrapper.current.addEventListener("mousemove", e => {
+    wrapper.current.addEventListener("mousemove", (e) => {
       vars.current.newMouseX = e.clientX - circleBounds.width / 2
       vars.current.newMouseY = e.clientY - circleBounds.height / 2
 
@@ -180,7 +185,7 @@ const ButtonCursor = () => {
       vars.current.mouseY = e.clientY
     })
 
-    wrapper.current.addEventListener("mouseenter", e => {
+    wrapper.current.addEventListener("mouseenter", (e) => {
       if (vars.current.isFollowing) {
         return
       }
@@ -189,7 +194,7 @@ const ButtonCursor = () => {
       vars.current.isFollowing = true
     })
 
-    wrapper.current.addEventListener("mouseleave", e => {
+    wrapper.current.addEventListener("mouseleave", (e) => {
       vars.current.isInWrapper = false
     })
 
@@ -198,12 +203,12 @@ const ButtonCursor = () => {
   }, [])
 
   return (
-    <div className={styles.ButtonCursorWrapper} ref={wrapper}>
-      <div className={styles.ButtonCursor} ref={circle}>
-        <div className={styles.ButtonCursorInner} ref={circleInner} />
+    <div className={buttonCursorWrapper} ref={wrapper}>
+      <div className={buttonCursor} ref={circle}>
+        <div className={buttonCursorInner} ref={circleInner} />
       </div>
-      <div className={styles.info}>
-        <Header className={styles.homeHeader} />
+      <div className={mainWrapper}>
+        <Header />
         <Hero />
         <Footer />
       </div>
