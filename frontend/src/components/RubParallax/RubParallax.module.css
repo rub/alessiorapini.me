@@ -1,19 +1,15 @@
-@custom-media --small (width <= 800px);
-
 .rubParallax {
   display: flex;
-  flex-direction: column;
   height: 100%;
+  justify-content: flex-end;
 }
 
-/* [1] Center the picture bypassing the cropping effect due to object-fit: cover */
 .fixedRubContainer {
   height: 100%;
   overflow: hidden;
-  position: relative;
+  width: fit-content;
 }
 
-/* [1] Center the picture bypassing the cropping effect due to object-fit: cover */
 .parallaxedRubContainer {
   height: 100%;
   overflow: hidden;
