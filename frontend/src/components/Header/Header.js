@@ -1,19 +1,17 @@
 import React from "react"
+import { Link } from "gatsby"
 
 import { header, logo, navLink } from "./Header.module.css"
 
 const Header = () => (
   <header className={header}>
-    <div className={logo}>AR</div>
+    <Link to="/" className={logo}>
+      AR
+    </Link>
     <nav>
-      <a
-        className={navLink}
-        href="https://www.behance.net/AlessioRapini"
-        target="_blank"
-        rel="noopener"
-      >
+      <Link to="/works" className={navLink}>
         Selected works
-      </a>
+      </Link>
     </nav>
   </header>
 )

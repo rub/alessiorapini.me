@@ -9,7 +9,6 @@ button cursor and apply responsive changes to the Footer layout.
   --circleDiameter: 3rem;
   --easeOutExpo: cubic-bezier(0.19, 1, 0.22, 1);
 
-  background-color: #0a0a0a;
   height: 100%;
   left: 0;
   overflow: hidden;
