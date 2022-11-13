@@ -1,0 +1,90 @@
+.worksWrapper {
+  color: var(--grey-100);
+  margin: auto;
+  max-width: 1264px;
+  padding: 0 3rem;
+  width: 100%;
+
+  position: fixed;
+  top: 0;
+  left: 50%;
+  height: 100%;
+  transform: translateX(-50%);
+  width: 100%;
+  overflow: hidden;
+  will-change: transform;
+}
+
+.work {
+  font-size: 160px;
+  position: relative;
+
+  & + .work {
+    margin-top: 4rem;
+  }
+}
+
+.workFixed {
+  opacity: 0.5;
+}
+
+.workSlicedTop,
+.workSlicedBottom {
+  left: 0;
+  opacity: 0.5;
+  position: absolute;
+}
+
+.workSlicedTop {
+  clip-path: polygon(
+    0 0,
+    0 100%,
+    10% 100%,
+    10% 0,
+    20% 0,
+    20% 100%,
+    30% 100%,
+    30% 0,
+    40% 0,
+    40% 100%,
+    50% 100%,
+    50% 0,
+    60% 0,
+    60% 100%,
+    70% 100%,
+    70% 0,
+    80% 0,
+    80% 100%,
+    90% 100%,
+    90% 0,
+    100% 0,
+    100% 100%,
+    0 100%,
+    0 0
+  );
+}
+
+.workSlicedBottom {
+  clip-path: polygon(
+    0 0,
+    0 100%,
+    10% 100%,
+    10% 0,
+    20% 0,
+    20% 100%,
+    30% 100%,
+    30% 0,
+    40% 0,
+    40% 100%,
+    50% 100%,
+    50% 0,
+    60% 0,
+    60% 100%,
+    70% 100%,
+    70% 0,
+    80% 0,
+    80% 100%,
+    90% 100%,
+    90% 0
+  );
+}

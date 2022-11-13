@@ -2,7 +2,11 @@ import React from "react"
 import PropTypes from "prop-types"
 
 import "../css/main.css"
-import { layout } from "./layout.module.css"
+import {
+  layoutWrapper,
+  layoutFullScreen,
+  layoutStandard,
+} from "./layout.module.css"
 
 /**
  * Layout component that queries for data
@@ -10,8 +14,12 @@ import { layout } from "./layout.module.css"
  *
  * See: https://www.gatsbyjs.org/docs/use-static-query/
  */
-const Layout = ({ children }) => (
-  <div className={layout}>
+const Layout = ({ children, fullScreen }) => (
+  <div
+    className={`${layoutWrapper} ${
+      fullScreen ? layoutFullScreen : layoutStandard
+    }`}
+  >
     <main>{children}</main>
   </div>
 )

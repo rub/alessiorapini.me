@@ -46,7 +46,8 @@ body {
 }
 
 body {
-  overflow: hidden;
+  background-color: #0a0a0a;
+  overflow-x: hidden;
 }
 
 /* Set the height to fill the visible viewport on mobile */

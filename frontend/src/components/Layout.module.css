@@ -1,8 +1,14 @@
-.layout {
-  background-color: #0a0a0a;
+.layoutWrapper {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 100%;
   position: relative;
+}
+
+.layoutStandard {
+  min-height: 100%;
+}
+
+.layoutFullScreen {
+  height: 100%;
 }
