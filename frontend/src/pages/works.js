@@ -5,7 +5,7 @@ import WorksList from "../components/WorksList/WorksList"
 
 const Works = () => (
   <Layout fullScreen>
-    <Header />
+    <Header isFixed />
     <WorksList />
   </Layout>
 )

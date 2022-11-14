@@ -1,10 +1,10 @@
 import React from "react"
 import { Link } from "gatsby"
 
-import { header, logo, navLink } from "./Header.module.css"
+import { header, positionFixed, logo, navLink } from "./Header.module.css"
 
-const Header = () => (
-  <header className={header}>
+const Header = ({ isFixed }) => (
+  <header className={`${header} ${isFixed ? positionFixed : ""}`}>
     <Link to="/" className={logo}>
       AR
     </Link>

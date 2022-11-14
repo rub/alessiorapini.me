@@ -19,6 +19,12 @@
   }
 }
 
+.positionFixed {
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
 .logo {
   align-items: center;
   animation: header-reveal 1000ms ease-out 4500ms forwards;
