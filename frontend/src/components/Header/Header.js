@@ -9,7 +9,7 @@ const Header = ({ isFixed }) => (
       AR
     </Link>
     <nav>
-      <Link to="/works" className={navLink}>
+      <Link to="/projects" className={navLink}>
         Selected works
       </Link>
     </nav>

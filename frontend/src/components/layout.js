@@ -1,12 +1,11 @@
 import React from "react"
 import PropTypes from "prop-types"
-
 import "../css/main.css"
 import {
   layoutWrapper,
   layoutFullScreen,
   layoutStandard,
-} from "./layout.module.css"
+} from "./Layout.module.css"
 
 /**
  * Layout component that queries for data

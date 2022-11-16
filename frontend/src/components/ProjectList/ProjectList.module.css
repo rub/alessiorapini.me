@@ -1,0 +1,99 @@
+/* TODO: Restore all the height: 100 */
+
+.projectListContent {
+  height: 100%;
+  margin: 0 auto;
+}
+
+.projectListFixed,
+.projectListSlicedLeft,
+.projectListSlicedRight {
+  height: 100%;
+}
+
+.projectListSlicedLeft,
+.projectListSlicedRight {
+  opacity: 0.5;
+}
+
+.projectListGrid {
+  align-items: center;
+  display: grid;
+  grid-template-columns: repeat(5, 66vw);
+  height: 100%;
+}
+
+.projectListSlicedGridLeft,
+.projectListSlicedGridRight {
+  align-items: center;
+  display: grid;
+  grid-template-columns: repeat(5, 66vw);
+  height: 100%;
+  position: relative;
+  width: 100%;
+}
+
+.projectListSlicedGridLeft {
+  bottom: 100%;
+}
+
+.projectListSlicedGridRight {
+  bottom: 200%;
+}
+
+.projectSlicedImageLeft,
+.projectSlicedImageRight {
+  display: flex;
+  flex-shrink: 0;
+  justify-content: center;
+}
+
+.projectSlicedImageLeft {
+  clip-path: polygon(
+    0 0,
+    100% 0,
+    100% 10%,
+    0 10%,
+    0 20%,
+    100% 20%,
+    100% 30%,
+    0 30%,
+    0 40%,
+    100% 40%,
+    100% 50%,
+    0 50%,
+    0 60%,
+    100% 60%,
+    100% 70%,
+    0 70%,
+    0 80%,
+    100% 80%,
+    100% 90%,
+    0 90%
+  );
+}
+
+.projectSlicedImageRight {
+  clip-path: polygon(
+    0 10%,
+    100% 10%,
+    100% 20%,
+    0 20%,
+    0 30%,
+    100% 30%,
+    100% 40%,
+    0 40%,
+    0 50%,
+    100% 50%,
+    100% 60%,
+    0 60%,
+    0 70%,
+    100% 70%,
+    100% 80%,
+    0 80%,
+    0 90%,
+    100% 90%,
+    100% 100%,
+    0 100%
+  );
+}
