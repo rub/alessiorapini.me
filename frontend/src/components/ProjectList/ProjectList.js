@@ -1,30 +1,7 @@
-import React, { useEffect, useRef, useResizeObserver } from "react"
+import React, { useEffect, useRef, useState } from "react"
 import { useStaticQuery, graphql } from "gatsby"
-import { GatsbyImage } from "gatsby-plugin-image"
-import LocomotiveScroll from "locomotive-scroll"
 import ProjectItem from "../ProjectItem/ProjectItem"
-import "../../../node_modules/locomotive-scroll/dist/locomotive-scroll.css"
-import {
-  projectListWrapper,
-  projectListContent,
-  projectListFixed,
-  projectListSlicedLeft,
-  projectListSlicedRight,
-  projectListGrid,
-  projectListSlicedGridLeft,
-  projectListSlicedGridRight,
-  projectSlicedImageLeft,
-  projectSlicedImageRight,
-} from "./ProjectList.module.css"
-
-const clamp = (value, min, max) => {
-  if (value <= min) {
-    return min
-  } else if (value >= max) {
-    return max
-  }
-  return value
-}
+import { projectListWrapper } from "./ProjectList.module.css"
 
 export default ProjectList = () => {
   const projectsQuery = useStaticQuery(graphql`
@@ -39,106 +16,89 @@ export default ProjectList = () => {
                 gatsbyImageData
               }
             }
+            roles
           }
         }
       }
     }
   `)
 
-  const ref = useRef(null)
-  const FixedgridRef = useRef(null)
-  const SlicedLeftGridRef = useRef(null)
-  const SlicedRightGridRef = useRef(null)
-  const scroll = useRef({ cache: 0, current: 0 })
+  const menuItems = useRef(null)
+  // Move the project items to a state to duplicate them
+  const [renderItems, setRenderItems] = useState(
+    projectsQuery.allMarkdownRemark.nodes
+  )
+
+  const cloneItems = () => {
+    // Get the height of the first element
+    const itemHeight = menuItems.current.childNodes[0].offsetHeight
+    // Calculate how many elements can fit into the viewport
+    const fitMax = Math.ceil(window.innerHeight / itemHeight)
+
+    // Clone the items
+    const clonedItems = [...renderItems]
+      .filter((_, index) => index < fitMax)
+      .map((target) => target)
+
+    // Add the cloned items to the original ones
+    setRenderItems([...renderItems, ...clonedItems])
+    return clonedItems.length * itemHeight
+  }
+
+  // Get the current scroll position
+  const getScrollPosition = () => {
+    return (
+      (menuItems.current.pageYOffset || menuItems.current.scrollTop) -
+      (menuItems.current.clientTop || 0)
+    )
+  }
+
+  const setScrollPosition = (position) => {
+    menuItems.current.scrollTop = position
+  }
+
+  const initScroll = () => {
+    const scrollPosition = getScrollPosition()
+    if (scrollPosition <= 0) {
+      setScrollPosition(1)
+    }
+  }
 
   useEffect(() => {
-    const scrollElement = new LocomotiveScroll({
-      el: ref.current,
-      smooth: true,
-      smartphone: {
-        smooth: true,
-      },
-      direction: "horizontal",
-      getDirection: true,
-      getSpeed: true,
-    })
+    const clonesHeight = cloneItems()
+    initScroll()
 
-    scrollElement.on("scroll", (obj) => {
-      scroll.current.current = obj.scroll.x
-      const distance = scroll.current.current - scroll.current.cache
-      scroll.current.cache = scroll.current.current
+    const scrollUpdate = () => {
+      const scrollPosition = getScrollPosition()
+      if (clonesHeight + scrollPosition >= menuItems.current.scrollHeight) {
+        setScrollPosition(1)
+      } else if (scrollPosition <= 0) {
+        setScrollPosition((menuItems.current.scrollHeight = clonesHeight))
+      }
+    }
+    menuItems.current.addEventListener("scroll", scrollUpdate)
 
-      SlicedLeftGridRef.current.style.transform = `translate3d(${clamp(
-        distance,
-        -20,
-        20
-      )}px, 0, 0)`
-      SlicedRightGridRef.current.style.transform = `translate3d(${clamp(
-        -distance,
-        -20,
-        20
-      )}px, 0, 0)`
-      // SlicedLeftGridRef.current.style.transform = `translate3d(${distance}px, 0, 0)`
-      // SlicedRightGridRef.current.style.transform = `translate3d(${-distance}px, 0, 0)`
-    })
-  })
+    return () => {
+      menuItems.current.removeEventListener("scroll", scrollUpdate)
+    }
+  }, [])
 
   return (
-    <div
-      className={projectListWrapper}
-      id="main-container"
-      data-scroll-container
-      ref={ref}
-    >
-      <div className={projectListContent}>
-        <div className={projectListFixed} ref={FixedgridRef}>
-          <div className={projectListGrid}>
-            {projectsQuery.allMarkdownRemark.nodes.map((project, index) => (
-              <ProjectItem
-                key={index}
-                clipElement={index}
-                title={project.frontmatter.title}
-                image={
-                  project.frontmatter.featured_image.childImageSharp
-                    .gatsbyImageData
-                }
-              />
-            ))}
-          </div>
-        </div>
-        <div className={projectListSlicedLeft} ref={SlicedLeftGridRef}>
-          <div className={`${projectListGrid} ${projectListSlicedGridLeft}`}>
-            {projectsQuery.allMarkdownRemark.nodes.map((project, index) => (
-              <div className={projectSlicedImageLeft}>
-                <GatsbyImage
-                  key={index}
-                  image={
-                    project.frontmatter.featured_image.childImageSharp
-                      .gatsbyImageData
-                  }
-                  alt={project.frontmatter.title}
-                />
-              </div>
-            ))}
-          </div>
-        </div>
-        <div className={projectListSlicedRight} ref={SlicedRightGridRef}>
-          <div className={`${projectListGrid} ${projectListSlicedGridRight}`}>
-            {projectsQuery.allMarkdownRemark.nodes.map((project, index) => (
-              <div className={projectSlicedImageRight}>
-                <GatsbyImage
-                  key={index}
-                  image={
-                    project.frontmatter.featured_image.childImageSharp
-                      .gatsbyImageData
-                  }
-                  alt={project.frontmatter.title}
-                />
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
+    <div className={projectListWrapper}>
+      <ul ref={menuItems}>
+        {renderItems.map((project, index) => (
+          <ProjectItem
+            key={index}
+            title={project.frontmatter.title}
+            url={
+              project.frontmatter.featured_image.childImageSharp.gatsbyImageData
+            }
+            alt={project.frontmatter.title}
+            itemIndex={index}
+            roles={project.frontmatter.roles}
+          />
+        ))}
+      </ul>
     </div>
   )
 }

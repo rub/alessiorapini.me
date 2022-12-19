@@ -1,0 +1,12 @@
+.titleItem {
+  position: relative;
+}
+
+.navTitle {
+  color: var(--grey-100);
+  font-size: 8.5vw;
+  /* font-size: 13.5vw; */
+  line-height: 1.1;
+  text-transform: lowercase;
+  z-index: 1;
+}

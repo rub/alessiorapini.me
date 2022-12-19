@@ -1,12 +1,44 @@
 .projectItemWrapper {
-  display: flex;
-  flex-shrink: 0;
-  justify-content: center;
-  position: relative;
-  width: 100%;
+  cursor: pointer;
+  line-height: 1.25;
+  padding: 1.5rem 0;
 }
 
-.projectTitle {
+.projectItemInfoBlock {
+  font-size: 20px;
+  left: 70vw;
+  opacity: 0;
+  position: fixed;
+  text-align: left;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1;
+
+  & p {
+    color: #333;
+    margin-bottom: 10px;
+    overflow: hidden;
+
+    & span {
+      display: block;
+      transition: all 0.25s ease-in-out;
+    }
+  }
+}
+
+.projectItemInfoBlockHeader {
+  color: var(--grey-100);
+  font-size: 24px;
+  font-weight: 500;
+  margin-bottom: 20px;
+
+  & span {
+    align-items: center;
+    display: flex;
+  }
+}
+
+/* .projectTitle {
   backdrop-filter: blur(13px) saturate(250%);
   background-color: hsla(80, 3%, 96%, 24%);
   color: hsla(80, 3%, 96%, 24%);
@@ -17,22 +49,13 @@
   line-height: 164px;
   position: absolute;
   text-transform: none;
-  top: 50%;
-  /* Make the browser accelerate graphics to prevent text being blurred on Safari */
-  transform: translate3d(-50%, -50%, 1px);
+  top: 50%; */
+/* Make the browser accelerate graphics to prevent text being blurred on Safari */
+/* transform: translate3d(-50%, -50%, 1px);
   z-index: 1;
   width: 100%;
 
   & svg {
     width: 100%;
   }
-}
-
-.projectImageWrapper {
-  position: relative;
-}
-
-.projectImage {
-  position: relative;
-  z-index: -1;
-}
+} */
