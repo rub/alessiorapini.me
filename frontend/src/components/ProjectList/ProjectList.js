@@ -24,7 +24,7 @@ export default ProjectList = () => {
   `)
 
   const menuItems = useRef(null)
-  // Move the project items to a state to duplicate them
+  // Move the project items to a state
   const [renderItems, setRenderItems] = useState(
     projectsQuery.allMarkdownRemark.nodes
   )
@@ -82,6 +82,7 @@ export default ProjectList = () => {
 
     menuItems.current.addEventListener("scroll", scrollUpdate)
 
+    // Remove the event listener when we unmount the component
     return () => {
       menuItems.current.removeEventListener("scroll", scrollUpdate)
     }

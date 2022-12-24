@@ -6,10 +6,14 @@ import {
   projectItemInfoBlock,
   projectItemInfoBlockHeader,
 } from "./ProjectItem.module.css"
+import animate from "./animate"
 
+// Initial animations state
 const initialState = {
   opacity: 0,
   parallaxPosition: { x: 0, y: -20 },
+  leftTranslation: -50,
+  rightTranslation: 50,
 }
 
 // TODO: Transform to arrow function
@@ -27,6 +31,18 @@ function reducer(state, action) {
         parallaxPosition: action.payload,
       }
     }
+    case "CHANGE/TRANSITIONLEFT": {
+      return {
+        ...state,
+        leftTranslation: action.payload,
+      }
+    }
+    case "CHANGE/TRANSITIONRIGHT": {
+      return {
+        ...state,
+        rightTranslation: action.payload,
+      }
+    }
     default: {
       throw new Error()
     }
@@ -42,10 +58,9 @@ export default ProjectItem = ({
   roles,
 }) => {
   const listItem = useRef(null)
-
   // Use a reducer to handle multiple states for the images
   const [state, dispatch] = useReducer(reducer, initialState)
-
+  const easeMethod = "easeInOutCubic"
   const parallax = (event) => {
     const speed = -5
     const x = (window.innerWidth - event.pageX * speed) / 100
@@ -54,16 +69,80 @@ export default ProjectItem = ({
     dispatch({ type: "MOUSE/COORDINATES", payload: { x, y } })
   }
 
-  // TODO: Handle the sliced effect here
+  const handleOpacity = (initialOpacity, newOpacity, duration) => {
+    animate({
+      fromValue: initialOpacity,
+      toValue: newOpacity,
+      onUpdate: (newOpacity, callback) => {
+        dispatch({ type: "CHANGE/OPACITY", payload: newOpacity })
+        callback()
+      },
+      onComplete: () => {},
+      duration: duration,
+      easeMethod: easeMethod,
+    })
+  }
+
+  const handleSlicedLeftTranslation = (
+    initialTransitionLeft,
+    newTransitionLeft,
+    duration
+  ) => {
+    animate({
+      fromValue: initialTransitionLeft,
+      toValue: newTransitionLeft,
+      onUpdate: (newTransitionLeft, callback) => {
+        dispatch({ type: "CHANGE/TRANSITIONLEFT", payload: newTransitionLeft })
+        callback()
+      },
+      onComplete: () => {},
+      duration: duration,
+      easeMethod: "easeOutCubic",
+    })
+  }
+
+  const handleSlicedRightTranslation = (
+    initialTransitionRight,
+    newTransitionRight,
+    duration
+  ) => {
+    animate({
+      fromValue: initialTransitionRight,
+      toValue: newTransitionRight,
+      onUpdate: (newTransitionRight, callback) => {
+        dispatch({
+          type: "CHANGE/TRANSITIONRIGHT",
+          payload: newTransitionRight,
+        })
+        callback()
+      },
+      onComplete: () => {},
+      duration: duration,
+      easeMethod: "easeOutCubic",
+    })
+  }
+
   const handleMouseEnter = () => {
-    dispatch({ type: "CHANGE/OPACITY", payload: 1 })
+    handleOpacity(0, 1, 500)
+    handleSlicedLeftTranslation(-50, 0, 800)
+    handleSlicedRightTranslation(50, 0, 800)
     listItem.current.addEventListener("mousemove", parallax)
   }
 
-  // TODO: Reset the sliced effect here
   const handleMouseLeave = () => {
     listItem.current.removeEventListener("mousemove", parallax)
-    dispatch({ type: "CHANGE/OPACITY", payload: 0 })
+    handleOpacity(1, 0, 800)
+    // TODO: Change px to vw in ProjectImage translate CSS rule
+    handleSlicedLeftTranslation(
+      state.leftTranslation,
+      initialState.leftTranslation,
+      800
+    )
+    handleSlicedRightTranslation(
+      state.rightTranslation,
+      initialState.rightTranslation,
+      800
+    )
     // Reset image position
     dispatch({
       type: "MOUSE/COORDINATES",
@@ -101,6 +180,8 @@ export default ProjectItem = ({
         alt={alt}
         opacity={state.opacity}
         parallaxPosition={state.parallaxPosition}
+        slicedLeftTranslation={state.leftTranslation}
+        slicedRightTranslation={state.rightTranslation}
       />
       <div className={projectItemInfoBlock}>
         <p className={projectItemInfoBlockHeader}>
