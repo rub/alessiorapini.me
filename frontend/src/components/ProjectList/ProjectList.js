@@ -30,12 +30,12 @@ export default ProjectList = () => {
   )
 
   const cloneItems = () => {
-    // Get the height of the first element
+    // Get the height of the first item
     const itemHeight = menuItems.current.childNodes[0].offsetHeight
     // Calculate how many elements can fit into the viewport
     const fitMax = Math.ceil(window.innerHeight / itemHeight)
 
-    // Clone the items
+    // Duplicate the items
     const clonedItems = [...renderItems]
       .filter((_, index) => index < fitMax)
       .map((target) => target)
@@ -68,14 +68,18 @@ export default ProjectList = () => {
     const clonesHeight = cloneItems()
     initScroll()
 
+    // Create the loop scroll effect
     const scrollUpdate = () => {
       const scrollPosition = getScrollPosition()
+      // If the first element of the cloned items hits the top we will scroll back to position 0 of the scroll
       if (clonesHeight + scrollPosition >= menuItems.current.scrollHeight) {
         setScrollPosition(1)
+        // If the first element of the cloned items hits point 0 we will scroll to cloned items
       } else if (scrollPosition <= 0) {
-        setScrollPosition((menuItems.current.scrollHeight = clonesHeight))
+        setScrollPosition(menuItems.current.scrollHeight - clonesHeight)
       }
     }
+
     menuItems.current.addEventListener("scroll", scrollUpdate)
 
     return () => {
