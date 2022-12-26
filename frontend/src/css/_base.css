@@ -59,7 +59,6 @@ main {
 
 h1 {
   font-family: var(--druk-cyr);
-  text-transform: uppercase;
   /* Normalize text on Safari */
   font-synthesis: none;
 }

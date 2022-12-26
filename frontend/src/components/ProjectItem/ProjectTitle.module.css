@@ -5,10 +5,17 @@
   height: 25vh;
 }
 
+.projectCounter {
+  color: var(--accent);
+  display: inline-block;
+  font-size: 1.5rem;
+  letter-spacing: 5px;
+  width: 3rem;
+}
+
 .titleItem {
   color: var(--grey-100);
   display: inline-block;
   font-size: 8.5vw;
   line-height: 1.1;
-  text-transform: lowercase;
 }

@@ -1,7 +1,12 @@
 import React, { useReducer, useRef } from "react"
 import ProjectTitle from "./ProjectTitle"
 import ProjectImage from "./ProjectImage"
-import { wrapper, infoBlock, infoBlockHeader } from "./ProjectItem.module.css"
+import {
+  wrapper,
+  infoBlock,
+  infoBlockHeader,
+  isActive,
+} from "./ProjectItem.module.css"
 import animate from "./animate"
 
 // Initial animations state
@@ -10,11 +15,24 @@ const initialState = {
   parallaxPosition: { x: 0, y: -20 },
   leftTranslation: -50,
   rightTranslation: 50,
+  active: false,
 }
 
 // TODO: Transform to arrow function
 function reducer(state, action) {
   switch (action.type) {
+    case "MOUSE/ENTER": {
+      return {
+        ...state,
+        active: true,
+      }
+    }
+    case "MOUSE/LEAVE": {
+      return {
+        ...state,
+        active: false,
+      }
+    }
     case "CHANGE/OPACITY": {
       return {
         ...state,
@@ -45,12 +63,13 @@ function reducer(state, action) {
   }
 }
 
+// TODO: The problem with the counter is a wrong infinite scroll
 export default ProjectItem = ({
   clipElement,
+  counter,
   title,
   url,
   alt,
-  itemIndex,
   roles,
 }) => {
   const listItem = useRef(null)
@@ -123,6 +142,7 @@ export default ProjectItem = ({
     handleSlicedLeftTranslation(-50, 0, 800)
     handleSlicedRightTranslation(50, 0, 800)
     listItem.current.addEventListener("mousemove", parallax)
+    dispatch({ type: "MOUSE/ENTER" })
   }
 
   const handleMouseLeave = () => {
@@ -144,6 +164,7 @@ export default ProjectItem = ({
       type: "MOUSE/COORDINATES",
       payload: initialState.parallaxPosition,
     })
+    dispatch({ type: "MOUSE/LEAVE" })
   }
   return (
     // <li className={wrapper}>
@@ -167,6 +188,7 @@ export default ProjectItem = ({
     // </li>
     <li className={wrapper} ref={listItem}>
       <ProjectTitle
+        counter={counter}
         title={title}
         handleMouseEnter={handleMouseEnter}
         handleMouseLeave={handleMouseLeave}
@@ -179,10 +201,7 @@ export default ProjectItem = ({
         slicedLeftTranslation={state.leftTranslation}
         slicedRightTranslation={state.rightTranslation}
       />
-      <div className={infoBlock}>
-        <p className={infoBlockHeader}>
-          <span>0{itemIndex}</span>
-        </p>
+      <div className={`${infoBlock} ${state.active ? isActive : ""}`}>
         {roles.map((element) => (
           <p key={element}>
             <span>{element}</span>

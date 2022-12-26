@@ -94,11 +94,11 @@ export default ProjectList = () => {
     const scrollUpdate = () => {
       const scrollPosition = getScrollPosition()
       // If the first element of the cloned items hits the top we will scroll back to position 0 of the scroll
-      if (clonesHeight + scrollPosition >= menuItems.current.scrollHeight) {
+      if (clonesHeight + scrollPosition >= itemsWrapper.current.scrollHeight) {
         setScrollPosition(1)
         // If the first element of the cloned items hits point 0 we will scroll to cloned items
       } else if (scrollPosition <= 0) {
-        setScrollPosition(menuItems.current.scrollHeight - clonesHeight)
+        setScrollPosition(itemsWrapper.current.scrollHeight - clonesHeight)
       }
     }
 
@@ -109,6 +109,8 @@ export default ProjectList = () => {
     }
   }, [])
 
+  const originalItemsAmount = projectsQuery.allMarkdownRemark.nodes.length
+
   return (
     <div className={wrapper}>
       <div className={listWrapper} ref={menuItems}>
@@ -116,13 +118,17 @@ export default ProjectList = () => {
           {renderItems.map((project, index) => (
             <ProjectItem
               key={index}
+              counter={
+                index < originalItemsAmount
+                  ? index + 1
+                  : index + 1 - originalItemsAmount
+              }
               title={project.frontmatter.title}
               url={
                 project.frontmatter.featured_image.childImageSharp
                   .gatsbyImageData
               }
               alt={project.frontmatter.title}
-              itemIndex={index}
               roles={project.frontmatter.roles}
             />
           ))}

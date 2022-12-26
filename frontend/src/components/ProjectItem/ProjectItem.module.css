@@ -1,12 +1,13 @@
 .wrapper {
   line-height: 1.25;
   padding: 5px 0;
+  width: fit-content;
 }
 
 .infoBlock {
   font-size: 20px;
   left: 70vw;
-  opacity: 0;
+  letter-spacing: 5px;
   position: fixed;
   text-align: left;
   top: 50%;
@@ -14,26 +15,40 @@
   z-index: 1;
 
   & p {
-    color: #333;
+    color: var(--grey-300);
     margin-bottom: 10px;
     overflow: hidden;
+    text-transform: uppercase;
 
     & span {
       display: block;
+      opacity: 0;
+      transform: translateY(10px);
       transition: all 0.25s ease-in-out;
     }
   }
 }
 
-.infoBlockHeader {
-  color: var(--grey-100);
-  font-size: 24px;
-  font-weight: 500;
-  margin-bottom: 20px;
+.isActive p {
+  &:nth-child(1n) span {
+    transition-delay: 0s;
+  }
+  &:nth-child(2n) span {
+    transition-delay: 0.1s;
+  }
+  &:nth-child(3n) span {
+    transition-delay: 0.2s;
+  }
+  &:nth-child(4n) span {
+    transition-delay: 0.3s;
+  }
+  &:nth-child(5n) span {
+    transition-delay: 0.4s;
+  }
 
   & span {
-    align-items: center;
-    display: flex;
+    transform: translateY(0);
+    opacity: 1;
   }
 }
 
