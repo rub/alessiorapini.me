@@ -1,5 +1,5 @@
 import React from "react"
-import { titleItem, navTitle } from "./ProjectTitle.module.css"
+import { wrapper, titleItem } from "./ProjectTitle.module.css"
 
 export default ProjectTitle = ({
   title,
@@ -8,11 +8,11 @@ export default ProjectTitle = ({
 }) => {
   return (
     <div
-      className={titleItem}
+      className={wrapper}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
-      <h1 className={navTitle}>{title}</h1>
+      <h1 className={titleItem}>{title}</h1>
     </div>
   )
 }

@@ -1,10 +1,10 @@
 import React from "react"
 import { GatsbyImage } from "gatsby-plugin-image"
 import {
-  projectImgWrapper,
-  projectImgFixed,
-  projectImgSlicedLeft,
-  projectImgSlicedRight,
+  wrapper,
+  imageFixed,
+  imageSlicedLeft,
+  imageSlicedRight,
 } from "./ProjectImage.module.css"
 
 export default ProjectImage = ({
@@ -17,21 +17,21 @@ export default ProjectImage = ({
 }) => {
   return (
     <div
-      className={projectImgWrapper}
+      className={wrapper}
       style={{
         opacity,
         transform: `translate3d(${parallaxPosition.x}px, ${parallaxPosition.y}px, 0)`,
       }}
     >
-      <GatsbyImage className={projectImgFixed} image={url} alt={alt} />
+      <GatsbyImage className={imageFixed} image={url} alt={alt} />
       <GatsbyImage
-        className={projectImgSlicedLeft}
+        className={imageSlicedLeft}
         image={url}
         alt={alt}
         style={{ transform: `translate3d(${slicedLeftTranslation}px, 0, 0)` }}
       />
       <GatsbyImage
-        className={projectImgSlicedRight}
+        className={imageSlicedRight}
         image={url}
         alt={alt}
         style={{ transform: `translate3d(${slicedRightTranslation}px, 0, 0)` }}

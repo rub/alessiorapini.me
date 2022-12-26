@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import ProjectItem from "../ProjectItem/ProjectItem"
-import { projectListWrapper } from "./ProjectList.module.css"
+import { wrapper, listWrapper, list } from "./ProjectList.module.css"
 
 export default ProjectList = () => {
   const projectsQuery = useStaticQuery(graphql`
@@ -110,10 +110,9 @@ export default ProjectList = () => {
   }, [])
 
   return (
-    <div className={projectListWrapper}>
-      <ul ref={menuItems}>
-        {/* TODO: use a <ul> below otherwise I get a warning */}
-        <div ref={itemsWrapper} style={{ height: "100vh" }}>
+    <div className={wrapper}>
+      <div className={listWrapper} ref={menuItems}>
+        <ul className={list} ref={itemsWrapper}>
           {renderItems.map((project, index) => (
             <ProjectItem
               key={index}
@@ -127,8 +126,8 @@ export default ProjectList = () => {
               roles={project.frontmatter.roles}
             />
           ))}
-        </div>
-      </ul>
+        </ul>
+      </div>
     </div>
   )
 }

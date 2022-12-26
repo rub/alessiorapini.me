@@ -1,11 +1,7 @@
 import React, { useReducer, useRef } from "react"
 import ProjectTitle from "./ProjectTitle"
 import ProjectImage from "./ProjectImage"
-import {
-  projectItemWrapper,
-  projectItemInfoBlock,
-  projectItemInfoBlockHeader,
-} from "./ProjectItem.module.css"
+import { wrapper, infoBlock, infoBlockHeader } from "./ProjectItem.module.css"
 import animate from "./animate"
 
 // Initial animations state
@@ -150,7 +146,7 @@ export default ProjectItem = ({
     })
   }
   return (
-    // <li className={projectItemWrapper}>
+    // <li className={wrapper}>
     //   <h1
     //     className={projectTitle}
     //     style={{ clipPath: `url(#${clipElement})` }}
@@ -169,7 +165,7 @@ export default ProjectItem = ({
     //     <GatsbyImage className={projectImage} image={image} alt={title} />
     //   </div>
     // </li>
-    <li className={projectItemWrapper} ref={listItem}>
+    <li className={wrapper} ref={listItem}>
       <ProjectTitle
         title={title}
         handleMouseEnter={handleMouseEnter}
@@ -183,8 +179,8 @@ export default ProjectItem = ({
         slicedLeftTranslation={state.leftTranslation}
         slicedRightTranslation={state.rightTranslation}
       />
-      <div className={projectItemInfoBlock}>
-        <p className={projectItemInfoBlockHeader}>
+      <div className={infoBlock}>
+        <p className={infoBlockHeader}>
           <span>0{itemIndex}</span>
         </p>
         {roles.map((element) => (

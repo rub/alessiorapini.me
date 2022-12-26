@@ -1,12 +1,14 @@
-.titleItem {
+.wrapper {
+  cursor: pointer;
+  display: inline-block;
   position: relative;
   height: 25vh;
 }
 
-.navTitle {
+.titleItem {
   color: var(--grey-100);
+  display: inline-block;
   font-size: 8.5vw;
   line-height: 1.1;
   text-transform: lowercase;
-  z-index: 1;
 }
