@@ -24,6 +24,27 @@ export default ProjectList = () => {
   `)
 
   const menuItems = useRef(null)
+  const itemsWrapper = useRef(null)
+
+  let isScrolling
+  // Disable the image animation on scroll to prevent messing up the UI and performance bottlenecks
+  const disableAnimationonScroll = (e) => {
+    window.clearTimeout(isScrolling)
+    itemsWrapper.current.style.pointerEvents = "none"
+
+    isScrolling = setTimeout(() => {
+      itemsWrapper.current.style.pointerEvents = "all"
+    }, 66)
+  }
+
+  useEffect(() => {
+    menuItems.current.addEventListener("scroll", disableAnimationonScroll)
+
+    return () => {
+      menuItems.current.removeEventListener("scroll", disableAnimationonScroll)
+    }
+  }, [])
+
   // Move the project items to a state
   const [renderItems, setRenderItems] = useState(
     projectsQuery.allMarkdownRemark.nodes
@@ -31,7 +52,8 @@ export default ProjectList = () => {
 
   const cloneItems = () => {
     // Get the height of the first item
-    const itemHeight = menuItems.current.childNodes[0].offsetHeight
+    // const itemHeight = menuItems.current.childNodes[0].offsetHeight
+    const itemHeight = itemsWrapper.current.childNodes[0].offsetHeight
     // Calculate how many elements can fit into the viewport
     const fitMax = Math.ceil(window.innerHeight / itemHeight)
 
@@ -82,7 +104,6 @@ export default ProjectList = () => {
 
     menuItems.current.addEventListener("scroll", scrollUpdate)
 
-    // Remove the event listener when we unmount the component
     return () => {
       menuItems.current.removeEventListener("scroll", scrollUpdate)
     }
@@ -91,18 +112,22 @@ export default ProjectList = () => {
   return (
     <div className={projectListWrapper}>
       <ul ref={menuItems}>
-        {renderItems.map((project, index) => (
-          <ProjectItem
-            key={index}
-            title={project.frontmatter.title}
-            url={
-              project.frontmatter.featured_image.childImageSharp.gatsbyImageData
-            }
-            alt={project.frontmatter.title}
-            itemIndex={index}
-            roles={project.frontmatter.roles}
-          />
-        ))}
+        {/* TODO: use a <ul> below otherwise I get a warning */}
+        <div ref={itemsWrapper} style={{ height: "100vh" }}>
+          {renderItems.map((project, index) => (
+            <ProjectItem
+              key={index}
+              title={project.frontmatter.title}
+              url={
+                project.frontmatter.featured_image.childImageSharp
+                  .gatsbyImageData
+              }
+              alt={project.frontmatter.title}
+              itemIndex={index}
+              roles={project.frontmatter.roles}
+            />
+          ))}
+        </div>
       </ul>
     </div>
   )
