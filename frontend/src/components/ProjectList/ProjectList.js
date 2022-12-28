@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react"
+import React, { createRef, useEffect, useRef, useState } from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import ProjectItem from "../ProjectItem/ProjectItem"
 import { wrapper, listWrapper, list } from "./ProjectList.module.css"
@@ -25,16 +25,32 @@ export default ProjectList = () => {
 
   const menuItems = useRef(null)
   const itemsWrapper = useRef(null)
+  const titleItem = useRef([])
+
+  // Move the project items to a state
+  const [renderItems, setRenderItems] = useState(
+    projectsQuery.allMarkdownRemark.nodes
+  )
 
   let isScrolling
+  // TODO: Instead to disable the scroll try to fix the current image to prevent the browser performing the backward animation
+  // TODO: Or disable the backward sliced animation on scroll
   // Disable the image animation on scroll to prevent messing up the UI and performance bottlenecks
   const disableAnimationonScroll = (e) => {
-    window.clearTimeout(isScrolling)
-    itemsWrapper.current.style.pointerEvents = "none"
+    if (itemsWrapper.current && titleItem.current) {
+      window.clearTimeout(isScrolling)
+      itemsWrapper.current.style.pointerEvents = "none"
+      renderItems.map(
+        (_, i) => (titleItem.current[i].style.pointerEvents = "none")
+      )
 
-    isScrolling = setTimeout(() => {
-      itemsWrapper.current.style.pointerEvents = "all"
-    }, 66)
+      isScrolling = setTimeout(() => {
+        itemsWrapper.current.style.pointerEvents = "all"
+        renderItems.map(
+          (_, i) => (titleItem.current[i].style.pointerEvents = "all")
+        )
+      }, 300)
+    }
   }
 
   useEffect(() => {
@@ -44,11 +60,6 @@ export default ProjectList = () => {
       menuItems.current.removeEventListener("scroll", disableAnimationonScroll)
     }
   }, [])
-
-  // Move the project items to a state
-  const [renderItems, setRenderItems] = useState(
-    projectsQuery.allMarkdownRemark.nodes
-  )
 
   const cloneItems = () => {
     // Get the height of the first item
@@ -69,10 +80,12 @@ export default ProjectList = () => {
 
   // Get the current scroll position
   const getScrollPosition = () => {
-    return (
-      (menuItems.current.pageYOffset || menuItems.current.scrollTop) -
-      (menuItems.current.clientTop || 0)
-    )
+    if (menuItems.current) {
+      return (
+        (menuItems.current.pageYOffset || menuItems.current.scrollTop) -
+        (menuItems.current.clientTop || 0)
+      )
+    }
   }
 
   const setScrollPosition = (position) => {
@@ -130,6 +143,7 @@ export default ProjectList = () => {
               }
               alt={project.frontmatter.title}
               roles={project.frontmatter.roles}
+              titleRef={(ref) => (titleItem.current[index] = ref)}
             />
           ))}
         </ul>

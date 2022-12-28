@@ -2,6 +2,37 @@
   line-height: 1.25;
   padding: 5px 0;
   width: fit-content;
+
+  /* Since we cannot select previous elements, we set them as the default and then overwrite subsequent project siblings */
+  & span,
+  & h1 {
+    color: var(--grey-300);
+    filter: blur(5px);
+    transition: all 0.5s ease-out;
+  }
+
+  /* The hovered element to unblur */
+  &:hover span {
+    color: var(--accent);
+    filter: blur(0);
+  }
+
+  &:hover h1 {
+    color: var(--grey-100);
+    filter: blur(0);
+  }
+
+  /* Blur every item after the hovered element */
+  &:hover ~ & span {
+    color: var(--grey-300);
+    filter: blur(5px);
+  }
+
+  /* Blur every item after the hovered element */
+  &:hover ~ & h1 {
+    color: var(--grey-300);
+    filter: blur(5px);
+  }
 }
 
 .infoBlock {

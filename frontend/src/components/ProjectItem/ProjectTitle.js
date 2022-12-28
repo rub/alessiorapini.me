@@ -6,12 +6,14 @@ export default ProjectTitle = ({
   title,
   handleMouseEnter,
   handleMouseLeave,
+  titleRef,
 }) => {
   return (
     <div
       className={wrapper}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
+      ref={titleRef}
     >
       <span className={projectCounter}>0{counter}</span>
       <h1 className={titleItem}>{title}</h1>

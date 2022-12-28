@@ -1,8 +1,9 @@
 .wrapper {
   cursor: pointer;
   display: inline-block;
-  position: relative;
   height: 25vh;
+  position: relative;
+  white-space: nowrap;
 }
 
 .projectCounter {
@@ -18,4 +19,6 @@
   display: inline-block;
   font-size: 8.5vw;
   line-height: 1.1;
+  position: relative;
+  z-index: 1;
 }

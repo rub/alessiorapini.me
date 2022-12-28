@@ -13,4 +13,18 @@
 
 .list {
   height: 100vh;
+  width: 0; /* Set the blur only when hovering a project item */
+}
+
+/* Set default styles if the container is not hovered */
+.list:not(:hover) {
+  & span {
+    color: var(--accent);
+    filter: blur(0);
+  }
+
+  & h1 {
+    color: var(--grey-100);
+    filter: blur(0);
+  }
 }

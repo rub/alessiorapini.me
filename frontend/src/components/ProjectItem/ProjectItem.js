@@ -63,11 +63,11 @@ function reducer(state, action) {
   }
 }
 
-// TODO: The problem with the counter is a wrong infinite scroll
 export default ProjectItem = ({
   clipElement,
   counter,
   title,
+  titleRef,
   url,
   alt,
   roles,
@@ -192,6 +192,7 @@ export default ProjectItem = ({
         title={title}
         handleMouseEnter={handleMouseEnter}
         handleMouseLeave={handleMouseLeave}
+        titleRef={titleRef}
       />
       <ProjectImage
         url={url}
