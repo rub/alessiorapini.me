@@ -1,31 +1,22 @@
-import React, { useEffect } from "react"
-
-import useWindowSize from "../hooks/useWindowSize"
-
+import React from "react"
 import Layout from "../components/Layout"
-import ButtonCursor from "../components/ButtonCursor/ButtonCursor"
+import CustomCursor from "../components/CustomCursor/CustomCursor"
+import Header from "../components/Header/Header"
+import Hero from "../components/Hero/Hero"
+import Footer from "../components/Footer/Footer.js"
 import RubParallax from "../components/RubParallax/RubParallax"
 import { SEO } from "../components/seo"
 
-const IndexPage = () => {
-  // Hook to grab the window size
-  const size = useWindowSize()
-
-  // Set the height of the body.
-  useEffect(() => {
-    restoreBodyHeight()
-  }, [size.height])
-
-  const restoreBodyHeight = () => {
-    document.body.style.height = null
-  }
-  return (
-    <Layout fullScreen>
-      <ButtonCursor />
-      <RubParallax />
-    </Layout>
-  )
-}
+const IndexPage = () => (
+  <Layout fullScreen>
+    <CustomCursor>
+      <Header />
+      <Hero />
+      <Footer />
+    </CustomCursor>
+    <RubParallax />
+  </Layout>
+)
 
 export default IndexPage
 

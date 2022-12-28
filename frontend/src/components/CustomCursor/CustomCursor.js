@@ -1,15 +1,10 @@
 import React, { useEffect } from "react"
-
-import Header from "../Header/Header.js"
-import Hero from "../Hero/Hero"
-import Footer from "../Footer/Footer.js"
-
 import {
   buttonCursorWrapper,
   buttonCursor,
   buttonCursorInner,
   mainWrapper,
-} from "./ButtonCursor.module.css"
+} from "./CustomCursor.module.css"
 
 function map(from, to, value) {
   return to[0] + ((value - from[0]) * (to[1] - to[0])) / (from[1] - from[0])
@@ -19,11 +14,7 @@ function clamp(value, min, max) {
   return Math.min(max, Math.max(min, value))
 }
 
-/**
- * Button cursor displays a button link to author's portfolio which follows
- * the cursor movement.
- */
-const ButtonCursor = () => {
+const ButtonCursor = ({ children }) => {
   const wrapper = React.useRef(null)
   const circle = React.useRef(null)
   const circleInner = React.useRef(null)
@@ -207,11 +198,7 @@ const ButtonCursor = () => {
       <div className={buttonCursor} ref={circle}>
         <div className={buttonCursorInner} ref={circleInner} />
       </div>
-      <div className={mainWrapper}>
-        <Header />
-        <Hero />
-        <Footer />
-      </div>
+      <div className={mainWrapper}>{children}</div>
     </div>
   )
 }
