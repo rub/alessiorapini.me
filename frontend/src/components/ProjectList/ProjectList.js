@@ -1,7 +1,13 @@
-import React, { createRef, useEffect, useRef, useState } from "react"
+import React, { useEffect, useRef, useState } from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import ProjectItem from "../ProjectItem/ProjectItem"
-import { wrapper, listWrapper, list } from "./ProjectList.module.css"
+import {
+  wrapper,
+  listWrapper,
+  list,
+  projectCounterDefault,
+  headingDefault,
+} from "./ProjectList.module.css"
 
 export default ProjectList = () => {
   const projectsQuery = useStaticQuery(graphql`
@@ -33,8 +39,6 @@ export default ProjectList = () => {
   )
 
   let isScrolling
-  // TODO: Instead to disable the scroll try to fix the current image to prevent the browser performing the backward animation
-  // TODO: Or disable the backward sliced animation on scroll
   // Disable the image animation on scroll to prevent messing up the UI and performance bottlenecks
   const disableAnimationonScroll = (e) => {
     if (itemsWrapper.current && titleItem.current) {
@@ -144,6 +148,8 @@ export default ProjectList = () => {
               alt={project.frontmatter.title}
               roles={project.frontmatter.roles}
               titleRef={(ref) => (titleItem.current[index] = ref)}
+              projectCounterClassName={projectCounterDefault}
+              headingClassName={headingDefault}
             />
           ))}
         </ul>

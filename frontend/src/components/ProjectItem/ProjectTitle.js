@@ -1,5 +1,5 @@
 import React from "react"
-import { wrapper, projectCounter, titleItem } from "./ProjectTitle.module.css"
+import { titleWrapper, projectCounter, heading } from "./ProjectItem.module.css"
 
 export default ProjectTitle = ({
   counter,
@@ -7,16 +7,20 @@ export default ProjectTitle = ({
   handleMouseEnter,
   handleMouseLeave,
   titleRef,
+  projectCounterClassName,
+  headingClassName,
 }) => {
   return (
     <div
-      className={wrapper}
+      className={titleWrapper}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       ref={titleRef}
     >
-      <span className={projectCounter}>0{counter}</span>
-      <h1 className={titleItem}>{title}</h1>
+      <span className={`${projectCounterClassName} ${projectCounter}`}>
+        0{counter}
+      </span>
+      <h1 className={`${headingClassName} ${heading}`}>{title}</h1>
     </div>
   )
 }

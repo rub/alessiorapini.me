@@ -2,10 +2,11 @@ import React, { useReducer, useRef } from "react"
 import ProjectTitle from "./ProjectTitle"
 import ProjectImage from "./ProjectImage"
 import {
-  wrapper,
+  itemWrapper,
   infoBlock,
-  infoBlockHeader,
   isActive,
+  infoLine,
+  infoLineText,
 } from "./ProjectItem.module.css"
 import animate from "./animate"
 
@@ -71,6 +72,8 @@ export default ProjectItem = ({
   url,
   alt,
   roles,
+  projectCounterClassName,
+  headingClassName,
 }) => {
   const listItem = useRef(null)
   // Use a reducer to handle multiple states for the images
@@ -186,13 +189,15 @@ export default ProjectItem = ({
     //     <GatsbyImage className={projectImage} image={image} alt={title} />
     //   </div>
     // </li>
-    <li className={wrapper} ref={listItem}>
+    <li className={itemWrapper} ref={listItem}>
       <ProjectTitle
         counter={counter}
         title={title}
         handleMouseEnter={handleMouseEnter}
         handleMouseLeave={handleMouseLeave}
         titleRef={titleRef}
+        projectCounterClassName={projectCounterClassName}
+        headingClassName={headingClassName}
       />
       <ProjectImage
         url={url}
@@ -204,8 +209,8 @@ export default ProjectItem = ({
       />
       <div className={`${infoBlock} ${state.active ? isActive : ""}`}>
         {roles.map((element) => (
-          <p key={element}>
-            <span>{element}</span>
+          <p key={element} className={infoLine}>
+            <span className={infoLineText}>{element}</span>
           </p>
         ))}
       </div>

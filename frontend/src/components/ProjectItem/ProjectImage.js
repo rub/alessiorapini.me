@@ -1,11 +1,11 @@
 import React from "react"
 import { GatsbyImage } from "gatsby-plugin-image"
 import {
-  wrapper,
+  imagesWrapper,
   imageFixed,
   imageSlicedLeft,
   imageSlicedRight,
-} from "./ProjectImage.module.css"
+} from "./ProjectItem.module.css"
 
 export default ProjectImage = ({
   url,
@@ -17,7 +17,7 @@ export default ProjectImage = ({
 }) => {
   return (
     <div
-      className={wrapper}
+      className={imagesWrapper}
       style={{
         opacity,
         transform: `translate3d(${parallaxPosition.x}px, ${parallaxPosition.y}px, 0)`,

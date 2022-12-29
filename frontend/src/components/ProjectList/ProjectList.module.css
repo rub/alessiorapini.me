@@ -18,13 +18,13 @@
 
 /* Set default styles if the container is not hovered */
 .list:not(:hover) {
-  & span {
+  & .projectCounterDefault {
     color: var(--accent);
-    filter: blur(0);
+    opacity: 1;
   }
 
-  & h1 {
+  & .headingDefault {
     color: var(--grey-100);
-    filter: blur(0);
+    opacity: 1;
   }
 }
