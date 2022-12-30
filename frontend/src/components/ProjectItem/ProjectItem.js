@@ -189,12 +189,15 @@ export default ProjectItem = ({
     //     <GatsbyImage className={projectImage} image={image} alt={title} />
     //   </div>
     // </li>
-    <li className={itemWrapper} ref={listItem}>
+    <li
+      className={itemWrapper}
+      ref={listItem}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+    >
       <ProjectTitle
         counter={counter}
         title={title}
-        handleMouseEnter={handleMouseEnter}
-        handleMouseLeave={handleMouseLeave}
         titleRef={titleRef}
         projectCounterClassName={projectCounterClassName}
         headingClassName={headingClassName}

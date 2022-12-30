@@ -4,19 +4,12 @@ import { titleWrapper, projectCounter, heading } from "./ProjectItem.module.css"
 export default ProjectTitle = ({
   counter,
   title,
-  handleMouseEnter,
-  handleMouseLeave,
   titleRef,
   projectCounterClassName,
   headingClassName,
 }) => {
   return (
-    <div
-      className={titleWrapper}
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
-      ref={titleRef}
-    >
+    <div className={titleWrapper} ref={titleRef}>
       <span className={`${projectCounterClassName} ${projectCounter}`}>
         0{counter}
       </span>

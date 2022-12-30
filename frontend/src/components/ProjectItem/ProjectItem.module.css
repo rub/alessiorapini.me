@@ -1,5 +1,6 @@
 .itemWrapper {
   align-items: center;
+  cursor: pointer;
   display: flex;
   height: 25vh;
   line-height: 1.25;
@@ -174,7 +175,6 @@
 }
 
 .titleWrapper {
-  cursor: pointer;
   display: inline-block;
   position: relative;
   white-space: nowrap;
