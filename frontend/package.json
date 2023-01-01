@@ -7,9 +7,7 @@
   "dependencies": {
     "@babel/plugin-transform-react-jsx": "^7.19.0",
     "@types/react": "^18.0.25",
-    "babel-eslint": "^10.1.0",
     "core-js": "^3.26.0",
-    "eslint": "^8.27.0",
     "gatsby": "^5.0.0",
     "gatsby-cli": "^5.0.0",
     "gatsby-image": "^3.11.0",
@@ -39,11 +37,21 @@
   },
   "devDependencies": {
     "@babel/core": "^7.20.2",
+    "babel-eslint": "^10.1.0",
     "babel-preset-gatsby": "^3.0.0",
     "babel-preset-gatsby-package": "^3.0.0",
+    "eslint": "^8.31.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-prettier": "^8.5.0",
     "eslint-config-react-app": "^7.0.1",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-jsx-a11y": "^6.6.1",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-react": "^7.31.11",
+    "eslint-webpack-plugin": "^3.2.0",
+    "gatsby-plugin-eslint": "^4.0.3",
     "gh-pages": "^4.0.0",
-    "prettier": "^2.7.1"
+    "prettier": "^2.8.1"
   },
   "keywords": [
     "gatsby"
@@ -52,18 +60,9 @@
   "scripts": {
     "build": "gatsby build",
     "develop": "gatsby develop",
-    "format": "prettier --write src/**/*.{js,jsx}",
-    "start": "npm run develop",
+    "start": "gatsby develop",
     "serve": "gatsby serve",
-    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\"",
     "deploy": "gatsby build && gh-pages -d public -b master",
     "clean": "gatsby clean"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/gatsbyjs/gatsby-starter-default"
-  },
-  "bugs": {
-    "url": "https://github.com/gatsbyjs/gatsby/issues"
   }
 }

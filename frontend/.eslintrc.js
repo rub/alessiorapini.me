@@ -1,86 +1,28 @@
 module.exports = {
-  parser: "babel-eslint",
-  extends: [
-    "google",
-    "eslint:recommended",
-    "plugin:flowtype/recommended",
-    "plugin:react/recommended",
-    "prettier",
-    "prettier/flowtype",
-    "prettier/react",
-  ],
-  plugins: ["flowtype", "prettier", "react", "filenames"],
-  parserOptions: {
-    ecmaVersion: 2016,
-    sourceType: "module",
-    ecmaFeatures: {
-      jsx: true,
-    },
-  },
+  extends: ['airbnb', 'plugin:prettier/recommended'],
   env: {
     browser: true,
+    commonjs: true,
     es6: true,
-    node: true,
     jest: true,
-  },
-  globals: {
-    before: true,
-    after: true,
-    spyOn: true,
-    __PATH_PREFIX__: true,
-    __BASE_PATH__: true,
-    __ASSET_PREFIX__: true,
+    node: true,
   },
   rules: {
-    "arrow-body-style": [
-      "error",
-      "as-needed",
-      { requireReturnForObjectLiteral: true },
-    ],
-    "no-unused-expressions": [
-      "error",
+    'jsx-a11y/href-no-hash': ['off'],
+    'react/jsx-filename-extension': ['warn', { extensions: ['.js', '.jsx'] }],
+    'max-len': [
+      'warn',
       {
-        allowTaggedTemplates: true,
+        code: 80,
+        tabWidth: 2,
+        comments: 80,
+        ignoreComments: false,
+        ignoreTrailingComments: true,
+        ignoreUrls: true,
+        ignoreStrings: true,
+        ignoreTemplateLiterals: true,
+        ignoreRegExpLiterals: true,
       },
     ],
-    "consistent-return": ["error"],
-    "filenames/match-regex": ["error", "^[a-z-\\d\\.]+$", true],
-    "no-console": "off",
-    "no-inner-declarations": "off",
-    "prettier/prettier": "error",
-    quotes: ["error", "backtick"],
-    "react/display-name": "off",
-    "react/jsx-key": "warn",
-    "react/no-unescaped-entities": "off",
-    "react/prop-types": "off",
-    "require-jsdoc": "off",
-    "valid-jsdoc": "off",
   },
-  overrides: [
-    {
-      files: [
-        "packages/**/gatsby-browser.js",
-        "packages/gatsby/cache-dir/**/*",
-      ],
-      env: {
-        browser: true,
-      },
-      globals: {
-        ___loader: false,
-        ___emitter: false,
-      },
-    },
-    {
-      files: ["**/cypress/integration/**/*", "**/cypress/support/**/*"],
-      globals: {
-        cy: false,
-        Cypress: false,
-      },
-    },
-  ],
-  settings: {
-    react: {
-      version: "16.4.2",
-    },
-  },
-}
+};
