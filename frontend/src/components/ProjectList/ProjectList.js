@@ -134,10 +134,12 @@ function ProjectList() {
       <div className={listWrapper} ref={menuItems}>
         <ul className={list} ref={itemsWrapper}>
           {renderItems.map((project, index) => {
-            const { id } = project;
             return (
               <ProjectItem
-                key={id}
+                // We need to use the index since items are cloned and we get
+                // duplicated ids
+                // eslint-disable-next-line react/no-array-index-key
+                key={index}
                 counter={
                   index < originalItemsAmount
                     ? index + 1

@@ -1,14 +1,15 @@
-import React, { useReducer, useRef } from "react"
-import ProjectTitle from "./ProjectTitle"
-import ProjectImage from "./ProjectImage"
+import React, { useReducer, useRef } from 'react';
+import PropTypes from 'prop-types';
+import ProjectTitle from './ProjectTitle';
+import ProjectImage from './ProjectImage';
 import {
   itemWrapper,
   infoBlock,
   isActive,
   infoLine,
   infoLineText,
-} from "./ProjectItem.module.css"
-import animate from "./animate"
+} from './ProjectItem.module.css';
+import animate from './animate';
 
 // Initial animations state
 const initialState = {
@@ -17,55 +18,55 @@ const initialState = {
   leftTranslation: -50,
   rightTranslation: 50,
   active: false,
-}
+};
 
 // TODO: Transform to arrow function
 function reducer(state, action) {
   switch (action.type) {
-    case "MOUSE/ENTER": {
+    case 'MOUSE/ENTER': {
       return {
         ...state,
         active: true,
-      }
+      };
     }
-    case "MOUSE/LEAVE": {
+    case 'MOUSE/LEAVE': {
       return {
         ...state,
         active: false,
-      }
+      };
     }
-    case "CHANGE/OPACITY": {
+    case 'CHANGE/OPACITY': {
       return {
         ...state,
         opacity: action.payload,
-      }
+      };
     }
-    case "MOUSE/COORDINATES": {
+    case 'MOUSE/COORDINATES': {
       return {
         ...state,
         parallaxPosition: action.payload,
-      }
+      };
     }
-    case "CHANGE/TRANSITIONLEFT": {
+    case 'CHANGE/TRANSITIONLEFT': {
       return {
         ...state,
         leftTranslation: action.payload,
-      }
+      };
     }
-    case "CHANGE/TRANSITIONRIGHT": {
+    case 'CHANGE/TRANSITIONRIGHT': {
       return {
         ...state,
         rightTranslation: action.payload,
-      }
+      };
     }
     default: {
-      throw new Error()
+      throw new Error();
     }
   }
 }
 
-export default ProjectItem = ({
-  clipElement,
+function ProjectItem({
+  // clipElement,
   counter,
   title,
   titleRef,
@@ -74,32 +75,32 @@ export default ProjectItem = ({
   roles,
   projectCounterClassName,
   headingClassName,
-}) => {
-  const listItem = useRef(null)
+}) {
+  const listItem = useRef(null);
   // Use a reducer to handle multiple states for the images
-  const [state, dispatch] = useReducer(reducer, initialState)
-  const easeMethod = "easeInOutCubic"
+  const [state, dispatch] = useReducer(reducer, initialState);
+  const easeMethod = 'easeInOutCubic';
   const parallax = (event) => {
-    const speed = -5
-    const x = (window.innerWidth - event.pageX * speed) / 100
-    const y = (window.innerHeight - event.pageY * speed) / 100
+    const speed = -5;
+    const x = (window.innerWidth - event.pageX * speed) / 100;
+    const y = (window.innerHeight - event.pageY * speed) / 100;
 
-    dispatch({ type: "MOUSE/COORDINATES", payload: { x, y } })
-  }
+    dispatch({ type: 'MOUSE/COORDINATES', payload: { x, y } });
+  };
 
   const handleOpacity = (initialOpacity, newOpacity, duration) => {
     animate({
       fromValue: initialOpacity,
       toValue: newOpacity,
-      onUpdate: (newOpacity, callback) => {
-        dispatch({ type: "CHANGE/OPACITY", payload: newOpacity })
-        callback()
+      onUpdate: (updatedOpacity, callback) => {
+        dispatch({ type: 'CHANGE/OPACITY', payload: updatedOpacity });
+        callback();
       },
       onComplete: () => {},
-      duration: duration,
-      easeMethod: easeMethod,
-    })
-  }
+      duration,
+      easeMethod,
+    });
+  };
 
   const handleSlicedLeftTranslation = (
     initialTransitionLeft,
@@ -109,15 +110,18 @@ export default ProjectItem = ({
     animate({
       fromValue: initialTransitionLeft,
       toValue: newTransitionLeft,
-      onUpdate: (newTransitionLeft, callback) => {
-        dispatch({ type: "CHANGE/TRANSITIONLEFT", payload: newTransitionLeft })
-        callback()
+      onUpdate: (updatedTransitionLeft, callback) => {
+        dispatch({
+          type: 'CHANGE/TRANSITIONLEFT',
+          payload: updatedTransitionLeft,
+        });
+        callback();
       },
       onComplete: () => {},
-      duration: duration,
-      easeMethod: "easeOutCubic",
-    })
-  }
+      duration,
+      easeMethod: 'easeOutCubic',
+    });
+  };
 
   const handleSlicedRightTranslation = (
     initialTransitionRight,
@@ -127,48 +131,48 @@ export default ProjectItem = ({
     animate({
       fromValue: initialTransitionRight,
       toValue: newTransitionRight,
-      onUpdate: (newTransitionRight, callback) => {
+      onUpdate: (updatedTransitionRight, callback) => {
         dispatch({
-          type: "CHANGE/TRANSITIONRIGHT",
-          payload: newTransitionRight,
-        })
-        callback()
+          type: 'CHANGE/TRANSITIONRIGHT',
+          payload: updatedTransitionRight,
+        });
+        callback();
       },
       onComplete: () => {},
-      duration: duration,
-      easeMethod: "easeOutCubic",
-    })
-  }
+      duration,
+      easeMethod: 'easeOutCubic',
+    });
+  };
 
   const handleMouseEnter = () => {
-    handleOpacity(0, 1, 500)
-    handleSlicedLeftTranslation(-50, 0, 800)
-    handleSlicedRightTranslation(50, 0, 800)
-    listItem.current.addEventListener("mousemove", parallax)
-    dispatch({ type: "MOUSE/ENTER" })
-  }
+    handleOpacity(0, 1, 500);
+    handleSlicedLeftTranslation(-50, 0, 800);
+    handleSlicedRightTranslation(50, 0, 800);
+    listItem.current.addEventListener('mousemove', parallax);
+    dispatch({ type: 'MOUSE/ENTER' });
+  };
 
   const handleMouseLeave = () => {
-    listItem.current.removeEventListener("mousemove", parallax)
-    handleOpacity(1, 0, 800)
+    listItem.current.removeEventListener('mousemove', parallax);
+    handleOpacity(1, 0, 800);
     // TODO: Change px to vw in ProjectImage translate CSS rule
     handleSlicedLeftTranslation(
       state.leftTranslation,
       initialState.leftTranslation,
       800
-    )
+    );
     handleSlicedRightTranslation(
       state.rightTranslation,
       initialState.rightTranslation,
       800
-    )
+    );
     // Reset image position
     dispatch({
-      type: "MOUSE/COORDINATES",
+      type: 'MOUSE/COORDINATES',
       payload: initialState.parallaxPosition,
-    })
-    dispatch({ type: "MOUSE/LEAVE" })
-  }
+    });
+    dispatch({ type: 'MOUSE/LEAVE' });
+  };
   return (
     // <li className={wrapper}>
     //   <h1
@@ -179,6 +183,7 @@ export default ProjectItem = ({
     //   >
     //     <svg aria-hidden="true">
     //       <clipPath id={clipElement}>
+    // eslint-disable-next-line max-len
     //         <text dominantBaseline="hanging" x="50%" y="0" textAnchor="middle">
     //           {title}
     //         </text>
@@ -210,7 +215,7 @@ export default ProjectItem = ({
         slicedLeftTranslation={state.leftTranslation}
         slicedRightTranslation={state.rightTranslation}
       />
-      <div className={`${infoBlock} ${state.active ? isActive : ""}`}>
+      <div className={`${infoBlock} ${state.active ? isActive : ''}`}>
         {roles.map((element) => (
           <p key={element} className={infoLine}>
             <span className={infoLineText}>{element}</span>
@@ -218,5 +223,18 @@ export default ProjectItem = ({
         ))}
       </div>
     </li>
-  )
+  );
 }
+
+ProjectItem.propTypes = {
+  counter: PropTypes.number.isRequired,
+  title: PropTypes.string.isRequired,
+  titleRef: PropTypes.func.isRequired,
+  url: PropTypes.instanceOf(Object).isRequired,
+  alt: PropTypes.string.isRequired,
+  roles: PropTypes.instanceOf(Object).isRequired,
+  projectCounterClassName: PropTypes.string.isRequired,
+  headingClassName: PropTypes.string.isRequired,
+};
+
+export default ProjectItem;
