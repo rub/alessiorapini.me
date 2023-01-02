@@ -6,7 +6,6 @@ import {
   heading,
 } from './ProjectItem.module.css';
 
-// TODO: prevent hovering on roles
 function ProjectTitle({
   counter,
   title,

@@ -14,6 +14,10 @@
     transition: all 0.5s ease-out;
   }
 
+  & .projectCounter {
+    color: var(--grey-100);
+  }
+
   /* The hovered element to unblur */
   &:hover .projectCounter {
     color: var(--accent);
@@ -27,6 +31,7 @@
 
   /* Blur every item after the hovered element */
   &:hover ~ & .projectCounter {
+    color: var(--grey-300);
     opacity: 0.25;
   }
 
@@ -40,6 +45,7 @@
   font-size: 20px;
   left: 70vw;
   letter-spacing: 5px;
+  pointer-events: none;
   position: fixed;
   text-align: left;
   top: 50%;
