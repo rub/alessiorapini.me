@@ -4,9 +4,10 @@
 
 .listWrapper {
   box-sizing: border-box;
+  display: flex;
   height: 100vh;
+  justify-content: center;
   overflow: auto;
-  padding-left: 10vw;
   position: relative;
   width: 100vw;
 }

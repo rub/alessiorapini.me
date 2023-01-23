@@ -13,6 +13,9 @@ function ProjectImage({
   alt,
   opacity,
   parallaxPosition,
+  imageXPosition,
+  imageYPosition,
+  imageRef,
   slicedLeftTranslation,
   slicedRightTranslation,
 }) {
@@ -22,9 +25,13 @@ function ProjectImage({
       style={{
         opacity,
         transform: `translate3d(${parallaxPosition.x}px, ${parallaxPosition.y}px, 0)`,
+        top: `${imageYPosition}px`,
+        left: `${imageXPosition}px`,
       }}
     >
-      <GatsbyImage className={imageFixed} image={url} alt={alt} />
+      <div style={{ display: 'inline-block' }} ref={imageRef}>
+        <GatsbyImage className={imageFixed} image={url} alt={alt} />
+      </div>
       <GatsbyImage
         className={imageSlicedLeft}
         image={url}

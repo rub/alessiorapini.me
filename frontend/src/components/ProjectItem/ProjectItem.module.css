@@ -2,10 +2,11 @@
   align-items: center;
   cursor: pointer;
   display: flex;
+  justify-content: center;
   height: 25vh;
   line-height: 1.25;
   padding: 5px 0;
-  width: fit-content;
+  user-select: none;
 
   /* Since we cannot select previous elements, we set them as the default and then overwrite subsequent project siblings */
   & .projectCounter,
@@ -41,12 +42,46 @@
   }
 }
 
+.projectCounter {
+  color: var(--accent);
+  display: inline-block;
+  font-size: 1.5rem;
+  letter-spacing: 5px;
+  margin-left: -3rem;
+  position: relative;
+  width: 3rem;
+  z-index: 1;
+}
+
+.titleWrapper {
+  display: inline-block;
+  position: relative;
+  white-space: nowrap;
+}
+
+.heading {
+  color: var(--grey-100);
+  display: inline-block;
+  font-size: 8.5vw;
+  line-height: 1.1;
+  position: relative;
+  z-index: 1;
+}
+
+.infoWrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: center;
+  position: relative;
+}
+
 .infoBlock {
   font-size: 20px;
-  left: 70vw;
+  left: calc(100% + 2rem);
   letter-spacing: 5px;
   pointer-events: none;
-  position: fixed;
+  position: absolute;
   text-align: left;
   top: 50%;
   transform: translateY(-50%);
@@ -63,6 +98,7 @@
       opacity: 0;
       transform: translateY(10px);
       transition: all 0.25s ease-in-out;
+      white-space: nowrap;
     }
   }
 }
@@ -122,10 +158,6 @@
   width: 100%;
 }
 
-.imageFixed {
-  position: absolute;
-}
-
 .imageSlicedLeft {
   clip-path: polygon(
     0 0,
@@ -149,8 +181,10 @@
     100% 90%,
     0 90%
   );
+  left: 0;
   opacity: 0.5;
   position: absolute;
+  top: 0;
 }
 
 .imageSlicedRight {
@@ -176,29 +210,8 @@
     100% 100%,
     0 100%
   );
+  left: 0;
   opacity: 0.5;
   position: absolute;
-}
-
-.titleWrapper {
-  display: inline-block;
-  position: relative;
-  white-space: nowrap;
-}
-
-.projectCounter {
-  color: var(--accent);
-  display: inline-block;
-  font-size: 1.5rem;
-  letter-spacing: 5px;
-  width: 3rem;
-}
-
-.heading {
-  color: var(--grey-100);
-  display: inline-block;
-  font-size: 8.5vw;
-  line-height: 1.1;
-  position: relative;
-  z-index: 1;
+  top: 0;
 }

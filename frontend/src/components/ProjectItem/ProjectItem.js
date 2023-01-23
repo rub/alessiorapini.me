@@ -1,9 +1,10 @@
-import React, { useReducer, useRef } from 'react';
+import React, { useEffect, useReducer, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import ProjectTitle from './ProjectTitle';
 import ProjectImage from './ProjectImage';
 import {
   itemWrapper,
+  infoWrapper,
   infoBlock,
   isActive,
   infoLine,
@@ -76,6 +77,32 @@ function ProjectItem({
   projectCounterClassName,
   headingClassName,
 }) {
+  const imageRef = useRef();
+  const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
+
+  useEffect(() => {
+    if (imageRef.current) {
+      setDimensions({
+        width: imageRef.current.clientWidth,
+        height: imageRef.current.clientHeight,
+      });
+    }
+  }, []);
+
+  // TODO: Remember to subtract the initial transition value
+
+  const xDistanceFromBoundaries = window.innerWidth - dimensions.width;
+  const yDistanceFromBoundaries = window.innerHeight - dimensions.height;
+
+  const [imagePosition, setImagePosition] = useState({ x: 0, y: 0 });
+
+  function randomImagePosition(min, max) {
+    const minValue = Math.ceil(min);
+    const maxValue = Math.floor(max);
+    return Math.floor(Math.random() * (maxValue - minValue + 1) + minValue);
+  }
+
+  // ANIMATION CODE STARTS HERE
   const listItem = useRef(null);
   // Use a reducer to handle multiple states for the images
   const [state, dispatch] = useReducer(reducer, initialState);
@@ -150,6 +177,12 @@ function ProjectItem({
     handleSlicedRightTranslation(50, 0, 800);
     listItem.current.addEventListener('mousemove', parallax);
     dispatch({ type: 'MOUSE/ENTER' });
+
+    setImagePosition({
+      ...imagePosition,
+      x: randomImagePosition(0, xDistanceFromBoundaries),
+      y: randomImagePosition(0, yDistanceFromBoundaries),
+    });
   };
 
   const handleMouseLeave = () => {
@@ -200,28 +233,33 @@ function ProjectItem({
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
-      <ProjectTitle
-        counter={counter}
-        title={title}
-        titleRef={titleRef}
-        projectCounterClassName={projectCounterClassName}
-        headingClassName={headingClassName}
-      />
+      <div className={infoWrapper}>
+        <ProjectTitle
+          counter={counter}
+          title={title}
+          titleRef={titleRef}
+          projectCounterClassName={projectCounterClassName}
+          headingClassName={headingClassName}
+        />
+        <div className={`${infoBlock} ${state.active ? isActive : ''}`}>
+          {roles.map((element) => (
+            <p key={element} className={infoLine}>
+              <span className={infoLineText}>{element}</span>
+            </p>
+          ))}
+        </div>
+      </div>
       <ProjectImage
         url={url}
         alt={alt}
+        imageXPosition={imagePosition.x}
+        imageYPosition={imagePosition.y}
+        imageRef={imageRef}
         opacity={state.opacity}
         parallaxPosition={state.parallaxPosition}
         slicedLeftTranslation={state.leftTranslation}
         slicedRightTranslation={state.rightTranslation}
       />
-      <div className={`${infoBlock} ${state.active ? isActive : ''}`}>
-        {roles.map((element) => (
-          <p key={element} className={infoLine}>
-            <span className={infoLineText}>{element}</span>
-          </p>
-        ))}
-      </div>
     </li>
   );
 }
