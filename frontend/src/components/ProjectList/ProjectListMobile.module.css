@@ -1,0 +1,37 @@
+.listWrapper {
+  box-sizing: border-box;
+  height: 100vh;
+  overflow: auto;
+  position: relative;
+  width: 100vw;
+}
+
+.list {
+  height: 100vh;
+}
+
+.listWrapper {
+  & .itemActive {
+    z-index: 1;
+  }
+
+  & .projectCounterActive {
+    color: var(--accent);
+    transition: color 0.8s ease-out;
+  }
+
+  & .titleActive {
+    color: var(--grey-100);
+    transition: color 0.8s ease-out;
+  }
+
+  & .imageWrapperActive {
+    opacity: 1;
+    transition: opacity 0.8s ease-out;
+  }
+
+  & .imageSlicedActive {
+    transform: translate3d(0, 0, 0);
+    transition: transform 0.8s ease-out;
+  }
+}

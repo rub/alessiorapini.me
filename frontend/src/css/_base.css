@@ -1,19 +1,19 @@
 /** Custom base styles */
 
 /* Font: Zilla Slab - regular */
-@import url("https://fonts.googleapis.com/css2?family=Zilla+Slab&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Zilla+Slab&display=swap');
 
 /* Font: Druk Cyr */
 /* Don't use unicode-range to ensure the same font alignment across browsers */
 @font-face {
-  font-family: "Druk Cyr";
-  src: url("/fonts/DrukCyr-Bold.woff2") format("woff2");
+  font-family: 'Druk Cyr';
+  src: url('/fonts/DrukCyr-Bold.woff2') format('woff2');
   font-display: swap;
 }
 
 /* Fallback font for Druk Cyr: Impact */
 @font-face {
-  font-family: "Fallback Druk";
+  font-family: 'Fallback Druk';
   ascent-override: 130%;
   descent-override: 50%;
   line-gap-override: normal;
@@ -31,7 +31,7 @@
   --grey-700: hsla(80, 3%, 36%, 100%);
   --grey-900: hsla(90, 3%, 26%, 100%);
   /* Fonts */
-  --druk-cyr: "Druk Cyr", "Fallback Druk", sans-serif;
+  --druk-cyr: 'Druk Cyr', 'Fallback Druk', sans-serif;
 }
 
 html {
@@ -53,7 +53,11 @@ body {
 /* Set the height to fill the visible viewport on mobile */
 #___gatsby,
 #gatsby-focus-wrapper,
-main {
+#gatsby-focus-wrapper > main {
+  height: 100%;
+}
+
+.swiper {
   height: 100%;
 }
 

@@ -1,0 +1,134 @@
+.itemWrapper {
+  align-items: center;
+  cursor: pointer;
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  line-height: 1.25;
+  position: relative;
+  user-select: none;
+  z-index: 0;
+}
+
+.infoBlock {
+  font-size: 20px;
+  left: 70vw;
+  letter-spacing: 5px;
+  pointer-events: none;
+  position: fixed;
+  text-align: left;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1;
+
+  & .infoLine {
+    color: var(--grey-300);
+    margin-bottom: 10px;
+    overflow: hidden;
+    text-transform: uppercase;
+
+    & .infoLineText {
+      display: block;
+      opacity: 0;
+      transform: translateY(10px);
+      transition: all 0.25s ease-in-out;
+    }
+  }
+}
+
+.imagesWrapper {
+  opacity: 0;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  transition: transform 1s cubic-bezier(0.165, 0.84, 0.44, 1);
+  width: 40vw;
+}
+
+.imageSlicedLeft,
+.imageSlicedRight {
+  height: 100%;
+  left: 0;
+  opacity: 0.5;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+.imageSlicedLeft {
+  clip-path: polygon(
+    0 0,
+    100% 0,
+    100% 10%,
+    0 10%,
+    0 20%,
+    100% 20%,
+    100% 30%,
+    0 30%,
+    0 40%,
+    100% 40%,
+    100% 50%,
+    0 50%,
+    0 60%,
+    100% 60%,
+    100% 70%,
+    0 70%,
+    0 80%,
+    100% 80%,
+    100% 90%,
+    0 90%
+  );
+  transform: translate3d(-5vw, 0, 0);
+}
+
+.imageSlicedRight {
+  clip-path: polygon(
+    0 10%,
+    100% 10%,
+    100% 20%,
+    0 20%,
+    0 30%,
+    100% 30%,
+    100% 40%,
+    0 40%,
+    0 50%,
+    100% 50%,
+    100% 60%,
+    0 60%,
+    0 70%,
+    100% 70%,
+    100% 80%,
+    0 80%,
+    0 90%,
+    100% 90%,
+    100% 100%,
+    0 100%
+  );
+  transform: translate3d(5vw, 0, 0);
+}
+
+.titleWrapper {
+  display: inline-block;
+  position: relative;
+  white-space: nowrap;
+}
+
+.projectCounter {
+  bottom: 0;
+  color: var(--grey-500);
+  display: inline-block;
+  font-size: 1rem;
+  letter-spacing: 5px;
+  position: absolute;
+  right: 100%;
+  width: 2rem;
+  z-index: 1;
+}
+
+.heading {
+  color: var(--grey-500);
+  display: inline-block;
+  font-size: 12.5vw;
+  line-height: 1.1;
+  position: relative;
+  z-index: 1;
+}

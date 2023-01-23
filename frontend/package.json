@@ -32,6 +32,7 @@
     "react-locomotive-scroll": "^0.2.2",
     "react-markdown": "^8.0.3",
     "sharp": "^0.31.2",
+    "swiper": "^8.4.6",
     "typescript": "^4.8.4",
     "webpack": "^5.75.0"
   },

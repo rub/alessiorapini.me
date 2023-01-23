@@ -23,7 +23,7 @@ button cursor and apply responsive changes to the Footer layout.
   /* The background overlay */
   &::before {
     background-color: rgba(0, 0, 0, 0.5);
-    content: "";
+    content: '';
     height: 100%;
     left: 0;
     position: absolute;
