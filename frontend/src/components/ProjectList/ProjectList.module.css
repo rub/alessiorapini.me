@@ -14,7 +14,7 @@
 
 .list {
   height: 100vh;
-  width: 0; /* Set the blur only when hovering a project item */
+  width: 0; /* Highlight the item only on hover */
 }
 
 /* Set default styles if the container is not hovered */

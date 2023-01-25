@@ -10,19 +10,14 @@ import {
   infoLine,
   infoLineText,
 } from './ProjectItem.module.css';
-import animate from './animate';
 
-// Initial animations state
+// Initial image animation state
 const initialState = {
-  opacity: 0,
   parallaxPosition: { x: 0, y: -20 },
-  leftTranslation: -50,
-  rightTranslation: 50,
   active: false,
 };
 
-// TODO: Transform to arrow function
-function reducer(state, action) {
+const reducer = (state, action) => {
   switch (action.type) {
     case 'MOUSE/ENTER': {
       return {
@@ -36,35 +31,17 @@ function reducer(state, action) {
         active: false,
       };
     }
-    case 'CHANGE/OPACITY': {
-      return {
-        ...state,
-        opacity: action.payload,
-      };
-    }
     case 'MOUSE/COORDINATES': {
       return {
         ...state,
         parallaxPosition: action.payload,
       };
     }
-    case 'CHANGE/TRANSITIONLEFT': {
-      return {
-        ...state,
-        leftTranslation: action.payload,
-      };
-    }
-    case 'CHANGE/TRANSITIONRIGHT': {
-      return {
-        ...state,
-        rightTranslation: action.payload,
-      };
-    }
     default: {
       throw new Error();
     }
   }
-}
+};
 
 function ProjectItem({
   // clipElement,
@@ -78,21 +55,33 @@ function ProjectItem({
   headingClassName,
 }) {
   const imageRef = useRef();
-  const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
+  const [dimensions, setDimensions] = useState({
+    width: 0,
+    height: 0,
+  });
 
-  useEffect(() => {
+  function handleResize() {
     if (imageRef.current) {
       setDimensions({
         width: imageRef.current.clientWidth,
         height: imageRef.current.clientHeight,
       });
     }
+  }
+
+  // Calculate the dimensions of the images on initial render
+  // and recalculate sizes on window resize
+  useEffect(() => {
+    handleResize();
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
   }, []);
 
-  // TODO: Remember to subtract the initial transition value
-
-  const xDistanceFromBoundaries = window.innerWidth - dimensions.width;
-  const yDistanceFromBoundaries = window.innerHeight - dimensions.height;
+  const xDistanceFromBoundaries = window.innerWidth - dimensions.width - 50;
+  const yDistanceFromBoundaries = window.innerHeight - dimensions.height - 50;
 
   const [imagePosition, setImagePosition] = useState({ x: 0, y: 0 });
 
@@ -106,7 +95,6 @@ function ProjectItem({
   const listItem = useRef(null);
   // Use a reducer to handle multiple states for the images
   const [state, dispatch] = useReducer(reducer, initialState);
-  const easeMethod = 'easeInOutCubic';
   const parallax = (event) => {
     const speed = -5;
     const x = (window.innerWidth - event.pageX * speed) / 100;
@@ -115,66 +103,7 @@ function ProjectItem({
     dispatch({ type: 'MOUSE/COORDINATES', payload: { x, y } });
   };
 
-  const handleOpacity = (initialOpacity, newOpacity, duration) => {
-    animate({
-      fromValue: initialOpacity,
-      toValue: newOpacity,
-      onUpdate: (updatedOpacity, callback) => {
-        dispatch({ type: 'CHANGE/OPACITY', payload: updatedOpacity });
-        callback();
-      },
-      onComplete: () => {},
-      duration,
-      easeMethod,
-    });
-  };
-
-  const handleSlicedLeftTranslation = (
-    initialTransitionLeft,
-    newTransitionLeft,
-    duration
-  ) => {
-    animate({
-      fromValue: initialTransitionLeft,
-      toValue: newTransitionLeft,
-      onUpdate: (updatedTransitionLeft, callback) => {
-        dispatch({
-          type: 'CHANGE/TRANSITIONLEFT',
-          payload: updatedTransitionLeft,
-        });
-        callback();
-      },
-      onComplete: () => {},
-      duration,
-      easeMethod: 'easeOutCubic',
-    });
-  };
-
-  const handleSlicedRightTranslation = (
-    initialTransitionRight,
-    newTransitionRight,
-    duration
-  ) => {
-    animate({
-      fromValue: initialTransitionRight,
-      toValue: newTransitionRight,
-      onUpdate: (updatedTransitionRight, callback) => {
-        dispatch({
-          type: 'CHANGE/TRANSITIONRIGHT',
-          payload: updatedTransitionRight,
-        });
-        callback();
-      },
-      onComplete: () => {},
-      duration,
-      easeMethod: 'easeOutCubic',
-    });
-  };
-
   const handleMouseEnter = () => {
-    handleOpacity(0, 1, 500);
-    handleSlicedLeftTranslation(-50, 0, 800);
-    handleSlicedRightTranslation(50, 0, 800);
     listItem.current.addEventListener('mousemove', parallax);
     dispatch({ type: 'MOUSE/ENTER' });
 
@@ -187,18 +116,6 @@ function ProjectItem({
 
   const handleMouseLeave = () => {
     listItem.current.removeEventListener('mousemove', parallax);
-    handleOpacity(1, 0, 800);
-    // TODO: Change px to vw in ProjectImage translate CSS rule
-    handleSlicedLeftTranslation(
-      state.leftTranslation,
-      initialState.leftTranslation,
-      800
-    );
-    handleSlicedRightTranslation(
-      state.rightTranslation,
-      initialState.rightTranslation,
-      800
-    );
     // Reset image position
     dispatch({
       type: 'MOUSE/COORDINATES',
@@ -255,10 +172,8 @@ function ProjectItem({
         imageXPosition={imagePosition.x}
         imageYPosition={imagePosition.y}
         imageRef={imageRef}
-        opacity={state.opacity}
+        wrapperClassName={`${state.active ? isActive : ''}`}
         parallaxPosition={state.parallaxPosition}
-        slicedLeftTranslation={state.leftTranslation}
-        slicedRightTranslation={state.rightTranslation}
       />
     </li>
   );

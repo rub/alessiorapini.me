@@ -19,7 +19,7 @@ function ProjectList() {
             featured_image_alt
             featured_image {
               childImageSharp {
-                gatsbyImageData
+                gatsbyImageData(layout: CONSTRAINED)
               }
             }
             roles
