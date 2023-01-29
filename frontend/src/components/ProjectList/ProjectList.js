@@ -38,33 +38,36 @@ function ProjectList() {
     projectsQuery.allMarkdownRemark.nodes
   );
 
-  let isScrolling;
-  // Disable the image animation on scroll to prevent messing up the UI and
-  // performance bottlenecks
-  const disableAnimationonScroll = () => {
-    if (itemsWrapper.current && titleItem.current) {
-      window.clearTimeout(isScrolling);
-      itemsWrapper.current.style.pointerEvents = 'none';
-      renderItems.forEach((_, i) => {
-        titleItem.current[i].style.pointerEvents = 'none';
-      });
-
-      isScrolling = setTimeout(() => {
-        itemsWrapper.current.style.pointerEvents = 'all';
-        renderItems.forEach((_, i) => {
-          titleItem.current[i].style.pointerEvents = 'all';
-        });
-      }, 300);
-    }
-  };
-
   useEffect(() => {
-    menuItems.current.addEventListener('scroll', disableAnimationonScroll);
+    const itemsWrapperRef = itemsWrapper.current;
+    const menuItemsRef = menuItems.current;
+    const titleItemRef = titleItem.current;
+    let isScrolling;
 
-    return () => {
-      menuItems.current.removeEventListener('scroll', disableAnimationonScroll);
+    // Disable the image animation on scroll to prevent messing up the UI and
+    // performance bottlenecks
+    const disableAnimationonScroll = () => {
+      if (itemsWrapperRef && titleItem.current) {
+        window.clearTimeout(isScrolling);
+        itemsWrapperRef.style.pointerEvents = 'none';
+        renderItems.forEach((_, i) => {
+          titleItem.current[i].style.pointerEvents = 'none';
+        });
+
+        isScrolling = setTimeout(() => {
+          itemsWrapperRef.style.pointerEvents = 'all';
+          renderItems.forEach((_, i) => {
+            titleItemRef[i].style.pointerEvents = 'all';
+          });
+        }, 300);
+      }
     };
-  }, []);
+
+    menuItemsRef.addEventListener('scroll', disableAnimationonScroll);
+    return () => {
+      menuItemsRef.removeEventListener('scroll', disableAnimationonScroll);
+    };
+  }, [renderItems]);
 
   const cloneItems = () => {
     // Get the height of the first item
@@ -95,15 +98,16 @@ function ProjectList() {
     menuItems.current.scrollTop = position;
   };
 
-  const initScroll = () => {
-    const scrollPosition = getScrollPosition();
-    if (scrollPosition <= 0) {
-      setScrollPosition(1);
-    }
-  };
-
   useEffect(() => {
     const clonesHeight = cloneItems();
+    const menuItemsRef = menuItems.current;
+
+    const initScroll = () => {
+      const scrollPosition = getScrollPosition();
+      if (scrollPosition <= 0) {
+        setScrollPosition(1);
+      }
+    };
     initScroll();
 
     // Create the loop scroll effect
@@ -120,11 +124,12 @@ function ProjectList() {
       }
     };
 
-    menuItems.current.addEventListener('scroll', scrollUpdate);
+    menuItemsRef.addEventListener('scroll', scrollUpdate);
 
     return () => {
-      menuItems.current.removeEventListener('scroll', scrollUpdate);
+      menuItemsRef.removeEventListener('scroll', scrollUpdate);
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const originalItemsAmount = projectsQuery.allMarkdownRemark.nodes.length;
