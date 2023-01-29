@@ -41,6 +41,12 @@
   }
 }
 
+.titleWrapper {
+  display: inline-block;
+  position: relative;
+  white-space: nowrap;
+}
+
 .projectCounter {
   color: var(--accent);
   display: inline-block;
@@ -56,12 +62,6 @@
     margin-left: max(-2rem, -5.1vw);
     width: max(5.1vw, 2rem);
   }
-}
-
-.titleWrapper {
-  display: inline-block;
-  position: relative;
-  white-space: nowrap;
 }
 
 .heading {

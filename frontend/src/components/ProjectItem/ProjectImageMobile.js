@@ -24,23 +24,26 @@ function ProjectImageMobile({
         top: `calc(50% + ${imageYPosition}px)`,
         left: `calc(50% + ${imageXPosition}px)`,
       }}
-      ref={imageRef}
     >
-      <GatsbyImage
-        className={imageFixed}
-        image={url}
-        alt={alt}
-        objectFit="cover"
-      />
+      <div style={{ display: 'inline-block' }} ref={imageRef}>
+        <GatsbyImage
+          className={imageFixed}
+          image={url}
+          alt={alt}
+          objectFit="contain"
+        />
+      </div>
       <GatsbyImage
         className={`${imageSlicedLeft} ${imageSlicedClassName}`}
         image={url}
         alt={alt}
+        objectFit="contain"
       />
       <GatsbyImage
         className={`${imageSlicedRight} ${imageSlicedClassName}`}
         image={url}
         alt={alt}
+        objectFit="contain"
       />
     </div>
   );

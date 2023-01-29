@@ -7,7 +7,7 @@ import ProjectItemMobile from '../ProjectItem/ProjectItemMobile';
 import {
   wrapper,
   listWrapper,
-  itemActive,
+  isItemActive,
   projectCounterActive,
   titleActive,
   imageWrapperActive,
@@ -37,29 +37,49 @@ function ProjectListMobile() {
   const imageRef = useRef();
   const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
 
-  useEffect(() => {
+  // TODO: z-index => it seems there's no solution
+
+  function handleResize() {
     if (imageRef.current) {
       setDimensions({
         width: imageRef.current.clientWidth,
         height: imageRef.current.clientHeight,
       });
     }
+  }
+
+  useEffect(() => {
+    handleResize();
   }, []);
 
+  // We need to divide by 2
+  // because the active slide is on the middle of the viewport
   const xDistanceFromBoundaries = (window.innerWidth - dimensions.width) / 2;
-  const yDistanceFromBoundaries = (window.innerHeight - dimensions.height) / 2;
+  const yDistanceFromBoundaries =
+    (window.innerHeight - dimensions.height) / 2 - 20;
 
   const originalItemsAmount = projectsQuery.allMarkdownRemark.nodes.length;
 
   const [imagePosition, setImagePosition] = useState({ x: 0, y: 0 });
 
   function randomImagePosition(min, max) {
-    // min = Math.ceil(min);
-    // max = Math.floor(max);
-    const foo = Math.ceil(min);
-    const bar = Math.floor(max);
-    return Math.floor(Math.random() * (bar - foo + 1) + foo);
-    // return Math.floor(Math.random() * (max - min + 1) + min);
+    const minValue = Math.ceil(min);
+    const maxValue = Math.floor(max);
+    return Math.floor(Math.random() * (maxValue - minValue + 1) + minValue);
+  }
+
+  useEffect(() => {
+    setImagePosition({
+      x: randomImagePosition(-xDistanceFromBoundaries, xDistanceFromBoundaries),
+      y: randomImagePosition(-yDistanceFromBoundaries, yDistanceFromBoundaries),
+    });
+  }, [xDistanceFromBoundaries, yDistanceFromBoundaries]);
+
+  function recalculateImagePosition() {
+    setImagePosition({
+      x: randomImagePosition(-xDistanceFromBoundaries, xDistanceFromBoundaries),
+      y: randomImagePosition(-yDistanceFromBoundaries, yDistanceFromBoundaries),
+    });
   }
 
   return (
@@ -71,27 +91,27 @@ function ProjectListMobile() {
           centeredSlides
           initialSlide={0}
           slidesPerView={4}
-          onSlideChange={() =>
-            setImagePosition({
-              ...imagePosition,
-              x: randomImagePosition(
-                -xDistanceFromBoundaries,
-                xDistanceFromBoundaries
-              ),
-              y: randomImagePosition(
-                -yDistanceFromBoundaries,
-                yDistanceFromBoundaries
-              ),
-            })
-          }
+          onSlideChange={(swiper) => {
+            // Whenever the loop restarts, Swiper automatically switches back
+            // to using the original slide before going to the next one.
+            // This intermediate step implies a recall of setImagePosition(),
+            // and the same image is re-rendered in a different position.
+            // To prevent this issue, we set a condition where Swiper
+            // does not call this function whenever the loop restarts.
+            if (swiper.activeIndex > swiper.previousIndex) {
+              recalculateImagePosition();
+            }
+          }}
+          onResize={() => {
+            recalculateImagePosition();
+          }}
         >
           {projectsQuery.allMarkdownRemark.nodes.map((project, index) => {
             return (
+              // eslint-disable-next-line react/no-array-index-key
               <SwiperSlide key={index}>
                 {({ isActive }) => (
                   <ProjectItemMobile
-                    // eslint-disable-next-line react/no-array-index-key
-                    key={index}
                     counter={
                       index < originalItemsAmount
                         ? index + 1
@@ -103,13 +123,11 @@ function ProjectListMobile() {
                         .gatsbyImageData
                     }
                     alt={project.frontmatter.title}
-                    itemClassName={isActive ? itemActive : ''}
-                    projectCounterClassName={
-                      isActive ? projectCounterActive : ''
-                    }
-                    titleClassName={isActive ? titleActive : ''}
-                    imageWrapperClassName={isActive ? imageWrapperActive : ''}
-                    imageSlicedClassName={isActive ? imageSlicedActive : ''}
+                    itemClassName={isActive ? isItemActive : ''}
+                    projectCounterClassName={projectCounterActive}
+                    titleClassName={titleActive}
+                    imageWrapperClassName={imageWrapperActive}
+                    imageSlicedClassName={imageSlicedActive}
                     imageXPosition={imagePosition.x}
                     imageYPosition={imagePosition.y}
                     imageRef={imageRef}

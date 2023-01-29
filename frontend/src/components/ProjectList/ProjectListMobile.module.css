@@ -10,19 +10,18 @@
   height: 100vh;
 }
 
-.listWrapper {
-  & .itemActive {
-    z-index: 1;
-  }
+.isItemActive {
+  z-index: 1;
 
   & .projectCounterActive {
     color: var(--accent);
-    transition: color 0.8s ease-out;
+    opacity: 1;
+    transition: all 0.8s ease-out;
   }
 
   & .titleActive {
-    color: var(--grey-100);
-    transition: color 0.8s ease-out;
+    opacity: 1;
+    transition: opacity 0.8s ease-out;
   }
 
   & .imageWrapperActive {

@@ -1,47 +1,67 @@
 .itemWrapper {
   align-items: center;
-  cursor: pointer;
   display: flex;
   height: 100%;
   justify-content: center;
   line-height: 1.25;
-  position: relative;
   user-select: none;
-  z-index: 0;
 }
 
-.infoBlock {
-  font-size: 20px;
-  left: 70vw;
+.titleWrapper {
+  display: inline-block;
+  position: relative;
+  white-space: nowrap;
+}
+
+.projectCounter {
+  color: var(--grey-100);
+  display: inline-block;
+  font-size: 3vh;
   letter-spacing: 5px;
-  pointer-events: none;
-  position: fixed;
-  text-align: left;
-  top: 50%;
-  transform: translateY(-50%);
+  margin-left: -5.5vh;
+  opacity: 0.25;
+  position: relative;
+  width: 5.5vh;
   z-index: 1;
 
-  & .infoLine {
-    color: var(--grey-300);
-    margin-bottom: 10px;
-    overflow: hidden;
-    text-transform: uppercase;
+  @media (max-width: 1080px) {
+    font-size: max(2.8vw, 1rem);
+    margin-left: min(-2rem, -5.1vw);
+    width: max(5.1vw, 2rem);
+  }
+}
 
-    & .infoLineText {
-      display: block;
-      opacity: 0;
-      transform: translateY(10px);
-      transition: all 0.25s ease-in-out;
-    }
+.heading {
+  color: var(--grey-100);
+  display: inline-block;
+  font-size: 14.5vh;
+  line-height: 1.1;
+  opacity: 0.25;
+  position: relative;
+  z-index: 1;
+
+  @media (max-width: 1080px) and (orientation: portrait) {
+    font-size: 13.5vw;
   }
 }
 
 .imagesWrapper {
+  left: 0;
   opacity: 0;
   position: absolute;
+  top: 0;
   transform: translate(-50%, -50%);
   transition: transform 1s cubic-bezier(0.165, 0.84, 0.44, 1);
-  width: 40vw;
+}
+
+.imageFixed {
+  height: 60vh;
+  width: auto;
+
+  @media (max-width: 1080px) {
+    width: max(30vh, 200px);
+    height: 100%;
+  }
 }
 
 .imageSlicedLeft,
@@ -51,7 +71,7 @@
   opacity: 0.5;
   position: absolute;
   top: 0;
-  width: 100%;
+  transition: transform 1s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
 .imageSlicedLeft {
@@ -77,7 +97,7 @@
     100% 90%,
     0 90%
   );
-  transform: translate3d(-5vw, 0, 0);
+  transform: translate3d(-5vh, 0, 0);
 }
 
 .imageSlicedRight {
@@ -104,31 +124,4 @@
     0 100%
   );
   transform: translate3d(5vw, 0, 0);
-}
-
-.titleWrapper {
-  display: inline-block;
-  position: relative;
-  white-space: nowrap;
-}
-
-.projectCounter {
-  bottom: 0;
-  color: var(--grey-500);
-  display: inline-block;
-  font-size: 1rem;
-  letter-spacing: 5px;
-  position: absolute;
-  right: 100%;
-  width: 2rem;
-  z-index: 1;
-}
-
-.heading {
-  color: var(--grey-500);
-  display: inline-block;
-  font-size: 12.5vw;
-  line-height: 1.1;
-  position: relative;
-  z-index: 1;
 }
