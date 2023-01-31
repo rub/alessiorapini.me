@@ -1,19 +1,26 @@
-import React from "react"
-import { Link } from "gatsby"
+import React from 'react';
+import PropTypes from 'prop-types';
+import { Link } from 'gatsby';
+import { header, positionFixed, logo } from './Header.module.css';
 
-import { header, positionFixed, logo, navLink } from "./Header.module.css"
-
-const Header = ({ isFixed }) => (
-  <header className={`${header} ${isFixed ? positionFixed : ""}`}>
-    <Link to="/" className={logo}>
-      AR
-    </Link>
-    <nav>
-      <Link to="/projects" className={navLink}>
-        Selected works
+function Header({ isFixed, navItems }) {
+  return (
+    <header className={`${header} ${isFixed ? positionFixed : ''}`}>
+      <Link to="/" className={logo}>
+        AR
       </Link>
-    </nav>
-  </header>
-)
+      <nav>{navItems}</nav>
+    </header>
+  );
+}
 
-export default Header
+Header.propTypes = {
+  isFixed: PropTypes.bool,
+  navItems: PropTypes.instanceOf(Object).isRequired,
+};
+
+Header.defaultProps = {
+  isFixed: false,
+};
+
+export default Header;

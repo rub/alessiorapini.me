@@ -1,0 +1,62 @@
+.navLink {
+  align-items: center;
+  animation: link-reveal 1000ms ease-out 4500ms forwards;
+  color: var(--grey-100);
+  display: inline-flex;
+  height: 2rem;
+  letter-spacing: 5px;
+  opacity: 0;
+  position: relative;
+  text-transform: uppercase;
+  transition: all 0.292s cubic-bezier(1, 0, 0, 1);
+  user-select: none;
+
+  @supports (backdrop-filter: blur(13px) saturate(250%) opacity(0)) {
+    backdrop-filter: blur(13px) saturate(250%) opacity(0);
+
+    @media (any-pointer: fine) {
+      &:hover {
+        backdrop-filter: blur(13px) saturate(250%) opacity(1);
+      }
+    }
+  }
+
+  &::after {
+    background-color: rgba(255, 255, 255, 0.31);
+    content: '';
+    height: 100%;
+    left: -0.1rem;
+    opacity: 1;
+    pointer-events: none;
+    position: absolute;
+    right: 0;
+    transform: scale3d(1, 0.1, 1);
+    transform-origin: bottom;
+    transition: all 0.292s cubic-bezier(1, 0, 0, 1);
+    top: 0;
+    width: 100%;
+    z-index: -1;
+  }
+
+  @media (any-pointer: fine) {
+    &:hover::after {
+      transform: scale3d(1, 1, 1);
+      transition: all 0.438s cubic-bezier(1, 0, 0, 1);
+    }
+  }
+}
+
+.positionedFixed {
+  animation: none;
+  opacity: 1;
+  pointer-events: all;
+}
+
+@keyframes link-reveal {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
