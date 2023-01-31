@@ -1,19 +1,14 @@
 import { useEffect, useState } from 'react';
 
 export default function useDeviceDetect() {
-  const [isMobile, setMobile] = useState(false);
+  const [isTouchOnly, setTouchOnly] = useState(false);
 
   useEffect(() => {
-    const userAgent =
-      typeof navigator === 'undefined' ? '' : navigator.userAgent;
+    const touchOnly =
+      window.matchMedia && window.matchMedia('(any-hover: none)').matches;
 
-    const mobile = Boolean(
-      userAgent.match(
-        /Android|BlackBerry|iPhone|iPad|iPod|Opera Mini|IEMobile|WPDesktop/i
-      )
-    );
-    setMobile(mobile);
+    setTouchOnly(touchOnly);
   }, []);
 
-  return { isMobile };
+  return { isTouchOnly };
 }
