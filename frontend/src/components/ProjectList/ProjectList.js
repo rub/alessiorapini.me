@@ -6,7 +6,7 @@ import {
   listWrapper,
   list,
   projectCounterDefault,
-  headingDefault,
+  titleDefault,
 } from './ProjectList.module.css';
 
 function ProjectList() {
@@ -141,8 +141,8 @@ function ProjectList() {
           {renderItems.map((project, index) => {
             return (
               <ProjectItem
-                // We need to use the index since items are cloned and we get
-                // duplicated ids
+                // We need to use the index otherwise we will get duplicated ids
+                // because the original items are duplicated
                 // eslint-disable-next-line react/no-array-index-key
                 key={index}
                 counter={
@@ -161,7 +161,7 @@ function ProjectList() {
                   titleItem.current[index] = ref;
                 }}
                 projectCounterClassName={projectCounterDefault}
-                headingClassName={headingDefault}
+                titleClassName={titleDefault}
               />
             );
           })}

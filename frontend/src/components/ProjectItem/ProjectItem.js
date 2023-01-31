@@ -9,6 +9,7 @@ import {
   isActive,
   infoLine,
   infoLineText,
+  isMobileVersion,
 } from './ProjectItem.module.css';
 
 // Initial image animation state
@@ -44,7 +45,7 @@ const reducer = (state, action) => {
 };
 
 function ProjectItem({
-  // clipElement,
+  isMobile,
   counter,
   title,
   titleRef,
@@ -52,7 +53,7 @@ function ProjectItem({
   alt,
   roles,
   projectCounterClassName,
-  headingClassName,
+  titleClassName,
 }) {
   const imageRef = useRef();
   const [dimensions, setDimensions] = useState({
@@ -124,28 +125,8 @@ function ProjectItem({
     dispatch({ type: 'MOUSE/LEAVE' });
   };
   return (
-    // <li className={wrapper}>
-    //   <h1
-    //     className={projectTitle}
-    //     style={{ clipPath: `url(#${clipElement})` }}
-    //     data-scroll
-    //     data-scroll-speed={-1}
-    //   >
-    //     <svg aria-hidden="true">
-    //       <clipPath id={clipElement}>
-    // eslint-disable-next-line max-len
-    //         <text dominantBaseline="hanging" x="50%" y="0" textAnchor="middle">
-    //           {title}
-    //         </text>
-    //       </clipPath>
-    //     </svg>
-    //   </h1>
-    //   <div className={projectImageWrapper}>
-    //     <GatsbyImage className={projectImage} image={image} alt={title} />
-    //   </div>
-    // </li>
     <li
-      className={itemWrapper}
+      className={`${itemWrapper} ${isMobile ? isMobileVersion : ''}`}
       ref={listItem}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
@@ -156,7 +137,7 @@ function ProjectItem({
           title={title}
           titleRef={titleRef}
           projectCounterClassName={projectCounterClassName}
-          headingClassName={headingClassName}
+          titleClassName={titleClassName}
         />
         <div className={`${infoBlock} ${state.active ? isActive : ''}`}>
           {roles.map((element) => (
@@ -167,12 +148,13 @@ function ProjectItem({
         </div>
       </div>
       <ProjectImage
+        isMobile={isMobile}
         url={url}
         alt={alt}
         imageXPosition={imagePosition.x}
         imageYPosition={imagePosition.y}
         imageRef={imageRef}
-        wrapperClassName={`${state.active ? isActive : ''}`}
+        imageWrapperClassName={`${state.active ? isActive : ''}`}
         parallaxPosition={state.parallaxPosition}
       />
     </li>
@@ -180,6 +162,7 @@ function ProjectItem({
 }
 
 ProjectItem.propTypes = {
+  isMobile: PropTypes.bool,
   counter: PropTypes.number.isRequired,
   title: PropTypes.string.isRequired,
   titleRef: PropTypes.func.isRequired,
@@ -187,7 +170,11 @@ ProjectItem.propTypes = {
   alt: PropTypes.string.isRequired,
   roles: PropTypes.instanceOf(Object).isRequired,
   projectCounterClassName: PropTypes.string.isRequired,
-  headingClassName: PropTypes.string.isRequired,
+  titleClassName: PropTypes.string.isRequired,
+};
+
+ProjectItem.defaultProps = {
+  isMobile: false,
 };
 
 export default ProjectItem;

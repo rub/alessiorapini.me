@@ -2,10 +2,14 @@
   align-items: center;
   cursor: pointer;
   display: flex;
-  justify-content: center;
   height: 25vh;
+  justify-content: center;
   line-height: 1.25;
   user-select: none;
+
+  &.isMobileVersion {
+    height: 100%;
+  }
 
   /* Since we cannot select previous elements, we set them as the default and then overwrite subsequent project siblings */
   & .projectCounter,
@@ -24,20 +28,25 @@
     opacity: 1;
   }
 
-  &:hover .heading {
-    color: var(--grey-100);
-    opacity: 1;
-  }
+  /* At least one input mechanism includes an accurate pointing device */
+  /* Includes Desktop/Laptop, Desktop/Laptop + Touchscreen; Touchscreen + Mouse */
+  /* Excludes Touchscreen only */
+  @media (any-pointer: fine) {
+    &:hover .heading {
+      color: var(--grey-100);
+      opacity: 1;
+    }
 
-  /* Highlight every item after the hovered element */
-  &:hover ~ & .projectCounter {
-    color: var(--grey-300);
-    opacity: 0.25;
-  }
+    /* Highlight every item after the hovered element */
+    &:hover ~ & .projectCounter {
+      color: var(--grey-300);
+      opacity: 0.25;
+    }
 
-  /* Highlight every item after the hovered element */
-  &:hover ~ & .heading {
-    opacity: 0.25;
+    /* Highlight every item after the hovered element */
+    &:hover ~ & .heading {
+      opacity: 0.25;
+    }
   }
 }
 
@@ -139,37 +148,21 @@
   }
 }
 
-/* .projectTitle {
-  backdrop-filter: blur(13px) saturate(250%);
-  background-color: hsla(80, 3%, 96%, 24%);
-  color: hsla(80, 3%, 96%, 24%);
-  cursor: default;
-  font-size: 164px;
-  height: 164px;
-  letter-spacing: 9px;
-  line-height: 164px;
-  position: absolute;
-  text-transform: none;
-  top: 50%; */
-/* Make the browser accelerate graphics to prevent text being blurred on Safari */
-/* transform: translate3d(-50%, -50%, 1px);
-  z-index: 1;
-  width: 100%;
-
-  & svg {
-    width: 100%;
-  }
-} */
-
 .imagesWrapper {
-  left: 45vw;
+  left: 0;
   opacity: 0;
   pointer-events: none;
   position: fixed;
-  top: 20vh;
+  top: 0;
   transition: transform 1s cubic-bezier(0.165, 0.84, 0.44, 1),
     opacity 1s cubic-bezier(0.165, 0.84, 0.44, 1);
   width: 100%;
+
+  &.isMobileVersion {
+    position: absolute;
+    transition: transform 1s cubic-bezier(0.165, 0.84, 0.44, 1);
+    width: auto;
+  }
 
   &.isActive {
     opacity: 1;
@@ -181,12 +174,37 @@
   }
 }
 
+.imageFixedWrapper {
+  display: inline-block;
+}
+
+/* TODO: Fixed image is bigger than the sliced ones, this create a blurry effect */
 .imageFixed {
   height: 60vh;
 
+  &.isMobileVersion {
+    width: auto;
+  }
+
   @media (max-width: 1080px) {
     height: max(60vw, 260px);
+
+    &.isMobileVersion {
+      width: max(30vh, 200px);
+      height: 100%;
+    }
   }
+}
+
+/* TODO: Provide backward transition like we did with opacity (see imagesWrapper) */
+.imageSlicedLeft,
+.imageSlicedRight {
+  height: 100%;
+  left: 0;
+  opacity: 0.5;
+  position: absolute;
+  top: 0;
+  transition: transform 1s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
 .imageSlicedLeft {
@@ -212,13 +230,7 @@
     100% 90%,
     0 90%
   );
-  height: 100%;
-  left: 0;
-  opacity: 0.5;
-  position: absolute;
-  top: 0;
   transform: translate3d(-5vh, 0, 0);
-  transition: transform 1s cubic-bezier(0.165, 0.84, 0.44, 1);
 
   @media (max-width: 1080px) {
     transform: translate3d(max(-5vw, -1rem), 0, 0);
@@ -248,13 +260,7 @@
     100% 100%,
     0 100%
   );
-  height: 100%;
-  left: 0;
-  opacity: 0.5;
-  position: absolute;
-  top: 0;
   transform: translate3d(5vh, 0, 0);
-  transition: transform 1s cubic-bezier(0.165, 0.84, 0.44, 1);
 
   @media (max-width: 1080px) {
     transform: translate3d(max(5vw, 1rem), 0, 0);

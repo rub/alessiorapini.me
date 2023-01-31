@@ -18,14 +18,40 @@
 }
 
 /* Set default styles if the container is not hovered */
+/* TODO: These are mobile styles. Wrap with a isMobile class? */
 .list:not(:hover) {
   & .projectCounterDefault {
     color: var(--accent);
     opacity: 1;
   }
 
-  & .headingDefault {
+  & .titleDefault {
     color: var(--grey-100);
     opacity: 1;
+  }
+}
+
+.isItemActive {
+  z-index: 1;
+
+  & .projectCounterActive {
+    color: var(--accent);
+    opacity: 1;
+    transition: all 0.8s ease-out;
+  }
+
+  & .titleActive {
+    opacity: 1;
+    transition: opacity 0.8s ease-out;
+  }
+
+  & .imageWrapperActive {
+    opacity: 1;
+    transition: opacity 0.8s ease-out;
+  }
+
+  & .imageSlicedActive {
+    transform: translate3d(0, 0, 0);
+    transition: transform 0.8s ease-out;
   }
 }

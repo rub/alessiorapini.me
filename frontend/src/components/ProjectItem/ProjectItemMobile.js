@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import ProjectTitleMobile from './ProjectTitleMobile';
-import ProjectImageMobile from './ProjectImageMobile';
-import { itemWrapper } from './ProjectItemMobile.module.css';
+import ProjectTitle from './ProjectTitle';
+import ProjectImage from './ProjectImage';
+import { itemWrapper } from './ProjectItem.module.css';
 
 function ProjectItemMobile({
   counter,
@@ -20,13 +20,14 @@ function ProjectItemMobile({
 }) {
   return (
     <div className={`${itemWrapper} ${itemClassName}`}>
-      <ProjectTitleMobile
+      <ProjectTitle
         counter={counter}
         title={title}
         titleClassName={titleClassName}
         projectCounterClassName={projectCounterClassName}
       />
-      <ProjectImageMobile
+      <ProjectImage
+        isMobile
         url={url}
         alt={alt}
         imageWrapperClassName={imageWrapperClassName}
@@ -47,7 +48,11 @@ ProjectItemMobile.propTypes = {
   titleClassName: PropTypes.string.isRequired,
   imageWrapperClassName: PropTypes.string.isRequired,
   imageSlicedClassName: PropTypes.string.isRequired,
-  projectCounterClassName: PropTypes.string.isRequired,
+  projectCounterClassName: PropTypes.string,
+};
+
+ProjectItemMobile.defaultProps = {
+  projectCounterClassName: '',
 };
 
 export default ProjectItemMobile;

@@ -11,14 +11,14 @@ function ProjectTitle({
   title,
   titleRef,
   projectCounterClassName,
-  headingClassName,
+  titleClassName,
 }) {
   return (
     <div className={titleWrapper} ref={titleRef}>
       <span className={`${projectCounterClassName} ${projectCounter}`}>
         0{counter}
       </span>
-      <h1 className={`${headingClassName} ${heading}`}>{title}</h1>
+      <h1 className={`${titleClassName} ${heading}`}>{title}</h1>
     </div>
   );
 }
@@ -26,9 +26,15 @@ function ProjectTitle({
 ProjectTitle.propTypes = {
   counter: PropTypes.number.isRequired,
   title: PropTypes.string.isRequired,
-  titleRef: PropTypes.func.isRequired,
-  projectCounterClassName: PropTypes.string.isRequired,
-  headingClassName: PropTypes.string.isRequired,
+  titleRef: PropTypes.func,
+  projectCounterClassName: PropTypes.string,
+  titleClassName: PropTypes.string,
+};
+
+ProjectTitle.defaultProps = {
+  titleRef: null,
+  projectCounterClassName: '',
+  titleClassName: '',
 };
 
 export default ProjectTitle;
