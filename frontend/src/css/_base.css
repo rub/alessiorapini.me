@@ -53,7 +53,7 @@ body {
 /* Set the height to fill the visible viewport on mobile */
 #___gatsby,
 #gatsby-focus-wrapper,
-#gatsby-focus-wrapper > main {
+main {
   height: 100%;
 }
 
