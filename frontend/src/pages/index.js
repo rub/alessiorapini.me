@@ -1,8 +1,8 @@
 import React from 'react';
-import { Link } from 'gatsby';
 import Layout from '../components/layout';
 import CustomCursor from '../components/CustomCursor/CustomCursor';
 import Header from '../components/Header/Header';
+import NavLink from '../components/NavLink/NavLink';
 import Hero from '../components/Hero/Hero';
 import Footer from '../components/Footer/Footer';
 import RubParallax from '../components/RubParallax/RubParallax';
@@ -12,7 +12,10 @@ function IndexPage() {
   return (
     <Layout fullScreen>
       <CustomCursor>
-        <Header navItems={<Link to="/projects">Selected works</Link>} />
+        <Header
+          isHome
+          navItems={<NavLink to="/projects" isHome label="Selected works" />}
+        />
         <Hero />
         <Footer />
       </CustomCursor>

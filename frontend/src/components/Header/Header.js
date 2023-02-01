@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'gatsby';
-import { header, positionFixed, logo } from './Header.module.css';
+import { header, home, positionFixed, logo } from './Header.module.css';
 
-function Header({ isFixed, navItems }) {
+function Header({ isHome, isPositionFixed, navItems }) {
   return (
-    <header className={`${header} ${isFixed ? positionFixed : ''}`}>
-      <Link to="/" className={logo}>
+    <header className={`${header} ${isPositionFixed ? positionFixed : ''}`}>
+      <Link to="/" className={`${logo} ${isHome ? home : ''}`}>
         AR
       </Link>
       <nav>{navItems}</nav>
@@ -15,12 +15,14 @@ function Header({ isFixed, navItems }) {
 }
 
 Header.propTypes = {
-  isFixed: PropTypes.bool,
+  isHome: PropTypes.bool,
+  isPositionFixed: PropTypes.bool,
   navItems: PropTypes.instanceOf(Object).isRequired,
 };
 
 Header.defaultProps = {
-  isFixed: false,
+  isHome: false,
+  isPositionFixed: false,
 };
 
 export default Header;

@@ -16,6 +16,23 @@
   }
 }
 
+.logo {
+  align-items: center;
+  backdrop-filter: blur(13px) saturate(250%);
+  background-color: rgba(255, 255, 255, 0.31);
+  cursor: pointer;
+  display: flex;
+  height: 2rem;
+  justify-content: center;
+  user-select: none;
+  width: 2rem;
+
+  &.home {
+    animation: logo-reveal 1000ms ease-out 4500ms forwards;
+    opacity: 0;
+  }
+}
+
 .positionFixed {
   left: 0;
   pointer-events: none;
@@ -24,24 +41,8 @@
   z-index: 10000;
 
   & .logo {
-    animation: none;
-    opacity: 1;
     pointer-events: all;
   }
-}
-
-.logo {
-  align-items: center;
-  animation: logo-reveal 1000ms ease-out 4500ms forwards;
-  backdrop-filter: blur(13px) saturate(250%);
-  background-color: rgba(255, 255, 255, 0.31);
-  cursor: pointer;
-  display: flex;
-  height: 2rem;
-  justify-content: center;
-  opacity: 0;
-  user-select: none;
-  width: 2rem;
 }
 
 @keyframes logo-reveal {

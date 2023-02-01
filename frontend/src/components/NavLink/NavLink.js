@@ -1,15 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'gatsby';
-import { navLink, positionedFixed } from './NavLink.module.css';
+import { navLink, home, positionedFixed } from './NavLink.module.css';
 
-// TODO: Add the prop Home to add a class that handles the rules at 50 and 51
-// TODO: And do this also for the Header
-function NavLink({ to, label, isPositionedFixed }) {
+function NavLink({ to, label, isHome, isPositionedFixed }) {
   return (
     <Link
       to={to}
-      className={`${navLink} ${isPositionedFixed ? positionedFixed : ''}`}
+      className={`${navLink} ${isHome ? home : ''} ${
+        isPositionedFixed ? positionedFixed : ''
+      }`}
     >
       {label}
     </Link>
@@ -19,10 +19,12 @@ function NavLink({ to, label, isPositionedFixed }) {
 NavLink.propTypes = {
   to: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired,
+  isHome: PropTypes.bool,
   isPositionedFixed: PropTypes.bool,
 };
 
 NavLink.defaultProps = {
+  isHome: false,
   isPositionedFixed: false,
 };
 

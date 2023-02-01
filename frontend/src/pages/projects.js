@@ -7,7 +7,6 @@ import CustomCursor from '../components/CustomCursor/CustomCursor';
 import ProjectList from '../components/ProjectList/ProjectList';
 import ProjectListMobile from '../components/ProjectList/ProjectListMobile';
 
-// TODO: Add the X icon and change label's proptype to accept nodes
 function Works() {
   const { isTouchOnly } = useDeviceDetect();
   return (
@@ -15,7 +14,7 @@ function Works() {
       {/* TODO: Hide CustomCursor on touch devices (from the component itself) */}
       <CustomCursor>
         <Header
-          isFixed
+          isPositionFixed
           navItems={<NavLink to="/" isPositionedFixed label="Close" />}
         />
         {isTouchOnly ? <ProjectListMobile /> : <ProjectList />}
