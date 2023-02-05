@@ -15,6 +15,7 @@ function ProjectList() {
       allMarkdownRemark {
         nodes {
           frontmatter {
+            link
             title
             featured_image_alt
             featured_image {
@@ -145,6 +146,7 @@ function ProjectList() {
                 // because the original items are duplicated
                 // eslint-disable-next-line react/no-array-index-key
                 key={index}
+                link={project.frontmatter.link}
                 counter={
                   index < originalItemsAmount
                     ? index + 1

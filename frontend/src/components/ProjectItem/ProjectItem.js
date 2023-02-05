@@ -46,6 +46,7 @@ const reducer = (state, action) => {
 
 function ProjectItem({
   isMobile,
+  link,
   counter,
   title,
   titleRef,
@@ -125,8 +126,11 @@ function ProjectItem({
     dispatch({ type: 'MOUSE/LEAVE' });
   };
   return (
-    <li
+    <a
       className={`${itemWrapper} ${isMobile ? isMobileVersion : ''}`}
+      href={link}
+      target="_blank"
+      rel="noreferrer"
       ref={listItem}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
@@ -157,12 +161,13 @@ function ProjectItem({
         imageWrapperClassName={`${state.active ? isActive : ''}`}
         parallaxPosition={state.parallaxPosition}
       />
-    </li>
+    </a>
   );
 }
 
 ProjectItem.propTypes = {
   isMobile: PropTypes.bool,
+  link: PropTypes.string.isRequired,
   counter: PropTypes.number.isRequired,
   title: PropTypes.string.isRequired,
   titleRef: PropTypes.func.isRequired,
