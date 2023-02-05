@@ -4,8 +4,12 @@
   display: flex;
   justify-content: space-between;
   margin-bottom: auto;
-  padding: 3rem;
+  padding: 3.1vw;
   width: 100%;
+
+  @media (max-width: 1728px) {
+    padding: 3rem;
+  }
 
   @media (max-width: 1168px) {
     padding: 2rem;
@@ -22,13 +26,20 @@
   background-color: rgba(255, 255, 255, 0.31);
   cursor: pointer;
   display: flex;
-  height: 2rem;
+  font-size: 1.05vw;
+  height: 2.1vw;
   justify-content: center;
   user-select: none;
-  width: 2rem;
+  width: 2.1vw;
+
+  @media (max-width: 1728px) {
+    font-size: 1rem;
+    height: 2rem;
+    width: 2rem;
+  }
 
   &.home {
-    animation: logo-reveal 1000ms ease-out 4500ms forwards;
+    animation: logo-reveal 1000ms ease-out 3000ms forwards;
     opacity: 0;
   }
 }

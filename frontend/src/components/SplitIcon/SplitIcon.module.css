@@ -3,12 +3,16 @@
   position: relative;
 
   & > svg {
-    height: 1.5rem;
+    height: 1.6vw;
     left: 0;
     top: 0;
     transform: translate(0%, 0%);
     transition: all 0.146s;
     width: auto;
+
+    @media (max-width: 1728px) {
+      height: 1.5rem;
+    }
 
     &:first-child {
       clip-path: polygon(0 0, 100% 0, 100% 50%, 0 50%);

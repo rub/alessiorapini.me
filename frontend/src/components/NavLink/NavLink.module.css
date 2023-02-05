@@ -2,8 +2,9 @@
   align-items: center;
   color: var(--grey-100);
   display: inline-flex;
-  height: 2rem;
-  letter-spacing: 5px;
+  font-size: 1.05vw;
+  height: 2.1vw;
+  letter-spacing: 0.29vw;
   position: relative;
   text-transform: uppercase;
   transition: all 0.292s cubic-bezier(1, 0, 0, 1);
@@ -19,8 +20,14 @@
     }
   }
 
+  @media (max-width: 1728px) {
+    font-size: 1rem;
+    height: 2rem;
+    letter-spacing: 5px;
+  }
+
   &.home {
-    animation: link-reveal 1000ms ease-out 4500ms forwards;
+    animation: link-reveal 1000ms ease-out 3000ms forwards;
     opacity: 0;
   }
 
@@ -28,7 +35,7 @@
     background-color: rgba(255, 255, 255, 0.31);
     content: '';
     height: 100%;
-    left: -0.1rem;
+    left: -0.13vw;
     opacity: 1;
     pointer-events: none;
     position: absolute;
@@ -46,6 +53,10 @@
       transform: scale3d(1, 1, 1);
       transition: all 0.438s cubic-bezier(1, 0, 0, 1);
     }
+  }
+
+  @media (max-width: 1728px) {
+    left: -0.1rem;
   }
 }
 

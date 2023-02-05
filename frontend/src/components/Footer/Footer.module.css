@@ -1,9 +1,16 @@
 .footer {
-  animation: footer-reveal 500ms ease-out 3500ms forwards;
-  max-width: 1264px;
+  animation: footer-reveal 500ms ease-out 2000ms forwards;
+  left: 16.7%;
   opacity: 0;
-  padding: 2rem 3rem;
+  position: relative;
+  padding: 2.1vw 0 3.4vw 0;
   width: 100%;
+
+  @media (max-width: 1728px) {
+    left: 0;
+    max-width: 1264px;
+    padding: 2rem 3rem 3rem 3rem;
+  }
 
   @media (max-width: 1260px) {
     padding: 2rem 0;
@@ -17,8 +24,12 @@
 
 .socialLinks {
   display: flex;
-  gap: 2rem;
+  gap: 2.1vw;
   justify-content: flex-start;
+
+  @media (max-width: 1728px) {
+    gap: 2rem;
+  }
 
   @media (max-width: 740px) {
     gap: 1.5rem;
@@ -42,8 +53,14 @@
 
 .copyright {
   color: var(--grey-700);
-  font-family: "Zilla Slab", serif;
-  margin-top: 2rem;
+  font-family: 'Zilla Slab', serif;
+  font-size: 1.1vw;
+  margin-top: 2.1vw;
+
+  @media (max-width: 1728px) {
+    font-size: 1rem;
+    margin-top: 2rem;
+  }
 
   @media (max-width: 740px) {
     color: var(--grey-500);
