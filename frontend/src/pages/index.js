@@ -6,7 +6,7 @@ import NavLink from '../components/NavLink/NavLink';
 import Hero from '../components/Hero/Hero';
 import Footer from '../components/Footer/Footer';
 import RubParallax from '../components/RubParallax/RubParallax';
-import { SEO } from '../components/seo';
+import SEO from '../components/seo';
 
 function IndexPage() {
   return (

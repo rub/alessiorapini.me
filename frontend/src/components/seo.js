@@ -1,22 +1,23 @@
-import React from "react"
-import { useSiteMetadata } from "../hooks/use-site-metadata"
+import React from 'react';
+import PropTypes from 'prop-types';
+import { useSiteMetadata } from '../hooks/use-site-metadata';
 
-export const SEO = ({ title, description, pathname, children }) => {
+export function SEO({ title, description, pathname, defaultImage, children }) {
   const {
     title: defaultTitle,
     description: defaultDescription,
     image,
     siteUrl,
     twitterUsername,
-  } = useSiteMetadata()
+  } = useSiteMetadata();
 
   const seo = {
     title: title || defaultTitle,
     description: description || defaultDescription,
     image: `${siteUrl}${image || defaultImage}`,
-    url: `${siteUrl}${pathname || "/"}`,
+    url: `${siteUrl}${pathname || '/'}`,
     twitterUsername,
-  }
+  };
 
   return (
     <>
@@ -31,5 +32,23 @@ export const SEO = ({ title, description, pathname, children }) => {
       <meta name="twitter:creator" content={seo.twitterUsername} />
       {children}
     </>
-  )
+  );
 }
+
+SEO.propTypes = {
+  title: PropTypes.string,
+  description: PropTypes.string,
+  pathname: PropTypes.string,
+  defaultImage: PropTypes.string,
+  children: PropTypes.node,
+};
+
+SEO.defaultProps = {
+  title: '',
+  description: '',
+  pathname: '',
+  defaultImage: '',
+  children: [],
+};
+
+export default SEO;
