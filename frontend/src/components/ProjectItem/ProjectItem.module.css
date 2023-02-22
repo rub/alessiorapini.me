@@ -81,6 +81,16 @@
   position: relative;
   z-index: 1;
 
+  &::before {
+    content: '';
+    display: block;
+    height: 100%;
+    left: -5.5vh;
+    position: absolute;
+    top: 0;
+    width: 5.5vh;
+  }
+
   @media (max-width: 1080px) {
     font-size: 13.5vw;
   }
