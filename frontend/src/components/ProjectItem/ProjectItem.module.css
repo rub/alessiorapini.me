@@ -188,9 +188,9 @@
   display: inline-block;
 }
 
-/* TODO: Fixed image is bigger than the sliced ones, this create a blurry effect */
 .imageFixed {
   height: 60vh;
+  max-width: 600px;
 
   &.isMobileVersion {
     width: auto;
@@ -211,6 +211,7 @@
 .imageSlicedRight {
   height: 100%;
   left: 0;
+  max-width: 600px;
   opacity: 0.5;
   position: absolute;
   top: 0;

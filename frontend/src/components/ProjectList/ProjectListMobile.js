@@ -17,12 +17,12 @@ import {
 function ProjectListMobile() {
   const projectsQuery = useStaticQuery(graphql`
     query {
-      allMarkdownRemark {
+      allMarkdownRemark(sort: { frontmatter: { id: ASC } }) {
         nodes {
           frontmatter {
             title
             featured_image_alt
-            featured_image {
+            featured_image_small {
               childImageSharp {
                 gatsbyImageData
               }
@@ -119,7 +119,7 @@ function ProjectListMobile() {
                     }
                     title={project.frontmatter.title}
                     url={
-                      project.frontmatter.featured_image.childImageSharp
+                      project.frontmatter.featured_image_small.childImageSharp
                         .gatsbyImageData
                     }
                     alt={project.frontmatter.title}
