@@ -1,11 +1,11 @@
 module.exports = {
   siteMetadata: {
     title: `Alessio Rapini | UX Designer`,
-    description: `UX Designer (who loves to code too)`,
+    description: `UX Designer (who loves to code too).`,
     author: `Alessio Rapini`,
-    siteUrl: "https://alessiorapini.me",
-    image: "./src/images/favicon.png",
-    twitterUsername: "@alessiorapini",
+    siteUrl: 'https://alessiorapini.me',
+    image: '/rub.png',
+    twitterUsername: '@alessiorapini',
   },
   plugins: [
     {
@@ -70,4 +70,4 @@ module.exports = {
     //   },
     // },
   ],
-}
+};

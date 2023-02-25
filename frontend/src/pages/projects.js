@@ -6,6 +6,7 @@ import NavLink from '../components/NavLink/NavLink';
 import CustomCursor from '../components/CustomCursor/CustomCursor';
 import ProjectList from '../components/ProjectList/ProjectList';
 import ProjectListMobile from '../components/ProjectList/ProjectListMobile';
+import SEO from '../components/seo';
 
 function Works() {
   const { isTouchOnly } = useDeviceDetect();
@@ -24,3 +25,7 @@ function Works() {
 }
 
 export default Works;
+
+export function Head() {
+  return <SEO title="Alessio Rapini | Projects" />;
+}
