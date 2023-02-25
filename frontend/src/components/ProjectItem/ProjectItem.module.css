@@ -166,7 +166,6 @@
   top: 0;
   transition: transform 1s cubic-bezier(0.165, 0.84, 0.44, 1),
     opacity 1s cubic-bezier(0.165, 0.84, 0.44, 1);
-  width: 100%;
 
   &.isMobileVersion {
     position: absolute;
@@ -189,10 +188,13 @@
 }
 
 .imageFixed {
-  height: 60vh;
-  max-width: 600px;
+  /* Make the wrapper fit the image to better randomize its position */
+  aspect-ratio: 3/2;
+  height: 40vh;
+  max-height: 800px;
 
   &.isMobileVersion {
+    aspect-ratio: 2/3;
     width: auto;
   }
 
@@ -211,7 +213,6 @@
 .imageSlicedRight {
   height: 100%;
   left: 0;
-  max-width: 600px;
   opacity: 0.5;
   position: absolute;
   top: 0;
