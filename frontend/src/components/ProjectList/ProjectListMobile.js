@@ -24,7 +24,12 @@ function ProjectListMobile() {
             featured_image_alt
             featured_image_small {
               childImageSharp {
-                gatsbyImageData
+                gatsbyImageData(
+                  layout: CONSTRAINED
+                  placeholder: DOMINANT_COLOR
+                  formats: [AUTO, WEBP, AVIF]
+                  quality: 50
+                )
               }
             }
             roles
