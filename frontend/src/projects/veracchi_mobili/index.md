@@ -1,5 +1,5 @@
 ---
-id: 6,
+id: 7,
 title: Veracchi Mobili
 featured_image_large: ./veracchi-mobili-l.png
 featured_image_small: ./veracchi-mobili-s.png
