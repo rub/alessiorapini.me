@@ -19,18 +19,6 @@ button cursor and apply responsive changes to the Footer layout.
   &:hover .buttonCursor {
     opacity: 0.9;
   }
-
-  /* The background overlay */
-  &::before {
-    background-color: rgba(0, 0, 0, 0.5);
-    content: '';
-    height: 100%;
-    left: 0;
-    position: absolute;
-    top: 0;
-    width: 100%;
-    z-index: 1;
-  }
 }
 
 .buttonCursor {
