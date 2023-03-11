@@ -1,7 +1,3 @@
-::-webkit-scrollbar {
-  display: none;
-}
-
 .listWrapper {
   box-sizing: border-box;
   display: flex;

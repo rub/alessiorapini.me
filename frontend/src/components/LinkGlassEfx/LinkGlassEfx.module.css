@@ -1,4 +1,4 @@
-.navLink {
+.link {
   align-items: center;
   color: var(--grey-100);
   display: inline-flex;
@@ -24,6 +24,19 @@
     font-size: 1rem;
     height: 2rem;
     letter-spacing: 5px;
+  }
+
+  &.inline {
+    font-family: 'Zilla Slab', serif;
+    font-size: inherit;
+    height: auto;
+    left: 0;
+    letter-spacing: inherit;
+    text-transform: inherit;
+
+    &::after {
+      left: 0;
+    }
   }
 
   &.home {

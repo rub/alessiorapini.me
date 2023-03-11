@@ -25,6 +25,7 @@
   /* Colors */
   --white: #fff;
   --accent: hsla(74, 100%, 58%, 100%);
+  --accent-light: hsla(74, 62%, 58%, 100%);
   --grey-100: hsla(81, 26%, 89%, 100%);
   --grey-300: hsla(84, 6%, 55%, 100%);
   --grey-500: hsla(80, 3%, 41%, 100%);
@@ -34,14 +35,18 @@
   --druk-cyr: 'Druk Cyr', 'Fallback Druk', sans-serif;
 }
 
+::-webkit-scrollbar {
+  display: none;
+}
+
 html {
   font: 18px / normal var(--druk-cyr);
   overflow: auto;
+  scroll-behavior: smooth;
 }
 
 html,
 body {
-  height: 100%;
   min-height: 100%;
 }
 

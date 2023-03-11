@@ -27,7 +27,7 @@ function Hero() {
           <span className={descriptionFadeIn}>I am a&nbsp;</span>
           <span className={role}>UX DESIGNER</span>
         </p>
-        <p className={descriptionFadeIn}>(who enjoys coding too)</p>
+        <p className={descriptionFadeIn}>(who loves to code too)</p>
       </div>
     </div>
   );

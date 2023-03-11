@@ -1,15 +1,17 @@
 /* TODO: Reintroduce previous styles on (max-width: 1728px) */
 .hero {
+  bottom: 8rem;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  left: 16.7%;
-  position: relative;
+  left: 50%;
+  max-width: 67vw;
+  position: fixed;
+  transform: translateX(-50%);
   width: 100%;
   user-select: none;
 
   @media (max-width: 1728px) {
-    left: 0;
     max-width: 1264px;
     padding: 0 3rem;
   }

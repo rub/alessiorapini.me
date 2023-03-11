@@ -3,9 +3,13 @@
   color: #f2f2f3;
   display: flex;
   justify-content: space-between;
+  left: 0;
   margin-bottom: auto;
   padding: 3.1vw;
+  position: fixed;
+  top: 0%;
   width: 100%;
+  z-index: 10;
 
   @media (max-width: 1728px) {
     padding: 3rem;
