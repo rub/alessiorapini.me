@@ -12,3 +12,32 @@
 .layoutFullScreen {
   height: 100%;
 }
+
+.stripesBg {
+  display: grid;
+  grid-template-rows: repeat(4, 1fr);
+  height: 100%;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: -1;
+}
+
+.stripe {
+  &:nth-child(1) {
+    background-color: #0c0c0c;
+  }
+
+  &:nth-child(2) {
+    background-color: #0a0a0a;
+  }
+
+  &:nth-child(3) {
+    background-color: #0d0d0d;
+  }
+
+  &:nth-child(4) {
+    background-color: #121212;
+  }
+}

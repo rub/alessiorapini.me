@@ -5,6 +5,8 @@ import {
   layoutWrapper,
   layoutFullScreen,
   layoutStandard,
+  stripesBg,
+  stripe,
 } from './Layout.module.css';
 function Layout({ children, fullScreen }) {
   return (
@@ -14,6 +16,12 @@ function Layout({ children, fullScreen }) {
       }`}
     >
       <main>{children}</main>
+      <div className={stripesBg}>
+        <div className={stripe} />
+        <div className={stripe} />
+        <div className={stripe} />
+        <div className={stripe} />
+      </div>
     </div>
   );
 }
