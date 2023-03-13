@@ -73,8 +73,11 @@
   }
 }
 
-.positionedFixed {
-  pointer-events: all;
+.linkIcon {
+  fill: var(--grey-100);
+  height: 0.8rem;
+  position: relative;
+  top: 1px;
 }
 
 @keyframes link-reveal {

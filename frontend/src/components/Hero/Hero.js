@@ -1,11 +1,16 @@
 import React from 'react';
-
+import Icon from '../Icon/Icon';
 import {
   hero,
   glassyHeadingFixed,
   description,
   descriptionFadeIn,
   role,
+  bioSignifier,
+  scrollDown,
+  arrowIcon,
+  line,
+  arrow,
 } from './Hero.module.css';
 
 // TODO: Try the new animation on Figma first
@@ -28,6 +33,19 @@ function Hero() {
           <span className={role}>UX DESIGNER</span>
         </p>
         <p className={descriptionFadeIn}>(who loves to code too)</p>
+        <div className={bioSignifier}>
+          <div className={scrollDown}>
+            Alessio who?
+            <div className={arrowIcon}>
+              <div className={line} />
+              <Icon
+                className={arrow}
+                icon="chevronDown"
+                description="Scroll down for bio"
+              />
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );

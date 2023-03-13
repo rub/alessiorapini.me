@@ -99,10 +99,11 @@ function About() {
             , bridging the gap between creativity and feasibility.
           </p>
           <p className={paragraph}>
-            In recent years, I have mostly worked remotely as a consultant UX
-            designer and UI engineer for cross-functional and multicultural
-            teams on{' '}
+            In recent years, I have worked as a remote consultant UX designer
+            and UI engineer on various{' '}
             <span className={highlighted}>United Nations&apos; projects</span>.
+            Working with cross-functional and multicultural teams, I have honed
+            my collaboration skills and delivered impactful solutions.
           </p>
           <p className={paragraph}>
             I&apos;m a curious problem-solver who is always eager to experiment

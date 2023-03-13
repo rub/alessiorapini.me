@@ -1,9 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'gatsby';
-import { link, home, inline } from './LinkGlassEfx.module.css';
+import Icon from '../Icon/Icon';
+import { link, home, inline, linkIcon } from './LinkGlassEfx.module.css';
 
-function LinkGlassEfx({ to, label, newTab, email, isInline, isHome }) {
+function LinkGlassEfx({
+  to,
+  label,
+  newTab,
+  email,
+  isInline,
+  isHome,
+  hasIcon,
+  iconName,
+  iconDescription,
+}) {
   return newTab || email ? (
     <a
       href={to}
@@ -19,6 +30,13 @@ function LinkGlassEfx({ to, label, newTab, email, isInline, isHome }) {
       className={`${link} ${isInline ? inline : ''} ${isHome ? home : ''} `}
     >
       {label}
+      {hasIcon && (
+        <Icon
+          className={linkIcon}
+          icon={iconName}
+          description={iconDescription}
+        />
+      )}
     </Link>
   );
 }
@@ -30,6 +48,9 @@ LinkGlassEfx.propTypes = {
   email: PropTypes.bool,
   isInline: PropTypes.bool,
   isHome: PropTypes.bool,
+  hasIcon: PropTypes.bool,
+  iconName: PropTypes.string,
+  iconDescription: PropTypes.string,
 };
 
 LinkGlassEfx.defaultProps = {
@@ -37,6 +58,9 @@ LinkGlassEfx.defaultProps = {
   email: false,
   isInline: false,
   isHome: false,
+  hasIcon: false,
+  iconName: '',
+  iconDescription: '',
 };
 
 export default LinkGlassEfx;

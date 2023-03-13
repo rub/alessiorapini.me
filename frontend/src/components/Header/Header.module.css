@@ -1,3 +1,4 @@
+/* Unset pointer events to make the stuff behind interactive */
 .header {
   align-items: center;
   color: #f2f2f3;
@@ -6,6 +7,7 @@
   left: 0;
   margin-bottom: auto;
   padding: 3.1vw;
+  pointer-events: none;
   position: fixed;
   top: 0%;
   width: 100%;
@@ -24,6 +26,7 @@
   }
 }
 
+/* Reactivate pointer-events to make the logo interactive */
 .logo {
   align-items: center;
   backdrop-filter: blur(13px) saturate(250%);
@@ -33,6 +36,7 @@
   font-size: 1.05vw;
   height: 2.1vw;
   justify-content: center;
+  pointer-events: all;
   user-select: none;
   width: 2.1vw;
 
@@ -48,16 +52,9 @@
   }
 }
 
-.positionFixed {
-  left: 0;
-  pointer-events: none;
-  position: fixed;
-  top: 0;
-  z-index: 10000;
-
-  & .logo {
-    pointer-events: all;
-  }
+/* Reactivate pointer-events to make the nav items interactive */
+.nav > * {
+  pointer-events: all;
 }
 
 @keyframes logo-reveal {
