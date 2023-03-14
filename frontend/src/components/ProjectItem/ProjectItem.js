@@ -56,15 +56,11 @@ function ProjectItem({
   projectCounterClassName,
   titleClassName,
 }) {
+  const imageRef = useRef();
   const [dimensions, setDimensions] = useState({
     width: 0,
     height: 0,
   });
-  const [imagePosition, setImagePosition] = useState({ x: 0, y: 0 });
-  const imageRef = useRef();
-  const listItem = useRef(null);
-  // Use a reducer to handle multiple states for the images
-  const [state, dispatch] = useReducer(reducer, initialState);
 
   function handleResize() {
     if (imageRef.current) {
@@ -86,14 +82,19 @@ function ProjectItem({
     };
   }, []);
 
-  if (typeof document === 'undefined') {
-    return null;
-  }
+  const [xDistanceFromBoundaries, setXDistanceFromBoundaries] = useState(0);
+  const [yDistanceFromBoundaries, setYDistanceFromBoundaries] = useState(0);
 
-  const xDistanceFromBoundaries =
-    document.body.clientWidth - dimensions.width - 50;
-  const yDistanceFromBoundaries =
-    document.body.clientHeight - dimensions.height - 50;
+  useEffect(() => {
+    if (dimensions.width) {
+      setXDistanceFromBoundaries(window.innerWidth - dimensions.width - 50);
+    }
+    if (dimensions.height) {
+      setYDistanceFromBoundaries(window.innerHeight - dimensions.height - 50);
+    }
+  }, [dimensions]);
+
+  const [imagePosition, setImagePosition] = useState({ x: 0, y: 0 });
 
   function randomImagePosition(min, max) {
     const minValue = Math.ceil(min);
@@ -102,10 +103,13 @@ function ProjectItem({
   }
 
   // ANIMATION CODE STARTS HERE
+  const listItem = useRef(null);
+  // Use a reducer to handle multiple states for the images
+  const [state, dispatch] = useReducer(reducer, initialState);
   const parallax = (event) => {
     const speed = -5;
-    const x = (document.body.clientWidth - event.pageX * speed) / 100;
-    const y = (document.body.clientHeight - event.pageY * speed) / 100;
+    const x = (window.innerWidth - event.pageX * speed) / 100;
+    const y = (window.innerHeight - event.pageY * speed) / 100;
 
     dispatch({ type: 'MOUSE/COORDINATES', payload: { x, y } });
   };
