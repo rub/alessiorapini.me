@@ -208,13 +208,21 @@
   }
 }
 
-/* TODO: Provide backward transition like we did with opacity (see imagesWrapper) */
+/**
+ * To override the "position: relative" style of gatsby-image's class,
+ * we need to set "position: absolute !important" in our custom styles.
+ * This ensures that our custom styles take precedence over
+ * gatsby-image's class, which changes order during gatsby-build 
+ * but not with gatsby-develop.
+ * By using "!important", we ensure that our custom styles
+ * are always applied regardless of specificity.
+*/
 .imageSlicedLeft,
 .imageSlicedRight {
   height: 100%;
   left: 0;
   opacity: 0.5;
-  position: absolute;
+  position: absolute !important;
   top: 0;
   transition: transform 1s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
