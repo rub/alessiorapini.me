@@ -44,22 +44,20 @@ function ProjectImage({
           objectFit="contain"
         />
       </div>
-      <GatsbyImage
+      <div
         className={`${imageSlicedLeft} ${isMobile ? isMobileVersion : ''} ${
           isMobile ? imageSlicedClassName : ''
         }`}
-        image={url}
-        alt={alt}
-        objectFit="contain"
-      />
-      <GatsbyImage
+      >
+        <GatsbyImage image={url} alt={alt} objectFit="contain" />
+      </div>
+      <div
         className={`${imageSlicedRight} ${isMobile ? isMobileVersion : ''} ${
           isMobile ? imageSlicedClassName : ''
         } `}
-        image={url}
-        alt={alt}
-        objectFit="contain"
-      />
+      >
+        <GatsbyImage image={url} alt={alt} objectFit="contain" />
+      </div>
     </div>
   );
 }
