@@ -66,11 +66,12 @@ function About() {
           </p>
           <p className={`${paragraph} ${bigger}`}>
             My name is <span className={highlighted}>Alessio Rapini</span>, and
-            I&apos;m an experienced UX designer with a diverse interdisciplinary
-            background and a deep empathy for people.
+            I&apos;m an{' '}
+            <span className={highlighted}>experienced UX designer</span> with a
+            diverse interdisciplinary background and a deep empathy for people.
           </p>
           <p className={paragraph}>
-            As the <span className={highlighted}>Lead Designer</span> at{' '}
+            As the Lead Designer at{' '}
             <LinkGlassEfx
               to="https://evonove.it/"
               isInline
@@ -84,31 +85,30 @@ function About() {
             </span>
             . I&apos;m also involved in creating and evolving{' '}
             <span className={highlighted}>Design Systems</span>. My design
-            approach is always human-centric and cross-platform, taking into
-            account both users&apos; needs and business goals. I prioritize
-            usability, aesthetics, and desirability to deliver exceptional
-            solutions.
+            approach is always human-centric, taking into account both
+            users&apos; needs and business goals.
           </p>
           <p className={paragraph}>
-            Throughout my career, I&apos;ve{' '}
-            <span className={highlighted}>built responsive UIs</span> using
-            modern technology stacks. This experience allows me to{' '}
+            Throughout my career, I&apos;ve also developed UIs using modern
+            technology stacks. As a{' '}
+            <span className={highlighted}>designer who can also code</span>,
+            I&apos;m able to{' '}
             <span className={highlighted}>
               interact with engineers at a deep level
             </span>
             , bridging the gap between creativity and feasibility.
           </p>
           <p className={paragraph}>
-            In recent years, I have worked as a remote consultant UX designer
-            and UI engineer on various{' '}
-            <span className={highlighted}>United Nations&apos; projects</span>.
-            Working with cross-functional and multicultural teams, I have honed
-            my collaboration skills and delivered impactful solutions.
-          </p>
-          <p className={paragraph}>
-            I&apos;m a curious problem-solver who is always eager to experiment
-            and learn. I believe that being a good team player is essential, and
-            I value collaboration with my colleagues.
+            In recent years, I&apos;ve been working mostly as a vendor UX
+            designer and UI engineer on{' '}
+            <span className={highlighted}>United Nations projects</span>.
+            Collaborating with cross-functional, multicultural, and highly
+            skilled teams, I&apos;m involved in impactful services that align
+            with both user needs and the UN mission. Through my work, I&apos;ve
+            been helping to improve the lives of people around the world and
+            contribute to a better future. This experience has sharpened my
+            collaboration and problem-solving skills, allowing me to approach
+            design challenges with creativity and strategic thinking.
           </p>
           <div className={learnMore}>
             <p className={paragraph}>You can learn more on:</p>
