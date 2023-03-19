@@ -11,20 +11,18 @@ const icons = {
   linkedin: {
     path: 'M0 0v24h24V0H0zm7.1 20.5H3.6V9h3.6v11.5zM5.3 7.4c-1.1 0-2.1-.9-2.1-2.1 0-1.1.9-2.1 2.1-2.1 1.1 0 2.1.9 2.1 2.1s-.9 2.1-2.1 2.1zm15.1 13.1h-3.6v-5.6c0-1.3 0-3-1.9-3s-2.1 1.4-2.1 2.9v5.7H9.4V9h3.4v1.6c.5-.9 1.6-1.8 3.4-1.8 3.6 0 4.3 2.4 4.3 5.5v6.2z',
   },
-  email: {
-    path: 'M24 0H0v24h24V0zm-5.9 14.9c-.9.9-2.1 1.4-3.3 1.4-.7 0-1.2-.3-1.5-.7-.1-.1-.1-.2-.2-.5-.7.8-1.4 1.1-2.3 1.1C9.1 16.3 8 15 8 13c0-3 1.9-5.4 4.3-5.4 1 0 1.5.2 1.9 1l.2-.6h2.1c-.1.4-.4 1.4-.5 1.8l-1.1 3.9c-.1.2-.1.4-.1.5 0 .3.2.4.5.4s.8-.2 1.1-.5c.9-.7 1.4-2 1.4-3.3 0-1.6-.8-3-2-3.8-.8-.5-1.9-.7-3.1-.7-3.7 0-6.3 2.5-6.3 5.9 0 3.4 2.3 5.6 5.8 5.6.9 0 1.9-.1 2.7-.4.7-.2 1.1-.4 2-.9L18 18c-.9.6-1.4.8-2.2 1-1.2.4-2.5.6-3.7.6-2.5 0-4.4-.7-5.8-2.1-1.3-1.3-2-3.2-2-5.2 0-2.2.7-4 2.1-5.5 1.6-1.6 3.7-2.4 6.4-2.4 4.1 0 7 2.6 7 6.3 0 1.7-.6 3.2-1.7 4.2z',
-    secondPath:
-      'M12.5 9.2c-.7 0-1.3.4-1.7 1.3-.4.8-.7 1.8-.7 2.6 0 .9.4 1.4 1 1.4s1.3-.5 1.7-1.4c.4-.8.7-1.9.7-2.7 0-.7-.4-1.2-1-1.2z',
-  },
   chevronDown: {
     path: 'M20.8 8.8 12 17.6 3.2 8.8 0 12l8.8 8.8L12 24l3.2-3.2L24 12z',
+  },
+  close: {
+    path: 'M0 22.4 3.5 24 7 16.6l3.5 7.4 3.5-1.6L9.1 12l4.8-10.4L10.4 0 7 7.4 3.5 0 0 1.6 4.8 12 0 22.4z',
   },
 };
 
 /**
  * A list of SVG icons
  */
-function Icon({ icon, description, className, secondPath }) {
+function Icon({ icon, description, className }) {
   return (
     <svg
       className={className}
@@ -36,7 +34,6 @@ function Icon({ icon, description, className, secondPath }) {
     >
       <title id="iconTitle">{description}</title>
       <path d={icons[icon].path} />
-      {icons[icon].secondPath && <path d={icons[icon].secondPath} />}
     </svg>
   );
 }
@@ -45,12 +42,10 @@ Icon.propTypes = {
   icon: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
   className: PropTypes.string,
-  secondPath: PropTypes.string,
 };
 
 Icon.defaultProps = {
   className: '',
-  secondPath: '',
 };
 
 export default Icon;

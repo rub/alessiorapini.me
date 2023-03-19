@@ -3,6 +3,7 @@
   color: var(--grey-100);
   display: inline-flex;
   font-size: 1.05vw;
+  gap: 0.5rem;
   height: 2.1vw;
   letter-spacing: 0.29vw;
   position: relative;
@@ -78,6 +79,7 @@
   height: 0.8rem;
   position: relative;
   top: 1px;
+  width: auto;
 }
 
 @keyframes link-reveal {

@@ -14,7 +14,9 @@ function Works() {
     <Layout fullScreen>
       {/* TODO: Hide CustomCursor on touch devices (from the component itself) */}
       <CustomCursor>
-        <Header navItems={<Link to="/" label="Close" />} />
+        <Header
+          navItems={<Link to="/" label="Close" hasIcon iconName="close" />}
+        />
         {isTouchOnly ? <ProjectListMobile /> : <ProjectList />}
       </CustomCursor>
     </Layout>
