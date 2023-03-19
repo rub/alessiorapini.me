@@ -39,6 +39,10 @@
   display: none;
 }
 
+::selection {
+  background: #ab51d6;
+}
+
 html {
   font: 18px / normal var(--druk-cyr);
   overflow: auto;
