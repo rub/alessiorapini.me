@@ -19,7 +19,6 @@
     "gatsby-plugin-sharp": "^5.0.0",
     "gatsby-remark-images": "^7.0.0",
     "gatsby-source-filesystem": "^5.0.0",
-    "gatsby-source-strapi": "^2.0.0",
     "gatsby-transformer-remark": "^6.0.0",
     "gatsby-transformer-sharp": "^5.0.0",
     "graphql": "^16.6.0",
