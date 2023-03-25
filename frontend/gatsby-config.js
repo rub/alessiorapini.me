@@ -9,6 +9,18 @@ module.exports = {
   },
   plugins: [
     {
+      resolve: `gatsby-plugin-google-gtag`,
+      options: {
+        trackingIds: [
+          'G-1CHPH6M0PJ', // Google Analytics / GA
+        ],
+        pluginConfig: {
+          // Puts tracking script in the head instead of the body
+          head: true,
+        },
+      },
+    },
+    {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `images`,

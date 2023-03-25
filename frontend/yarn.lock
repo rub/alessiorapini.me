@@ -1467,6 +1467,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@babel/runtime@npm:^7.20.13":
+  version: 7.21.0
+  resolution: "@babel/runtime@npm:7.21.0"
+  dependencies:
+    regenerator-runtime: ^0.13.11
+  checksum: 7b33e25bfa9e0e1b9e8828bb61b2d32bdd46b41b07ba7cb43319ad08efc6fda8eb89445193e67d6541814627df0ca59122c0ea795e412b99c5183a0540d338ab
+  languageName: node
+  linkType: hard
+
 "@babel/template@npm:^7.16.7, @babel/template@npm:^7.18.10, @babel/template@npm:^7.20.7":
   version: 7.20.7
   resolution: "@babel/template@npm:7.20.7"
@@ -8078,6 +8087,20 @@ __metadata:
   languageName: node
   linkType: hard
 
+"gatsby-plugin-google-gtag@npm:^5.8.0":
+  version: 5.8.0
+  resolution: "gatsby-plugin-google-gtag@npm:5.8.0"
+  dependencies:
+    "@babel/runtime": ^7.20.13
+    minimatch: ^3.1.2
+  peerDependencies:
+    gatsby: ^5.0.0-next
+    react: ^18.0.0 || ^0.0.0
+    react-dom: ^18.0.0 || ^0.0.0
+  checksum: c650ec88e9e285d2dcf33ff9e252024b18470e177ee26a90bcd30746ff021e05bce8fc8ca9540ef6dfc447fb5a01a6a5763c8099f5c9be96307cb37eeb1ab1e1
+  languageName: node
+  linkType: hard
+
 "gatsby-plugin-image@npm:^3.0.0":
   version: 3.3.2
   resolution: "gatsby-plugin-image@npm:3.3.2"
@@ -8382,6 +8405,7 @@ __metadata:
     gatsby-cli: ^5.0.0
     gatsby-image: ^3.11.0
     gatsby-plugin-eslint: ^4.0.3
+    gatsby-plugin-google-gtag: ^5.8.0
     gatsby-plugin-image: ^3.0.0
     gatsby-plugin-manifest: ^5.0.0
     gatsby-plugin-offline: ^6.0.0
